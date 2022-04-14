@@ -8,6 +8,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@dicebear/adventurer-neutral": "^4.10.2",
+    "@dicebear/avatars": "^4.10.2",
+    "firebase": "^9.6.10",
     "vue": "^3.2.25",
     "vue-router": "^4.0.14"
   },
