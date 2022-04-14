@@ -1,52 +1,42 @@
-<script>
+<script setup>
 import { createAvatar } from '@dicebear/avatars';
 import * as style from '@dicebear/adventurer-neutral';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 
-export default {
-    data() {
-        return {
-            email: "",
-            password: "",
-            avatar: "",        
-        }
-    },
-    methods: {
-        login(email, password) {
-            const auth = getAuth();
-            createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                console.log(user);
-                // ...
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                alert(error);
-                // ..
-            });
-        },
-        checkEmail(email, password) {
-            const auth = getAuth();
-            signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-            // Signed in 
-            const user = userCredential.user;
-            alert("signedin");
-            // ...
-            })
-            .catch((error) => {
-            alert(error);
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            });
-        }
-      }
 
-};
+function register(email, password) {
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        console.log(user);
+        // ...
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(error);
+        // ..
+    });
+}
+
+function login(email, password) {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    alert("signedin");
+    // ...
+    })
+    .catch((error) => {
+      alert(error);
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
+}
 
 let avatar = createAvatar(style, {});
 let email = "";
@@ -66,10 +56,10 @@ let password = "";
         <h4>Password</h4>
         <input placeholder="Password" v-model="password">
         <br>
-        <button @click="login(email, password)">Registrati</button>
+        <button @click="register(email, password)">Registrati</button>
         <br>
-        <button @click="checkEmail(email, password)">Accedi</button>
-
+        <button @click="login(email, password)">Accedi</button>
+        <button @click="$emit('close-login')">Indietro</button>
       </div>
     </div>
    
@@ -83,11 +73,6 @@ let password = "";
 <style scoped>
 
 
-
-
-h1,{
-    color:green;
-  }
 
 .avatar {
   width: 50px;

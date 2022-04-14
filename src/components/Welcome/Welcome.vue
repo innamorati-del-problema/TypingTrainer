@@ -1,18 +1,23 @@
-<script>
-    import Login from './Login.vue';
-    import Register from './Register.vue';
+<script setup>
+import Login from './Login.vue';
+import Register from './Register.vue';
+
+
+
 </script>
 
 <template>
-    <div class="landing-box d-flex justify-content-center align-items-center">
-        <div class="box-content">
-            <h3 class="page-subtitle">Benvenuto</h3>
-            <p class="page-paragraph">per imparare a digitare:</p>
-            <button class="buttone-pisello buttone-xl">Accedi</button>
-            <div class="hr"><h4><span>Oppure</span></h4></div>
-            <button class="buttone-crossing buttone-xl">Registrati</button> 
-        </div>
+
+<div class="landing-box d-flex justify-content-center align-items-center">
+    <div class="box-content">
+        <h3 class="page-subtitle">Benvenuto</h3>
+        <p class="page-paragraph">per imparare a digitare:</p>
+        <button @click="$emit('login-clicked')" class="buttone-pisello buttone-xl">Accedi</button>
+        <div class="hr"><h4><span>Oppure</span></h4></div>
+        <button @click="$emit('register-clicked')" class="buttone-crossing buttone-xl">Registrati</button> 
     </div>
+</div>
+
 </template>
 
 <style scoped>
