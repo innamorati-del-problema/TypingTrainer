@@ -1,26 +1,7 @@
 <script setup>
-import { createAvatar } from '@dicebear/avatars';
-import * as style from '@dicebear/adventurer-neutral';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-
-function register(email, password) {
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        console.log(user);
-        // ...
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(error);
-        // ..
-    });
-}
 
 function login(email, password) {
     const auth = getAuth();
@@ -36,9 +17,8 @@ function login(email, password) {
       const errorCode = error.code;
       const errorMessage = error.message;
     });
-}
+};
 
-let avatar = createAvatar(style, {});
 let email = "";
 let password = "";
 
@@ -47,19 +27,17 @@ let password = "";
 <template>
 
     <div class="landing-box">
-      <div class="card-body">
-        <!--<div class="avatar" v-html="avatar"></div>-->
-        <img class="avatar" src="https://avatars.dicebear.com/api/jdenticon/cavolfiored.svg"/>
+      <div class="box-content">
         <h5 class="card-title">Accedi</h5>
-        <h4>Username</h4>
+        <h4 class="card-paragraph">Email</h4>
         <input type="text"  placeholder="@" v-model="email">
-        <h4>Password</h4>
-        <input placeholder="Password" v-model="password">
+        <h4 class="card-paragraph">Password</h4>
+        <input type="password" placeholder="Password" v-model="password">
         <br>
-        <button @click="register(email, password)">Registrati</button>
-        <br>
-        <button @click="login(email, password)">Accedi</button>
-        <button @click="$emit('close-login')">Indietro</button>
+      </div>
+      <div class="buttons">
+        <button class="botton-danger-light botton-m" @click="$emit('close-login')">Indietro</button>
+        <button class="botton-primary-light botton-m" @click="login(email, password)">Accedi</button>
       </div>
     </div>
    
@@ -70,14 +48,22 @@ let password = "";
 
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 
+.box-content {
 
+    h5 {
+        padding-top: 30px;
+    }
+    h4 {
+    margin-top: 20px;
+    }
+    
+}
+.buttons {
+    padding-top: 30px;
+    padding-bottom: 30px;
 
-.avatar {
-  width: 50px;
-  height: 50px;
-  margin: auto;
 }
 
 </style>

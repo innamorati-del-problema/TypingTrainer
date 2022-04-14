@@ -10,11 +10,11 @@ import Register from './Register.vue';
 
 <div class="landing-box d-flex justify-content-center align-items-center">
     <div class="box-content">
-        <h3 class="page-subtitle">Benvenuto</h3>
-        <p class="page-paragraph">per imparare a digitare:</p>
-        <button @click="$emit('login-clicked')" class="buttone-pisello buttone-xl">Accedi</button>
+        <h3 class="card-title">Benvenuto</h3>
+        <p class="card-paragraph">per imparare a digitare:</p>
+        <button @click="$emit('login-clicked')" class="botton-primary-light botton-xl">Accedi</button>
         <div class="hr"><h4><span>Oppure</span></h4></div>
-        <button @click="$emit('register-clicked')" class="buttone-crossing buttone-xl">Registrati</button> 
+        <button @click="$emit('register-clicked')" class="botton-secondary-light botton-xl">Registrati</button> 
     </div>
 </div>
 
