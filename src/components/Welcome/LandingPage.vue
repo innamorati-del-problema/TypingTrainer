@@ -3,20 +3,15 @@
     import Register from './Register.vue';
     import Welcome from './Welcome.vue';
 
-    export default {
-        data() {
-            return {
-                welcome: true
-            }
-        }
-    }
+
+    
 
 </script>
 
 <template>
     <h1 class="page-title">TypingTrainer</h1>
 
-    <Welcome v-if="welcome" />
+    <Welcome/>
     <!-- <Login/>
     <Register/> -->
 </template>
