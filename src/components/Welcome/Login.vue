@@ -1,54 +1,24 @@
-<script>
-import { createAvatar } from '@dicebear/avatars';
-import * as style from '@dicebear/adventurer-neutral';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+<script setup>
+
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 
-export default {
-    data() {
-        return {
-            email: "",
-            password: "",
-            avatar: "",        
-        }
-    },
-    methods: {
-        login(email, password) {
-            const auth = getAuth();
-            createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                console.log(user);
-                // ...
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                alert(error);
-                // ..
-            });
-        },
-        checkEmail(email, password) {
-            const auth = getAuth();
-            signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-            // Signed in 
-            const user = userCredential.user;
-            alert("signedin");
-            // ...
-            })
-            .catch((error) => {
-            alert(error);
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            });
-        }
-      }
-
+function login(email, password) {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    alert("signedin");
+    // ...
+    })
+    .catch((error) => {
+      alert(error);
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
 };
 
-let avatar = createAvatar(style, {});
 let email = "";
 let password = "";
 
@@ -57,19 +27,17 @@ let password = "";
 <template>
 
     <div class="landing-box">
-      <div class="card-body">
-        <!--<div class="avatar" v-html="avatar"></div>-->
-        <img class="avatar" src="https://avatars.dicebear.com/api/jdenticon/cavolfiored.svg"/>
+      <div class="box-content">
         <h5 class="card-title">Accedi</h5>
-        <h4>Username</h4>
+        <h4 class="card-paragraph">Email</h4>
         <input type="text"  placeholder="@" v-model="email">
-        <h4>Password</h4>
-        <input placeholder="Password" v-model="password">
+        <h4 class="card-paragraph">Password</h4>
+        <input type="password" placeholder="Password" v-model="password">
         <br>
-        <button @click="login(email, password)">Registrati</button>
-        <br>
-        <button @click="checkEmail(email, password)">Accedi</button>
-
+      </div>
+      <div class="buttons">
+        <button class="botton-danger-light botton-m" @click="$emit('close-login')">Indietro</button>
+        <button class="botton-primary-light botton-m" @click="login(email, password)">Accedi</button>
       </div>
     </div>
    
@@ -80,19 +48,22 @@ let password = "";
 
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 
+.box-content {
 
+    h5 {
+        padding-top: 30px;
+    }
+    h4 {
+    margin-top: 20px;
+    }
+    
+}
+.buttons {
+    padding-top: 30px;
+    padding-bottom: 30px;
 
-
-h1,{
-    color:green;
-  }
-
-.avatar {
-  width: 50px;
-  height: 50px;
-  margin: auto;
 }
 
 </style>
