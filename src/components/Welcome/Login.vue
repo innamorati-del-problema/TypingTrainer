@@ -1,7 +1,9 @@
 <script setup>
 
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
 
 function login(email, password) {
     const auth = getAuth();
@@ -9,7 +11,7 @@ function login(email, password) {
     .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    alert("signedin");
+    router.push("/home");
     // ...
     })
     .catch((error) => {

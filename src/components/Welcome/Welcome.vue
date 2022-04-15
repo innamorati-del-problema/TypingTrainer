@@ -20,9 +20,7 @@ import Register from './Register.vue';
 
 </template>
 
-<style scoped>
-
-
+<style scoped lang="scss">
 
 .box-content * {
     margin-top: 30px;
@@ -36,15 +34,14 @@ h4 {
     margin-top:5%; 
     margin-bottom:5%;
     background-color: #484848;
-    
 
-} 
-
-h4 span { 
+    span { 
     text-align:center;
     padding:0 10px; 
     background-color: white;
-}
+    
+    }
+} 
 
     
 </style>
