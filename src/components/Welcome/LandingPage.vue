@@ -38,10 +38,11 @@ function switchRegister() {
 <style lang="scss">
 $primary-light: linear-gradient(178.19deg, #72C53F 1.53%, #5A9D31 132.54%);
 
+
+
 .page-title {
     font-weight: 700;
     font-size: 100px;
-    line-height: 130px;
     background: $primary-light;
     -webkit-background-clip: text;
     background-clip: text;
@@ -66,14 +67,29 @@ $primary-light: linear-gradient(178.19deg, #72C53F 1.53%, #5A9D31 132.54%);
     color: #484848;
 }
 
+.card-paragraph-s {
+    font-weight: 600;
+    font-size: 20px;
+    color: #484848;
+}
+
+
+
 .landing-box {
-    max-width: 550px;
+    height:600px;
+    width:500px;
     margin: auto;
-    max-height: 700px;
     border-radius: 20px;
     background: white;
     box-shadow: 0px 4px 47px -9px #7E7E7E;
+
+
 }
+
+.landing-box.reg{
+    height:700px;
+}
+
 
 .botton-xl {
     width: 250px;
@@ -92,7 +108,7 @@ $primary-light: linear-gradient(178.19deg, #72C53F 1.53%, #5A9D31 132.54%);
     font-size: 1em;
     border: 0;
     color: white;
-
+    //margin-top:90%;
 }
 
 .botton-primary-light {
@@ -108,6 +124,78 @@ $primary-light: linear-gradient(178.19deg, #72C53F 1.53%, #5A9D31 132.54%);
 .botton-danger-light {
     background: linear-gradient(180deg, #D21212 0%, #700101 100%);
     box-shadow: 0px 4px 18px rgba(126, 4, 4, 0.5);
+}
+
+
+
+@media (min-width: 800px) and (max-width:1919px){
+
+    .landing-box{
+        height: 400px;
+        width: 300px;
+    }
+
+    .landing-box.reg{
+        height: 600px;
+    }
+
+    .page-title{
+        font-size: 80px;
+    }
+
+    .card-title{
+        font-size: 35px;
+    }
+
+    .card-paragraph{
+        font-size: 18px;
+    }
+
+    .botton-m{
+        width: 100px;
+        height: 50px;
+        font-size: 0.8em;
+    }
+    .botton-xl{
+        width: 140px;
+        height: 50px;
+        font-size: 1.2em;
+    }
+    
+}
+
+@media (max-width: 799px){
+
+    .landing-box{
+        height: 350px;
+        width: 250px;
+    }
+
+    .landing-box.reg{
+        height: 550px;
+    }
+
+    .page-title{
+        font-size: 50px;
+    }
+
+    .card-title{
+        font-size: 20px;
+    }
+
+    .card-paragraph{
+        font-size: 15px;
+    }
+    .botton-m{
+        width: 50px;
+        height: 25px;
+        font-size: 0.5em;
+    }
+    .botton-xl{
+        width: 150px;
+        height: 35px;
+        font-size: 1em;
+    }
 }
 
 </style>
