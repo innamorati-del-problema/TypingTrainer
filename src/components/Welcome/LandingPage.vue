@@ -85,6 +85,7 @@ $primary-light: linear-gradient(178.19deg, #72C53F 1.53%, #5A9D31 132.54%);
 }
 
 .landing-box.big{
+    margin-top:40px;
     width: 1800px;
     height:900px;
 }
@@ -95,19 +96,17 @@ $primary-light: linear-gradient(178.19deg, #72C53F 1.53%, #5A9D31 132.54%);
 
 .navbar{
     width:93%;
-    height:80px;
+    height:110px;
     margin:auto;
-    margin-top:5px;
-    margin-bottom:20px;
 }
 
 .navbar-title{
     margin:0px;
-    margin-right: 0px;
+    margin-right:50px;
     border:0px;
     padding:0px;
     font-weight: 600;
-    font-size: 50px;
+    font-size: 70px;
     background: linear-gradient(178.19deg, #72C53F 1.53%, #5A9D31 132.54%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -115,13 +114,32 @@ $primary-light: linear-gradient(178.19deg, #72C53F 1.53%, #5A9D31 132.54%);
     width:fit-content;
 }
 
+.navbar-pages{
+    margin:0px;
+    margin-right:50px;
+    margin-top:20px;
+    border:0px;
+    padding:0px;
+    font-weight: 600;
+    font-size: 50px;
+    background: black;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    width:fit-content;
+}
+
+.navbar-pages.selected{
+    color:white;  
+}
+
 .navbar-content{
     display:inline-flex;
     margin:0px;
     padding:0px;
     border:0px;
-    text-align:left;
     width:100%;
+    height: 100%;
 }
 
 .botton-xl {
@@ -169,8 +187,8 @@ $primary-light: linear-gradient(178.19deg, #72C53F 1.53%, #5A9D31 132.54%);
     }
 
     .landing-box.big{
-    width: 1200px;
-    height:650px;
+    width: 1400px;
+    height:600px;
    }
 
     .landing-box.reg{
