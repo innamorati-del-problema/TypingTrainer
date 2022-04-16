@@ -82,14 +82,47 @@ $primary-light: linear-gradient(178.19deg, #72C53F 1.53%, #5A9D31 132.54%);
     border-radius: 20px;
     background: white;
     box-shadow: 0px 4px 47px -9px #7E7E7E;
+}
 
-
+.landing-box.big{
+    width: 1800px;
+    height:900px;
 }
 
 .landing-box.reg{
     height:700px;
 }
 
+.navbar{
+    width:93%;
+    height:80px;
+    margin:auto;
+    margin-top:5px;
+    margin-bottom:20px;
+}
+
+.navbar-title{
+    margin:0px;
+    margin-right: 0px;
+    border:0px;
+    padding:0px;
+    font-weight: 600;
+    font-size: 50px;
+    background: linear-gradient(178.19deg, #72C53F 1.53%, #5A9D31 132.54%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    width:fit-content;
+}
+
+.navbar-content{
+    display:inline-flex;
+    margin:0px;
+    padding:0px;
+    border:0px;
+    text-align:left;
+    width:100%;
+}
 
 .botton-xl {
     width: 250px;
@@ -135,6 +168,11 @@ $primary-light: linear-gradient(178.19deg, #72C53F 1.53%, #5A9D31 132.54%);
         width: 300px;
     }
 
+    .landing-box.big{
+    width: 1200px;
+    height:650px;
+   }
+
     .landing-box.reg{
         height: 600px;
     }
@@ -173,6 +211,11 @@ $primary-light: linear-gradient(178.19deg, #72C53F 1.53%, #5A9D31 132.54%);
 
     .landing-box.reg{
         height: 550px;
+    }
+
+    .landing-box.big{
+        height: 330px;
+        width: 640px;
     }
 
     .page-title{
