@@ -1,11 +1,11 @@
 <template>
     <div>
-        <Keyboard  />
+        <KeyboardIT  />
     </div>
 </template>
 
 <script setup>
-import Keyboard from './Keyboard.vue';
+import KeyboardIT from './KeyboardIT.vue';
 </script>
 
 <style lang="scss" scoped>

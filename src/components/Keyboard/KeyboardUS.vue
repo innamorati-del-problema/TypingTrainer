@@ -15,6 +15,7 @@
             <DoubleKey firstLetter="0" secondLetter=")" />
             <DoubleKey firstLetter="-" secondLetter="_" />
             <DoubleKey firstLetter="=" secondLetter="+" />
+            <br>
         </div>
         <div class="secondRow row">
             <Key letter="Q" />
@@ -30,6 +31,7 @@
             <DoubleKey firstLetter="[" secondLetter="{"  />
             <DoubleKey firstLetter="]" secondLetter="}"  />
             <DoubleKey firstLetter="\" secondLetter="|"  />
+            <br>
         </div>
         <div class="thirdRow row">
             <Key letter="A"  />
@@ -43,6 +45,7 @@
             <Key letter="L"  />
             <DoubleKey firstLetter=";" secondLetter=":"  />
             <DoubleKey firstLetter="'" secondLetter='"'  />
+            <br>
         </div>
         <div class="fourthRow row">
             <Key letter="Z" />
@@ -55,32 +58,66 @@
             <DoubleKey firstLetter="," secondLetter="<"  />
             <DoubleKey firstLetter="." secondLetter=">"  />
             <DoubleKey firstLetter="/" secondLetter="?"  />
+
+            <br>
         </div>
         <div class="fifthRow row">
             <Spacebar />
         </div>
+        
     </div>
-    
-    
-    <br>
 
 </template>
 
 <script setup>
 import Key from "./Other/Key.vue";
-import DoubleKey from "./Other/DoubleKey.vue";
-import Spacebar from "./Other/Spacebar.vue";
+import DoubleKey from "./DoubleKey.vue";
+import Spacebar from "./Spacebar.vue";
 </script>
 
 <style lang="scss" scoped>
 
 .keyboard {
-    padding: 10px;
-    scale: 1;
+    width: 100%;
+}
+.row {
+    width: 60%;
+    height: 10%;
+    margin-left: 50%;
+    transform: translateX(-50%);
     display: inline-block;
 }
 
+.key {
+    width: 6%;
+    display: inline-block;
+    margin: 5px;
+    box-sizing: content-box;
+    padding: 0;
+}
 
+.spacebar {
+    width: 35%;
+    display: inline-block;
+    margin: 5px;
+    box-sizing: content-box;
+    padding: 0;
+}
+@media (max-width: 1100px) 
+{
+    .key {
+        width: 6%;
+        margin: 2px;
+    }
+    .spacebar {
+        width: 30%;
+        margin: 2px;
+    }
+
+    .row {
+        width: 100%;
+    }
+}
 
 
 </style>

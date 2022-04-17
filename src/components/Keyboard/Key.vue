@@ -1,5 +1,6 @@
 <template>
-        <svg width="70" height="70" viewBox="0 0 70 70">
+<div class="key">
+<svg viewBox="0 0 100 100">
         <linearGradient id="gradient" x2="1" y2="1">
             <stop offset="0%" stop-color="#72C53F" />
             <stop offset="100%" stop-color="#5A9D31" />
@@ -8,18 +9,20 @@
         <rect 
         :class="{ pressedRec : pressed}"
         class="rect"
-        width="70" 
-        height="70" />
+        width="100" 
+        height="100" />
         <text 
         :class="{ pressedTxt : pressed}" 
         class="text"
         dominant-baseline="middle" 
-        text-anchor="middle" 
+        text-anchor="middle"
         x="50%" y="50%">
         {{ letter }}
         </text>
     </svg>
 
+</div>
+        
     
 
 </template>
@@ -52,12 +55,12 @@ window.addEventListener('keyup', (ev) => {
 
 <style lang="scss" scoped>
 
-$big-letter: 2em;
-$small-letter: 1.7em;
+$big-letter: 2.3em;
+$small-letter: 2em;
 
 svg {
     filter: drop-shadow(0px 0px 5px #7d7d7d68);
-    margin: 5px;
+    width: 100%;
 }
 
 @keyframes pressed {

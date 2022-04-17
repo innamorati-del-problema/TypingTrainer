@@ -1,5 +1,8 @@
 <template>
-        <svg width="400" height="70" viewBox="0 0 400 70">
+
+
+<div class="spacebar">
+    <svg  viewBox="0 0 400 70">
         <linearGradient id="gradient" x2="1" y2="1">
             <stop offset="0%" stop-color="#72C53F" />
             <stop offset="100%" stop-color="#5A9D31" />
@@ -10,7 +13,11 @@
         class="rect"
         width="400" 
         height="70" />
+    
     </svg>
+</div>
+        
+    
 
     
 
@@ -36,10 +43,9 @@ window.addEventListener('keyup', (ev) => {
 
 <style lang="scss" scoped>
 
-
 svg {
     filter: drop-shadow(0px 0px 5px #7d7d7d68);
-    margin: 5px;
+    width: 100%;
 }
 
 @keyframes pressed {
@@ -78,5 +84,6 @@ svg {
     fill: white;
     animation: pressed 100ms ease forwards;
 }
+
 
 </style>
