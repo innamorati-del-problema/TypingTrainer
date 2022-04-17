@@ -70,7 +70,7 @@
 </template>
 
 <script setup>
-import Key from "./Other/Key.vue";
+import Key from "./Key.vue";
 import DoubleKey from "./DoubleKey.vue";
 import Spacebar from "./Spacebar.vue";
 </script>

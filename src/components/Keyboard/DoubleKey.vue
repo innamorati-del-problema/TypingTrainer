@@ -55,13 +55,13 @@ const props = defineProps({
 let pressed = ref(false);
 
 window.addEventListener('keydown', (ev) => {
-    if ( ev.key == props.firstLetter || ev.key == props.secondLetter ) {
+    if ( ev.key.toLowerCase() == props.firstLetter || ev.key.toLowerCase() == props.secondLetter ) {
         pressed.value = true;
     }
 });
 
 window.addEventListener('keyup', (ev) => {
-    if ( ev.key == props.firstLetter || ev.key == props.secondLetter  ) {
+    if ( ev.key.toLowerCase() == props.firstLetter || ev.key.toLowerCase() == props.secondLetter  ) {
         pressed.value = false;
     }
 })
