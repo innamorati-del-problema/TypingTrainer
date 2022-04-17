@@ -1,35 +1,247 @@
+<script setup>
+import { ref } from "vue";
+
+window.addEventListener('keydown', (ev) => {
+    if (ev.key == "Escape")  Escape.value = "Escape__pressed";
+    if (ev.key == "1" || ev.key == "!")  one.value = "one__pressed";
+    if (ev.key == "2" || ev.key == "@")  two.value = "two__pressed";
+    if (ev.key == "3" || ev.key == "#")  three.value = "three__pressed";
+    if (ev.key == "4" || ev.key == "$")  four.value = "four__pressed";
+    if (ev.key == "5" || ev.key == "%")  five.value = "five__pressed";
+    if (ev.key == "6" || ev.key == "^")  six.value = "six__pressed";
+    if (ev.key == "7" || ev.key == "&")  seven.value = "seven__pressed";
+    if (ev.key == "8" || ev.key == "*")  eight.value = "eight__pressed";
+    if (ev.key == "9" || ev.key == "(")  nine.value = "nine__pressed";
+    if (ev.key == "0" || ev.key == ")")  zero.value = "zero__pressed";
+    if (ev.key == "a" || ev.key == "A")  a.value = "a__pressed";
+    if (ev.key == "b" || ev.key == "B")  b.value = "b__pressed";
+    if (ev.key == "c" || ev.key == "C")  c.value = "c__pressed";
+    if (ev.key == "d" || ev.key == "D")  d.value = "d__pressed";
+    if (ev.key == "e" || ev.key == "E")  e.value = "e__pressed";
+    if (ev.key == "f" || ev.key == "F")  f.value = "f__pressed";
+    if (ev.key == "g" || ev.key == "G")  g.value = "g__pressed";
+    if (ev.key == "h" || ev.key == "H")  h.value = "h__pressed";
+    if (ev.key == "i" || ev.key == "I")  i.value = "i__pressed";
+    if (ev.key == "j" || ev.key == "J")  j.value = "j__pressed";
+    if (ev.key == "k" || ev.key == "K")  k.value = "k__pressed";
+    if (ev.key == "l" || ev.key == "L")  l.value = "l__pressed";
+    if (ev.key == "m" || ev.key == "M")  m.value = "m__pressed";
+    if (ev.key == "n" || ev.key == "N")  n.value = "n__pressed";
+    if (ev.key == "o" || ev.key == "O")  o.value = "o__pressed";
+    if (ev.key == "p" || ev.key == "P")  p.value = "p__pressed";
+    if (ev.key == "q" || ev.key == "Q")  q.value = "q__pressed";
+    if (ev.key == "r" || ev.key == "R")  r.value = "r__pressed";
+    if (ev.key == "s" || ev.key == "S")  s.value = "s__pressed";
+    if (ev.key == "t" || ev.key == "T")  t.value = "t__pressed";
+    if (ev.key == "u" || ev.key == "U")  u.value = "u__pressed";
+    if (ev.key == "v" || ev.key == "V")  v.value = "v__pressed";
+    if (ev.key == "w" || ev.key == "W")  w.value = "w__pressed";
+    if (ev.key == "x" || ev.key == "X")  x.value = "x__pressed";
+    if (ev.key == "y" || ev.key == "Y")  y.value = "y__pressed";
+    if (ev.key == "z" || ev.key == "Z")  z.value = "z__pressed";
+    if (ev.key == "-" || ev.key == "_")  dash.value = "dash__pressed";
+    if (ev.key == "=" || ev.key == "+")  equal.value = "equal__pressed";
+    if (ev.key == 'Backspace')  backspace.value = "backspace__pressed";
+    if (ev.key == "Tab")  tab.value = "tab__pressed";
+    if (ev.key == "CapsLock")  caps.value = "caps__pressed";
+    if (ev.key == "Shift")  lshift.value = "lshift__pressed";
+    if (ev.key == "Control")  lctrl.value = "lctrl__pressed";
+    if (ev.key == "OS")  lwin.value = "lwin__pressed";
+    if (ev.key == "Alt")  lalt.value = "lalt__pressed";
+    if (ev.key == " ")  space.value = "space__pressed";
+    if (ev.key == "Alt")  ralt.value = "ralt__pressed";
+    if (ev.key == "OS")  menu.value = "menu__pressed";
+    if (ev.key == "Control")  rctrl.value = "rctrl__pressed";
+    if (ev.key == "")  fn.value = "fn__pressed";
+    if (ev.key == "[" || ev.key == "{")  osqbr.value = "osqbr__pressed";
+    if (ev.key == "]" || ev.key == "}")  csqbr.value = "csqbr__pressed";
+    if (ev.key == "\\" || ev.key == "|")  backslash.value = "backslash__pressed";
+    if (ev.key == ";" || ev.key == ":")  semicolon.value = "semicolon__pressed";
+    if (ev.key == "'" || ev.key == '"')  quote.value = "quote__pressed";
+    if (ev.key == "Enter")  enter.value = "enter__pressed";
+    if (ev.key == "," || ev.key == "<")  colon.value = "colon__pressed";
+    if (ev.key == "." || ev.key == ">")  period.value = "period__pressed";
+    if (ev.key == "/" || ev.key == "?")  slash.value = "slash__pressed";
+    if (ev.key == "Shift")  rshift.value = "rshift__pressed";
+
+});
+
+
+
+
+
+
+window.addEventListener('keyup', (ev) => {
+    if (ev.key == "Escape")  Escape.value = "Escape";
+    if (ev.key == "1" || ev.key == "!")  one.value = "one";
+    if (ev.key == "2" || ev.key == "@")  two.value = "two";
+    if (ev.key == "3" || ev.key == "#")  three.value = "three";
+    if (ev.key == "4" || ev.key == "$")  four.value = "four";
+    if (ev.key == "5" || ev.key == "%")  five.value = "five";
+    if (ev.key == "6" || ev.key == "^")  six.value = "six";
+    if (ev.key == "7" || ev.key == "&")  seven.value = "seven";
+    if (ev.key == "8" || ev.key == "*")  eight.value = "eight";
+    if (ev.key == "9" || ev.key == "(")  nine.value = "nine";
+    if (ev.key == "0" || ev.key == ")")  zero.value = "zero";
+    if (ev.key == "a" || ev.key == "A")  a.value = "zero";
+    if (ev.key == "b" || ev.key == "B")  b.value = "zero";
+    if (ev.key == "c" || ev.key == "C")  c.value = "zero";
+    if (ev.key == "d" || ev.key == "D")  d.value = "zero";
+    if (ev.key == "e" || ev.key == "E")  e.value = "zero";
+    if (ev.key == "f" || ev.key == "F")  f.value = "zero";
+    if (ev.key == "g" || ev.key == "G")  g.value = "zero";
+    if (ev.key == "h" || ev.key == "H")  h.value = "zero";
+    if (ev.key == "i" || ev.key == "I")  i.value = "zero";
+    if (ev.key == "j" || ev.key == "J")  j.value = "zero";
+    if (ev.key == "k" || ev.key == "K")  k.value = "zero";
+    if (ev.key == "l" || ev.key == "L")  l.value = "zero";
+    if (ev.key == "m" || ev.key == "M")  m.value = "zero";
+    if (ev.key == "n" || ev.key == "N")  n.value = "zero";
+    if (ev.key == "o" || ev.key == "O")  o.value = "zero";
+    if (ev.key == "p" || ev.key == "P")  p.value = "zero";
+    if (ev.key == "q" || ev.key == "Q")  q.value = "zero";
+    if (ev.key == "r" || ev.key == "R")  r.value = "zero";
+    if (ev.key == "s" || ev.key == "S")  s.value = "zero";
+    if (ev.key == "t" || ev.key == "T")  t.value = "zero";
+    if (ev.key == "u" || ev.key == "U")  u.value = "zero";
+    if (ev.key == "v" || ev.key == "V")  v.value = "zero";
+    if (ev.key == "w" || ev.key == "W")  w.value = "zero";
+    if (ev.key == "x" || ev.key == "X")  x.value = "zero";
+    if (ev.key == "y" || ev.key == "Y")  y.value = "zero";
+    if (ev.key == "z" || ev.key == "Z")  z.value = "zero";
+    if (ev.key == "-" || ev.key == "_")  dash.value = "dash";
+    if (ev.key == "=" || ev.key == "+")  equal.value = "equal";
+    if (ev.key == 'Backspace')  backspace.value = "backspace";
+    if (ev.key == "Tab")  tab.value = "tab";
+    if (ev.key == "CapsLock")  caps.value = "caps";
+    if (ev.key == "Shift")  lshift.value = "lshift";
+    if (ev.key == "Control")  lctrl.value = "lctrl";
+    if (ev.key == "OS")  lwin.value = "lwin";
+    if (ev.key == "Alt")  lalt.value = "lalt";
+    if (ev.key == " ")  space.value = "space";
+    if (ev.key == "Alt")  ralt.value = "ralt";
+    if (ev.key == "OS")  menu.value = "menu";
+    if (ev.key == "Control")  rctrl.value = "rctrl";
+    if (ev.key == "")  fn.value = "fn";
+    if (ev.key == "[" || ev.key == "{")  osqbr.value = "osqbr";
+    if (ev.key == "]" || ev.key == "}")  csqbr.value = "csqbr";
+    if (ev.key == "\\" || ev.key == "|")  backslash.value = "backslash";
+    if (ev.key == ";" || ev.key == ":")  semicolon.value = "semicolon";
+    if (ev.key == "'" || ev.key == '"')  quote.value = "quote";
+    if (ev.key == "Enter")  enter.value = "enter";
+    if (ev.key == "," || ev.key == "<")  colon.value = "colon";
+    if (ev.key == "." || ev.key == ">")  period.value = "period";
+    if (ev.key == "/" || ev.key == "?")  slash.value = "slash";
+    if (ev.key == "Shift")  rshift.value = "rshift";
+});
+
+let Escape = ref("Escape");
+let one = ref('one');
+let two = ref('two');
+let three = ref('three');
+let four = ref('four');
+let five = ref('five');
+let six = ref('six');
+let seven = ref('seven');
+let eight = ref('eight');
+let nine = ref('nine');
+let zero = ref('zero');
+let a = ref("a");
+let b = ref("b");
+let c = ref("c");
+let d = ref("d");
+let e = ref("e");
+let f = ref("f");
+let g = ref("g");
+let h = ref("h");
+let i = ref("i");
+let j = ref("j");
+let k = ref("k");
+let l = ref("l");
+let m = ref("m");
+let n = ref("n");
+let o = ref("o");
+let p = ref("p");
+let q = ref("q");
+let r = ref("r");
+let s = ref("s");
+let t = ref("t");
+let u = ref("u");
+let v = ref("v");
+let w = ref("w");
+let x = ref("x");
+let y = ref("y");
+let z = ref("z");
+let dash = ref("dash");
+let equal = ref("equal");
+let backspace = ref("backspace");
+let tab = ref('tab');
+let caps = ref('caps');
+let lshift = ref('lshift');
+let lctrl = ref('lctrl');
+let lwin = ref('lwin');
+let lalt = ref("lalt");
+let space = ref("space");
+let ralt = ref("ralt");
+let menu = ref("menu");
+let rctrl = ref("rctrl");
+let fn = ref("fn");
+let osqbr = ref("osqbr");
+let csqbr = ref("csqbr");
+let backslash = ref("backslash");
+let semicolon = ref("semicolon");
+let quote = ref("quote");
+let enter = ref("enter");
+let colon = ref("colon");
+let period = ref("period");
+let slash = ref("slash");
+let rshift = ref("rshift");
+let larr = ref("larr");
+
+</script>
+
+
+<template>
 <svg
    width="1250"
    height="460"
    viewBox="0 0 330.72916 121.70833"
-   id="svg5">
+   id="keyboard">
+   <linearGradient id="gradient" x2="1" y2="1">
+    <stop offset="0%" stop-color="#72C53F" />
+    <stop offset="100%" stop-color="#5A9D31" />
+  </linearGradient>
   <g>
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.94879581;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-       id="rect1330"
-       width="316.4313"
-       height="107.41047"
-       x="7.148932"
-       y="7.148932"
-       ry="3.7320454" />
-    <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-       id="rect3396"
+       :class="[Escape]"
+       id="rect3369"
        width="17.57206"
        height="17.572062"
        x="9.7348022"
        y="9.7348022"
-       ry="3.4016497" />
+       ry="3.4016497" 
+       />    <text
+       xml:space="preserve"
+       transform="matrix(0.2608906,0,0,0.27484418,0.29674823,5.3649942)"
+       id="text10885"
+       style="line-height:1.25;font-family:'IBM Plex Mono';font-size:19.7574px;letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887);stroke-width:0.988076;-inkscape-font-specification:'IBM Plex Mono';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
+       x="10.726636"
+       y="0"><tspan
+         x="51.797647"
+         y="54.677126"
+         id="tspan91876"><tspan
+           style="text-align:center;"
+           id="tspan91874">ESC</tspan></tspan></text> 
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
        id="rect3396-7"
        width="17.57206"
        height="17.572062"
+       :class="[one]"
        x="30.901468"
        y="9.7348022"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[two]"
        id="rect3396-7-0"
        width="17.57206"
        height="17.572062"
@@ -37,7 +249,7 @@
        y="9.7348022"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+    :class="[three]"
        id="rect3396-7-0-9"
        width="17.57206"
        height="17.572062"
@@ -45,7 +257,7 @@
        y="9.7348013"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+        :class="[four]"
        id="rect3396-3"
        width="17.57206"
        height="17.572062"
@@ -53,7 +265,7 @@
        y="9.7348013"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+    :class="[five]"
        id="rect3396-7-6"
        width="17.57206"
        height="17.572062"
@@ -61,7 +273,7 @@
        y="9.7348013"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+    :class="[six]"
        id="rect3396-7-0-0"
        width="17.57206"
        height="17.572062"
@@ -69,7 +281,7 @@
        y="9.7348022"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+    :class="[seven]"
        id="rect3396-7-0-9-6"
        width="17.57206"
        height="17.572062"
@@ -77,7 +289,7 @@
        y="9.7348022"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+    :class="[eight]"
        id="rect3396-3-2"
        width="17.57206"
        height="17.572062"
@@ -85,7 +297,7 @@
        y="9.7348022"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+    :class="[nine]"
        id="rect3396-7-6-6"
        width="17.57206"
        height="17.572062"
@@ -93,7 +305,7 @@
        y="9.7348022"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+    :class="[zero]"
        id="rect3396-7-0-0-1"
        width="17.57206"
        height="17.572062"
@@ -101,7 +313,7 @@
        y="9.7348022"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[dash]"
        id="rect3396-7-0-9-6-8"
        width="17.57206"
        height="17.572062"
@@ -109,7 +321,7 @@
        y="9.7348022"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[q]"
        id="rect3396-2"
        width="17.57206"
        height="17.572062"
@@ -117,7 +329,7 @@
        y="30.90147"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.94879581;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[tab]"
        id="rect3396-2-3"
        width="29.213036"
        height="17.306786"
@@ -125,7 +337,7 @@
        y="31.034105"
        ry="3.350297" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.94879581;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[caps]"
        id="rect3396-2-3-9"
        width="34.405022"
        height="17.207109"
@@ -133,15 +345,15 @@
        y="52.250614"
        ry="3.3310013" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.94879581;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[lshift]"
        id="rect3396-2-3-9-2"
-       width="44.810558"
+       width="23.643871"
        height="17.029316"
        x="10.006177"
        y="73.50618"
        ry="3.2965837" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[w]"
        id="rect3396-7-02"
        width="17.57206"
        height="17.572062"
@@ -149,7 +361,7 @@
        y="30.90147"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[e]"
        id="rect3396-7-0-3"
        width="17.57206"
        height="17.572062"
@@ -157,7 +369,7 @@
        y="30.90147"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[r]"
        id="rect3396-7-0-9-7"
        width="17.57206"
        height="17.572062"
@@ -165,7 +377,7 @@
        y="30.901468"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[t]"
        id="rect3396-3-5"
        width="17.57206"
        height="17.572062"
@@ -173,7 +385,7 @@
        y="30.901468"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[y]"
        id="rect3396-7-6-9"
        width="17.57206"
        height="17.572062"
@@ -181,7 +393,7 @@
        y="30.901468"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[u]"
        id="rect3396-7-0-0-2"
        width="17.57206"
        height="17.572062"
@@ -189,7 +401,7 @@
        y="30.90147"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[i]"
        id="rect3396-7-0-9-6-2"
        width="17.57206"
        height="17.572062"
@@ -197,7 +409,7 @@
        y="30.90147"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[o]"
        id="rect3396-3-2-8"
        width="17.57206"
        height="17.572062"
@@ -205,7 +417,7 @@
        y="30.90147"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[p]"
        id="rect3396-7-6-6-9"
        width="17.57206"
        height="17.572062"
@@ -213,7 +425,7 @@
        y="30.90147"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[osqbr]"
        id="rect3396-7-0-0-1-7"
        width="17.57206"
        height="17.572062"
@@ -221,7 +433,7 @@
        y="30.90147"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[a]"
        id="rect3396-2-7"
        width="17.57206"
        height="17.572062"
@@ -229,7 +441,7 @@
        y="52.068138"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[s]"
        id="rect3396-7-02-5"
        width="17.57206"
        height="17.572062"
@@ -237,7 +449,7 @@
        y="52.068138"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[d]"
        id="rect3396-7-0-3-3"
        width="17.57206"
        height="17.572062"
@@ -245,7 +457,7 @@
        y="52.068138"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[f]"
        id="rect3396-7-0-9-7-5"
        width="17.57206"
        height="17.572062"
@@ -253,7 +465,7 @@
        y="52.068134"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[g]"
        id="rect3396-3-5-6"
        width="17.57206"
        height="17.572062"
@@ -261,7 +473,7 @@
        y="52.068134"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[h]"
        id="rect3396-7-6-9-2"
        width="17.57206"
        height="17.572062"
@@ -269,7 +481,7 @@
        y="52.068134"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[j]"
        id="rect3396-7-0-0-2-9"
        width="17.57206"
        height="17.572062"
@@ -277,7 +489,7 @@
        y="52.068138"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[k]"
        id="rect3396-7-0-9-6-2-1"
        width="17.57206"
        height="17.572062"
@@ -285,7 +497,7 @@
        y="52.068138"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[l]"
        id="rect3396-3-2-8-2"
        width="17.57206"
        height="17.572062"
@@ -293,7 +505,7 @@
        y="52.068138"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[semicolon]"
        id="rect3396-7-6-6-9-7"
        width="17.57206"
        height="17.572062"
@@ -301,7 +513,15 @@
        y="52.068138"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[larr]"
+       id="rect3396-2-7-0"
+       width="17.57206"
+       height="17.572062"
+       x="37.516029"
+       y="73.234802"
+       ry="3.4016497" />
+    <rect
+       :class="[z]"
        id="rect3396-2-7-0"
        width="17.57206"
        height="17.572062"
@@ -309,7 +529,7 @@
        y="73.234802"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[rctrl]"
        id="rect3396-2-7-0-5"
        width="25.509562"
        height="17.572062"
@@ -318,7 +538,7 @@
        ry="3.4016497"
        rx="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[lwin]"
        id="rect3396-2-7-0-5-9"
        width="25.509562"
        height="17.572062"
@@ -327,7 +547,7 @@
        ry="3.4016497"
        rx="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[ralt]"
        id="rect3396-2-7-0-5-9-2"
        width="25.509562"
        height="17.572062"
@@ -336,7 +556,7 @@
        ry="3.4016497"
        rx="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[lctrl]"
        id="rect3396-2-7-0-5-9-2-8"
        width="25.509562"
        height="17.572062"
@@ -345,7 +565,7 @@
        ry="3.4016497"
        rx="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[menu]"
        id="rect3396-2-7-0-5-9-2-8-9"
        width="25.509562"
        height="17.572062"
@@ -354,7 +574,7 @@
        ry="3.4016497"
        rx="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[lalt]"
        id="rect3396-2-7-0-5-9-2-8-9-7"
        width="25.509562"
        height="17.572062"
@@ -363,7 +583,7 @@
        ry="3.4016497"
        rx="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[fn]"
        id="rect3396-2-7-0-5-9-2-2"
        width="25.509562"
        height="17.572062"
@@ -372,7 +592,7 @@
        ry="3.4016497"
        rx="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[x]"
        id="rect3396-7-02-5-6"
        width="17.57206"
        height="17.572062"
@@ -380,7 +600,7 @@
        y="73.234802"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[c]"
        id="rect3396-7-0-3-3-2"
        width="17.57206"
        height="17.572062"
@@ -388,7 +608,7 @@
        y="73.234802"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[v]"
        id="rect3396-7-0-9-7-5-6"
        width="17.57206"
        height="17.572062"
@@ -396,7 +616,7 @@
        y="73.234802"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[b]"
        id="rect3396-3-5-6-1"
        width="17.57206"
        height="17.572062"
@@ -404,7 +624,7 @@
        y="73.234802"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948773;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[space]"
        id="rect3396-3-5-6-1-7"
        width="107.53039"
        height="17.572062"
@@ -413,7 +633,7 @@
        ry="3.4016497"
        rx="3.4016495" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[n]"
        id="rect3396-7-6-9-2-8"
        width="17.57206"
        height="17.572062"
@@ -421,7 +641,7 @@
        y="73.234802"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[m]"
        id="rect3396-7-0-0-2-9-7"
        width="17.57206"
        height="17.572062"
@@ -429,7 +649,7 @@
        y="73.234802"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[colon]"
        id="rect3396-7-0-9-6-2-1-9"
        width="17.57206"
        height="17.572062"
@@ -437,7 +657,7 @@
        y="73.234802"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[period]"
        id="rect3396-3-2-8-2-2"
        width="17.57206"
        height="17.572062"
@@ -445,7 +665,7 @@
        y="73.234802"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[slash]"
        id="rect3396-7-6-6-9-7-0"
        width="17.57206"
        height="17.572062"
@@ -453,7 +673,7 @@
        y="73.234802"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[quote]"
        id="rect3396-7-0-0-1-7-0"
        width="17.57206"
        height="17.572062"
@@ -461,7 +681,7 @@
        y="52.068138"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[csqbr]"
        id="rect3396-7-0-9-6-8-3"
        width="17.57206"
        height="17.572062"
@@ -469,7 +689,7 @@
        y="30.90147"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.10459;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[backslash]"
        id="rect3396-7-0-9-6-8-3-6"
        width="24.030827"
        height="17.416246"
@@ -477,7 +697,7 @@
        y="30.97938"
        ry="3.3714859" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.948772;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[equal]"
        id="rect3396-7-0-9-6-8-7"
        width="17.57206"
        height="17.572062"
@@ -485,7 +705,7 @@
        y="9.7348022"
        ry="3.4016497" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.94879581;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[backspace]"
        id="rect3396-7-0-9-6-8-7-9"
        width="35.704285"
        height="17.183455"
@@ -493,7 +713,7 @@
        y="9.9291058"
        ry="3.326422" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.94879581;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[enter]"
        id="rect3396-2-3-9-6"
        width="39.604683"
        height="17.115103"
@@ -501,25 +721,13 @@
        y="52.296619"
        ry="3.3131902" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.94879581;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       :class="[rshift]"
        id="rect3396-2-3-9-6-3"
        width="50.021626"
        height="16.948711"
        x="270.66104"
        y="73.774956"
        ry="3.2809796" />
-    <text
-       xml:space="preserve"
-       transform="matrix(0.2608906,0,0,0.27484418,0.29674823,5.3649942)"
-       id="text10885"
-       style="font-size:19.7615px;line-height:1.25;font-family:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887);stroke-width:0.988076;-inkscape-font-specification:'IBM Plex Mono';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
-       x="10.726636"
-       y="0"><tspan
-         x="51.797647"
-         y="54.677126"
-         id="tspan71188"><tspan
-           style="text-align:center;"
-           id="tspan71186">ESC</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.2608906,0,0,0.27484418,6.1175814,26.53166)"
@@ -529,9 +737,9 @@
        y="0"><tspan
          x="51.797647"
          y="54.677126"
-         id="tspan71192"><tspan
+         id="tspan91880"><tspan
            style="text-align:center;"
-           id="tspan71190">TAB</tspan></tspan></text>
+           id="tspan91878">TAB</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.2608906,0,0,0.27484418,11.1182,47.698327)"
@@ -541,7 +749,7 @@
        y="0"><tspan
          x="36.792969"
          y="54.677126"
-         id="tspan71194">CAPS</tspan></text>
+         id="tspan91882">CAPS</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.2608901,0,0,0.27484418,14.756277,68.864993)"
@@ -549,9 +757,9 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7615px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-36-5-5);stroke-width:0.988076"
        x="10.726636"
        y="0"><tspan
-         x="36.792969"
+         x="-1"
          y="54.677126"
-         id="tspan71196">SHIFT</tspan></text>
+         id="tspan91884">SHIFT</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.2608906,0,0,0.27484418,4.3231576,90.031659)"
@@ -561,9 +769,9 @@
        y="0"><tspan
          x="45.869193"
          y="54.677126"
-         id="tspan71200"><tspan
+         id="tspan91888"><tspan
            style="text-align:center;"
-           id="tspan71198">CTRL</tspan></tspan></text>
+           id="tspan91886">CTRL</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.2608906,0,0,0.27484418,33.427267,90.031659)"
@@ -573,9 +781,9 @@
        y="0"><tspan
          x="51.797647"
          y="54.677126"
-         id="tspan71204"><tspan
+         id="tspan91892"><tspan
            style="text-align:center;"
-           id="tspan71202">WIN</tspan></tspan></text>
+           id="tspan91890">WIN</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.2608906,0,0,0.27484418,62.531418,90.031659)"
@@ -585,9 +793,9 @@
        y="0"><tspan
          x="51.797647"
          y="54.677126"
-         id="tspan71208"><tspan
+         id="tspan91896"><tspan
            style="text-align:center;"
-           id="tspan71206">ALT</tspan></tspan></text>
+           id="tspan91894">ALT</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.2608906,0,0,0.27484418,202.76058,90.031659)"
@@ -597,9 +805,9 @@
        y="0"><tspan
          x="51.797647"
          y="54.677126"
-         id="tspan71212"><tspan
+         id="tspan91900"><tspan
            style="text-align:center;"
-           id="tspan71210">ALT</tspan></tspan></text>
+           id="tspan91898">ALT</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.2608906,0,0,0.27484418,231.86475,90.031659)"
@@ -609,7 +817,7 @@
        y="0"><tspan
          x="45.869193"
          y="54.677126"
-         id="tspan71214">MENU</tspan></text>
+         id="tspan91902">MENU</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.2608906,0,0,0.27484418,260.96891,90.031659)"
@@ -619,9 +827,9 @@
        y="0"><tspan
          x="45.869193"
          y="54.677126"
-         id="tspan71218"><tspan
+         id="tspan91906"><tspan
            style="text-align:center;"
-           id="tspan71216">CTRL</tspan></tspan></text>
+           id="tspan91904">CTRL</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.2608906,0,0,0.27484418,290.07308,90.031659)"
@@ -631,19 +839,223 @@
        y="0"><tspan
          x="57.726101"
          y="54.677126"
-         id="tspan71220">FN</tspan></text>
+         id="tspan91908">FN</tspan></text>
     <text
        xml:space="preserve"
-       transform="matrix(0.25919213,0,0,0.2767608,21.655241,4.6756044)"
+       transform="matrix(0.25919213,0,0,0.2767608,21.335407,1.8879652)"
        id="text10885-6"
-       style="font-size:24px;line-height:1.25;font-family:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3);stroke-width:0.98787;-inkscape-font-specification:'IBM Plex Mono';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7574px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3);stroke-width:0.98787"
        x="18.382635"
        y="0"><tspan
-         x="62.383003"
-         y="58.512969"
-         id="tspan71224"><tspan
+         x="64.653831"
+         y="54.673416"
+         id="tspan91912"><tspan
            style="text-align:center;"
-           id="tspan71222">1</tspan></tspan></text>
+           id="tspan91910">!
+</tspan></tspan><tspan
+         x="64.653831"
+         y="79.370167"
+         id="tspan91916"><tspan
+           style="text-align:center;"
+           id="tspan91914">1</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.25919213,0,0,0.2767608,42.502073,1.8879652)"
+       id="text10885-6-7"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7574px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-36);stroke-width:0.98787"
+       x="18.382635"
+       y="0"><tspan
+         x="64.653831"
+         y="54.673416"
+         id="tspan91920"><tspan
+           style="text-align:center;"
+           id="tspan91918">"
+</tspan></tspan><tspan
+         x="64.653831"
+         y="79.370167"
+         id="tspan91924"><tspan
+           style="text-align:center;"
+           id="tspan91922">2</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.25919213,0,0,0.2767608,63.66874,1.8879652)"
+       id="text10885-6-7-3"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7574px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-36-5);stroke-width:0.98787"
+       x="18.382635"
+       y="0"><tspan
+         x="64.653831"
+         y="54.673416"
+         id="tspan91928"><tspan
+           style="text-align:center;"
+           id="tspan91926">£
+</tspan></tspan><tspan
+         x="64.653831"
+         y="79.370167"
+         id="tspan91932"><tspan
+           style="text-align:center;"
+           id="tspan91930">3</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.25919213,0,0,0.2767608,84.835406,1.8879652)"
+       id="text10885-6-7-3-9"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7574px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-36-5-2);stroke-width:0.98787"
+       x="18.382635"
+       y="0"><tspan
+         x="64.653831"
+         y="54.673416"
+         id="tspan91936"><tspan
+           style="text-align:center;"
+           id="tspan91934">$
+</tspan></tspan><tspan
+         x="64.653831"
+         y="79.370167"
+         id="tspan91940"><tspan
+           style="text-align:center;"
+           id="tspan91938">4</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.25919213,0,0,0.2767608,106.00207,1.8879652)"
+       id="text10885-6-7-3-9-2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7574px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-36-5-2-1);stroke-width:0.98787"
+       x="18.382635"
+       y="0"><tspan
+         x="64.653831"
+         y="54.673416"
+         id="tspan91944"><tspan
+           style="text-align:center;"
+           id="tspan91942">%
+</tspan></tspan><tspan
+         x="64.653831"
+         y="79.370167"
+         id="tspan91948"><tspan
+           style="text-align:center;"
+           id="tspan91946">5</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.25919213,0,0,0.2767608,127.16874,1.8879652)"
+       id="text10885-6-7-3-9-2-0"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7574px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-36-5-2-1-7);stroke-width:0.98787"
+       x="18.382635"
+       y="0"><tspan
+         x="64.653831"
+         y="54.673416"
+         id="tspan91952"><tspan
+           style="text-align:center;"
+           id="tspan91950">&
+</tspan></tspan><tspan
+         x="64.653831"
+         y="79.370167"
+         id="tspan91956"><tspan
+           style="text-align:center;"
+           id="tspan91954">6</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.25919213,0,0,0.2767608,148.3354,1.8879652)"
+       id="text10885-6-7-3-9-2-0-3"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7574px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-36-5-2-1-7-9);stroke-width:0.98787"
+       x="18.382635"
+       y="0"><tspan
+         x="64.653831"
+         y="54.673416"
+         id="tspan91960"><tspan
+           style="text-align:center;"
+           id="tspan91958">/
+</tspan></tspan><tspan
+         x="64.653831"
+         y="79.370167"
+         id="tspan91964"><tspan
+           style="text-align:center;"
+           id="tspan91962">7</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.25919213,0,0,0.2767608,169.50207,1.8879652)"
+       id="text10885-6-7-3-9-2-0-3-0"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7574px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-36-5-2-1-7-9-6);stroke-width:0.98787"
+       x="18.382635"
+       y="0"><tspan
+         x="64.653831"
+         y="54.673416"
+         id="tspan91968"><tspan
+           style="text-align:center;"
+           id="tspan91966">(
+</tspan></tspan><tspan
+         x="64.653831"
+         y="79.370167"
+         id="tspan91972"><tspan
+           style="text-align:center;"
+           id="tspan91970">8</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.25919213,0,0,0.2767608,190.66874,1.8879652)"
+       id="text10885-6-7-3-9-2-0-3-0-2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7574px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-36-5-2-1-7-9-6-6);stroke-width:0.98787"
+       x="18.382635"
+       y="0"><tspan
+         x="64.653831"
+         y="54.673416"
+         id="tspan91976"><tspan
+           style="text-align:center;"
+           id="tspan91974">)
+</tspan></tspan><tspan
+         x="64.653831"
+         y="79.370167"
+         id="tspan91980"><tspan
+           style="text-align:center;"
+           id="tspan91978">9</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.25919213,0,0,0.2767608,211.8354,1.8879652)"
+       id="text10885-6-7-3-9-2-0-3-0-2-1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7574px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-36-5-2-1-7-9-6-6-6);stroke-width:0.98787"
+       x="18.382635"
+       y="0"><tspan
+         x="64.653831"
+         y="54.673416"
+         id="tspan91984"><tspan
+           style="text-align:center;"
+           id="tspan91982">=
+</tspan></tspan><tspan
+         x="64.653831"
+         y="79.370167"
+         id="tspan91988"><tspan
+           style="text-align:center;"
+           id="tspan91986">0</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.25919213,0,0,0.2767608,233.00207,1.8879652)"
+       id="text10885-6-7-3-9-2-0-3-0-2-1-7"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7574px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-36-5-2-1-7-9-6-6-6-8);stroke-width:0.98787"
+       x="18.382635"
+       y="0"><tspan
+         x="64.653831"
+         y="54.673416"
+         id="tspan91992"><tspan
+           style="text-align:center;"
+           id="tspan91990">?
+</tspan></tspan><tspan
+         x="64.653831"
+         y="79.370167"
+         id="tspan91996"><tspan
+           style="text-align:center;"
+           id="tspan91994">'</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.25919213,0,0,0.2767608,254.16874,1.8879652)"
+       id="text10885-6-7-3-9-2-0-3-0-2-1-7-2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7574px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-36-5-2-1-7-9-6-6-6-8-9);stroke-width:0.98787"
+       x="18.382635"
+       y="0"><tspan
+         x="64.653831"
+         y="54.673416"
+         id="tspan92000"><tspan
+           style="text-align:center;"
+           id="tspan91998">^
+</tspan></tspan><tspan
+         x="64.653831"
+         y="79.370167"
+         id="tspan92004"><tspan
+           style="text-align:center;"
+           id="tspan92002">ì</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,33.540446,25.842377)"
@@ -653,7 +1065,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71226">Q</tspan></text>
+         id="tspan92006">Q</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,54.707236,25.842377)"
@@ -663,7 +1075,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71228">W</tspan></text>
+         id="tspan92008">W</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,75.873902,25.842377)"
@@ -673,7 +1085,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71230">E</tspan></text>
+         id="tspan92010">E</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,97.040568,25.842377)"
@@ -683,7 +1095,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71232">R</tspan></text>
+         id="tspan92012">R</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,118.20723,25.842377)"
@@ -693,7 +1105,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71234">T</tspan></text>
+         id="tspan92014">T</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,139.40036,25.842377)"
@@ -703,7 +1115,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71236">Y</tspan></text>
+         id="tspan92016">Y</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,160.56702,25.842377)"
@@ -713,7 +1125,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71238">U</tspan></text>
+         id="tspan92018">U</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,181.73369,25.842377)"
@@ -723,7 +1135,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71240">I</tspan></text>
+         id="tspan92020">I</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,202.90036,25.842377)"
@@ -733,7 +1145,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71242">O</tspan></text>
+         id="tspan92022">O</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,224.06702,25.842377)"
@@ -743,27 +1155,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71244">P</tspan></text>
-    <text
-       xml:space="preserve"
-       transform="matrix(0.25919213,0,0,0.2767608,245.23369,25.842377)"
-       id="text10885-6-0-9-2-9-3-1-9-1-4-8-5"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';text-align:center;letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-7-5-2-8-7-6-2-3-9-7-4);stroke-width:0.98787"
-       x="24.238636"
-       y="0"><tspan
-         x="62.383003"
-         y="58.512969"
-         id="tspan71246">[</tspan></text>
-    <text
-       xml:space="preserve"
-       transform="matrix(0.25919213,0,0,0.2767608,266.40036,25.842377)"
-       id="text10885-6-0-9-2-9-3-1-9-1-4-8-5-3"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';text-align:center;letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-7-5-2-8-7-6-2-3-9-7-4-0);stroke-width:0.98787"
-       x="24.238636"
-       y="0"><tspan
-         x="62.383003"
-         y="58.512969"
-         id="tspan71248">]</tspan></text>
+         id="tspan92024">P</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,290.87431,25.842377)"
@@ -773,7 +1165,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71250">\</tspan></text>
+         id="tspan92026">ù</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,38.780378,47.009111)"
@@ -783,7 +1175,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71252">A</tspan></text>
+         id="tspan92028">A</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,59.946984,47.009111)"
@@ -793,7 +1185,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71254">S</tspan></text>
+         id="tspan92030">S</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,81.11365,47.009111)"
@@ -803,7 +1195,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71256">D</tspan></text>
+         id="tspan92032">D</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,102.28032,47.009111)"
@@ -813,7 +1205,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71258">F</tspan></text>
+         id="tspan92034">F</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,123.44698,47.009111)"
@@ -823,7 +1215,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71260">G</tspan></text>
+         id="tspan92036">G</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,144.61365,47.009111)"
@@ -833,7 +1225,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71262">H</tspan></text>
+         id="tspan92038">H</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,165.78031,47.009111)"
@@ -843,7 +1235,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71264">J</tspan></text>
+         id="tspan92040">J</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,186.94698,47.009111)"
@@ -853,7 +1245,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71266">K</tspan></text>
+         id="tspan92042">K</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,208.11365,47.009111)"
@@ -863,27 +1255,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71268">L</tspan></text>
-    <text
-       xml:space="preserve"
-       transform="matrix(0.25919213,0,0,0.2767608,229.28031,47.009111)"
-       id="text10885-6-0-2-1-6-2-6-5-4-6-6-4"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';text-align:center;letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-7-0-6-0-3-0-1-5-7-5-7);stroke-width:0.98787"
-       x="24.238636"
-       y="0"><tspan
-         x="62.383003"
-         y="58.512969"
-         id="tspan71270">;</tspan></text>
-    <text
-       xml:space="preserve"
-       transform="matrix(0.25919213,0,0,0.2767608,250.44698,47.009111)"
-       id="text10885-6-0-2-1-6-2-6-5-4-6-6-4-2"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';text-align:center;letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-7-0-6-0-3-0-1-5-7-5-7-5);stroke-width:0.98787"
-       x="24.238636"
-       y="0"><tspan
-         x="62.383003"
-         y="58.512969"
-         id="tspan71272">'</tspan></text>
+         id="tspan92044">L</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,280.8826,47.009111)"
@@ -893,7 +1265,26 @@
        y="0"><tspan
          x="40.979469"
          y="58.512969"
-         id="tspan71274">ENTER</tspan></text>
+         id="tspan92046">ENTER</tspan></text>
+
+    <text
+       xml:space="preserve"
+       transform="matrix(0.25919213,0,0,0.2767608,28.273102,65.387964)"
+       id="text10885-6-2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7574px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-0);stroke-width:0.98787"
+       x="18.382635"
+       y="0"><tspan
+         x="64.653831"
+         y="54.673416"
+         id="tspan92072"><tspan
+           style="text-align:center;"
+           id="tspan92070">&gt;
+</tspan></tspan><tspan
+         x="64.653831"
+         y="79.370167"
+         id="tspan92076"><tspan
+           style="text-align:center;"
+           id="tspan92074">&lt</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,49.439851,68.175709)"
@@ -903,7 +1294,9 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71276">Z</tspan></text>
+         id="tspan92048">Z</tspan></text>
+
+    
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,70.6066,68.175709)"
@@ -913,7 +1306,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71278">X</tspan></text>
+         id="tspan92050">X</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,91.773266,68.175709)"
@@ -923,7 +1316,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71280">C</tspan></text>
+         id="tspan92052">C</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,112.93993,68.175709)"
@@ -933,7 +1326,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71282">V</tspan></text>
+         id="tspan92054">V</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,134.1066,68.175709)"
@@ -943,7 +1336,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71284">B</tspan></text>
+         id="tspan92056">B</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,155.27326,68.175709)"
@@ -953,7 +1346,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71286">N</tspan></text>
+         id="tspan92058">N</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,176.43993,68.175709)"
@@ -963,37 +1356,7 @@
        y="0"><tspan
          x="62.383003"
          y="58.512969"
-         id="tspan71288">M</tspan></text>
-    <text
-       xml:space="preserve"
-       transform="matrix(0.25919213,0,0,0.2767608,197.6066,68.175709)"
-       id="text10885-6-0-2-7-4-4-3-7-6-8-3"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';text-align:center;letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-7-0-3-5-7-4-0-8-8-4);stroke-width:0.98787"
-       x="24.238636"
-       y="0"><tspan
-         x="62.383003"
-         y="58.512969"
-         id="tspan71290">,</tspan></text>
-    <text
-       xml:space="preserve"
-       transform="matrix(0.25919213,0,0,0.2767608,218.77326,68.175709)"
-       id="text10885-6-0-2-7-4-4-3-7-6-8-3-4"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';text-align:center;letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-7-0-3-5-7-4-0-8-8-4-1);stroke-width:0.98787"
-       x="24.238636"
-       y="0"><tspan
-         x="62.383003"
-         y="58.512969"
-         id="tspan71292">.</tspan></text>
-    <text
-       xml:space="preserve"
-       transform="matrix(0.25919213,0,0,0.2767608,239.93993,68.175709)"
-       id="text10885-6-0-2-7-4-4-3-7-6-8-3-4-2"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';text-align:center;letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-7-0-3-5-7-4-0-8-8-4-1-9);stroke-width:0.98787"
-       x="24.238636"
-       y="0"><tspan
-         x="62.383003"
-         y="58.512969"
-         id="tspan71294">/</tspan></text>
+         id="tspan92060">M</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,276.13825,68.175709)"
@@ -1003,119 +1366,7 @@
        y="0"><tspan
          x="39.123024"
          y="58.512969"
-         id="tspan71296">SHIFT</tspan></text>
-    <text
-       xml:space="preserve"
-       transform="matrix(0.25919213,0,0,0.2767608,42.821884,4.6755215)"
-       id="text10885-6-2"
-       style="font-size:24px;line-height:1.25;font-family:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-6);stroke-width:0.98787;-inkscape-font-specification:'IBM Plex Mono';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
-       x="24.046635"
-       y="0"><tspan
-         x="62.383003"
-         y="58.512969"
-         id="tspan71300"><tspan
-           style="text-align:center;"
-           id="tspan71298">2</tspan></tspan></text>
-    <text
-       xml:space="preserve"
-       transform="matrix(0.25919213,0,0,0.2767608,63.988537,4.6755215)"
-       id="text10885-6-2-1"
-       style="font-size:24px;line-height:1.25;font-family:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-6-9);stroke-width:0.98787;text-align:center;-inkscape-font-specification:'IBM Plex Mono';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
-       x="29.686634"
-       y="0"><tspan
-         x="62.383003"
-         y="58.512969"
-         id="tspan71302">3</tspan></text>
-    <text
-       xml:space="preserve"
-       transform="matrix(0.25919213,0,0,0.2767608,85.15508,4.6755215)"
-       id="text10885-6-2-1-7"
-       style="font-size:24px;line-height:1.25;font-family:'IBM Plex Mono';text-align:center;letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-6-9-2);stroke-width:0.98787;-inkscape-font-specification:'IBM Plex Mono';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
-       x="29.686634"
-       y="0"><tspan
-         x="62.383003"
-         y="58.512969"
-         id="tspan71304">4</tspan></text>
-    <text
-       xml:space="preserve"
-       transform="matrix(0.25919213,0,0,0.2767608,106.32182,4.6755215)"
-       id="text10885-6-2-1-7-9"
-       style="font-size:24px;line-height:1.25;font-family:'IBM Plex Mono';text-align:center;letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-6-9-2-0);stroke-width:0.98787;-inkscape-font-specification:'IBM Plex Mono';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
-       x="29.686634"
-       y="0"><tspan
-         x="62.383003"
-         y="58.512969"
-         id="tspan71306">5</tspan></text>
-    <text
-       xml:space="preserve"
-       transform="matrix(0.25919213,0,0,0.2767608,127.48836,4.6755215)"
-       id="text10885-6-2-1-7-9-6"
-       style="font-size:24px;line-height:1.25;font-family:'IBM Plex Mono';text-align:center;letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-6-9-2-0-3);stroke-width:0.98787;-inkscape-font-specification:'IBM Plex Mono';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
-       x="29.686634"
-       y="0"><tspan
-         x="62.383003"
-         y="58.512969"
-         id="tspan71308">6</tspan></text>
-    <text
-       xml:space="preserve"
-       transform="matrix(0.25919213,0,0,0.2767608,148.65505,4.6755215)"
-       id="text10885-6-2-1-7-9-6-6"
-       style="font-size:24px;line-height:1.25;font-family:'IBM Plex Mono';text-align:center;letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-6-9-2-0-3-0);stroke-width:0.98787;-inkscape-font-specification:'IBM Plex Mono';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
-       x="29.686634"
-       y="0"><tspan
-         x="62.383003"
-         y="58.512969"
-         id="tspan71310">7</tspan></text>
-    <text
-       xml:space="preserve"
-       transform="matrix(0.25919213,0,0,0.2767608,169.82161,4.6755215)"
-       id="text10885-6-2-1-7-9-6-6-6"
-       style="font-size:24px;line-height:1.25;font-family:'IBM Plex Mono';text-align:center;letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-6-9-2-0-3-0-2);stroke-width:0.98787;-inkscape-font-specification:'IBM Plex Mono';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
-       x="29.686634"
-       y="0"><tspan
-         x="62.383003"
-         y="58.512969"
-         id="tspan71312">8</tspan></text>
-    <text
-       xml:space="preserve"
-       transform="matrix(0.25919213,0,0,0.2767608,190.9884,4.6755215)"
-       id="text10885-6-2-1-7-9-6-6-6-8"
-       style="font-size:24px;line-height:1.25;font-family:'IBM Plex Mono';text-align:center;letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-6-9-2-0-3-0-2-1);stroke-width:0.98787;-inkscape-font-specification:'IBM Plex Mono';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
-       x="29.686634"
-       y="0"><tspan
-         x="62.383003"
-         y="58.512969"
-         id="tspan71314">9</tspan></text>
-    <text
-       xml:space="preserve"
-       transform="matrix(0.25919213,0,0,0.2767608,212.15519,4.6755215)"
-       id="text10885-6-2-1-7-9-6-6-6-8-9"
-       style="font-size:24px;line-height:1.25;font-family:'IBM Plex Mono';text-align:center;letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-6-9-2-0-3-0-2-1-7);stroke-width:0.98787;-inkscape-font-specification:'IBM Plex Mono';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
-       x="29.686634"
-       y="0"><tspan
-         x="62.383003"
-         y="58.512969"
-         id="tspan71316">0</tspan></text>
-    <text
-       xml:space="preserve"
-       transform="matrix(0.25919213,0,0,0.2767608,233.32173,4.6755215)"
-       id="text10885-6-2-1-7-9-6-6-6-8-9-0"
-       style="font-size:24px;line-height:1.25;font-family:'IBM Plex Mono';text-align:center;letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-6-9-2-0-3-0-2-1-7-2);stroke-width:0.98787;-inkscape-font-specification:'IBM Plex Mono';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
-       x="29.686634"
-       y="0"><tspan
-         x="62.383003"
-         y="58.512969"
-         id="tspan71318">-</tspan></text>
-    <text
-       xml:space="preserve"
-       transform="matrix(0.25919213,0,0,0.2767608,254.48833,4.6755215)"
-       id="text10885-6-2-1-7-9-6-6-6-8-9-0-3"
-       style="font-size:24px;line-height:1.25;font-family:'IBM Plex Mono';text-align:center;letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-6-9-2-0-3-0-2-1-7-2-2);stroke-width:0.98787;-inkscape-font-specification:'IBM Plex Mono';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
-       x="29.686634"
-       y="0"><tspan
-         x="62.383003"
-         y="58.512969"
-         id="tspan71320">=</tspan></text>
+         id="tspan92062">SHIFT</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.25919213,0,0,0.2767608,275.31277,5.3239981)"
@@ -1125,14 +1376,165 @@
        y="0"><tspan
          x="53.663774"
          y="54.673416"
-         id="tspan71322">BACKSPACE</tspan></text>
+         id="tspan92064">BACKSPACE</tspan></text>
     <text
        xml:space="preserve"
-       transform="matrix(0.25919213,0,0,0.2767608,284.71689,4.6755215)"
-       id="text10885-6-2-1-7-9-6-6-6-8-9-0-3-8"
-       style="font-size:24px;line-height:1.25;font-family:'IBM Plex Mono';text-align:center;letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-6-9-2-0-3-0-2-1-7-2-2-2);stroke-width:0.98787;-inkscape-font-specification:'IBM Plex Mono';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
-       x="29.686634"
-       y="0"></text>
+       transform="matrix(0.25919213,0,0,0.2767608,197.32565,65.387964)"
+       id="text10885-6-2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7574px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-0);stroke-width:0.98787"
+       x="18.382635"
+       y="0"><tspan
+         x="64.653831"
+         y="54.673416"
+         id="tspan92072"><tspan
+           style="text-align:center;"
+           id="tspan92070">;
+</tspan></tspan><tspan
+         x="64.653831"
+         y="79.370167"
+         id="tspan92076"><tspan
+           style="text-align:center;"
+           id="tspan92074">,</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.25919213,0,0,0.2767608,218.49232,65.387964)"
+       id="text10885-6-2-9"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7574px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-0-5);stroke-width:0.98787"
+       x="18.382635"
+       y="0"><tspan
+         x="64.653831"
+         y="54.673416"
+         id="tspan92080"><tspan
+           style="text-align:center;"
+           id="tspan92078">:
+</tspan></tspan><tspan
+         x="64.653831"
+         y="79.370167"
+         id="tspan92084"><tspan
+           style="text-align:center;"
+           id="tspan92082">.</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.25919213,0,0,0.2767608,229.07743,44.194839)"
+       id="text10885-6-2-9-9"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7574px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-0-5-8);stroke-width:0.98787"
+       x="18.382635"
+       y="0"><tspan
+         x="64.653831"
+         y="54.673416"
+         id="tspan92088"><tspan
+           style="text-align:center;"
+           id="tspan92086">ç
+</tspan></tspan><tspan
+         x="64.653831"
+         y="79.370167"
+         id="tspan92092"><tspan
+           style="text-align:center;"
+           id="tspan92090">ò</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.25919213,0,0,0.2767608,250.24417,44.194839)"
+       id="text10885-6-2-9-9-1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7574px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-0-5-8-6);stroke-width:0.98787"
+       x="18.382635"
+       y="0"><tspan
+         x="64.653831"
+         y="54.673416"
+         id="tspan92096"><tspan
+           style="text-align:center;"
+           id="tspan92094">°
+</tspan></tspan><tspan
+         x="64.653831"
+         y="79.370167"
+         id="tspan92100"><tspan
+           style="text-align:center;"
+           id="tspan92098">à</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.25919213,0,0,0.2767608,244.95216,23.028173)"
+       id="text10885-6-2-9-9-3"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7574px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-0-5-8-7);stroke-width:0.98787"
+       x="18.382635"
+       y="0"><tspan
+         x="64.653831"
+         y="54.673416"
+         id="tspan92104"><tspan
+           style="text-align:center;"
+           id="tspan92102">é
+</tspan></tspan><tspan
+         x="64.653831"
+         y="79.370167"
+         id="tspan92108"><tspan
+           style="text-align:center;"
+           id="tspan92106">è</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.25919213,0,0,0.2767608,266.11891,23.028173)"
+       id="text10885-6-2-9-9-3-9"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7574px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-0-5-8-7-2);stroke-width:0.98787"
+       x="18.382635"
+       y="0"><tspan
+         x="64.653831"
+         y="54.673416"
+         id="tspan92112"><tspan
+           style="text-align:center;"
+           id="tspan92110">*
+</tspan></tspan><tspan
+         x="64.653831"
+         y="79.370167"
+         id="tspan92116"><tspan
+           style="text-align:center;"
+           id="tspan92114">+</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.25919213,0,0,0.2767608,239.65899,65.387964)"
+       id="text10885-6-2-9-2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7574px;line-height:1.25;font-family:'IBM Plex Mono';-inkscape-font-specification:'IBM Plex Mono';letter-spacing:0px;white-space:pre;shape-inside:url(#rect10887-3-0-5-2);stroke-width:0.98787"
+       x="18.382635"
+       y="0"><tspan
+         x="64.653831"
+         y="54.673416"
+         id="tspan92120"><tspan
+           style="text-align:center;"
+           id="tspan92118">_
+</tspan></tspan><tspan
+         x="64.653831"
+         y="79.370167"
+         id="tspan92124"><tspan
+           style="text-align:center;"
+           id="tspan92122">-</tspan></tspan></text>
   </g>
 </svg>
 
+
+
+
+</template>
+
+<style lang="scss" scoped>
+.a, .b, .c, .d, .e, .f, .g, .h, .i, .j, .k, .l, .m, .n, .o, .p, .q, .r, .s, .t, .u, .v, .w, .x, .y, .z, 
+.Escape, .enter, .space, .tab, .caps, .lshift, .lctrl, .lwin, .lalt, .ralt, .rwin, .fn, .rctrl, .rshift, .backspace, .backslash, .menu,
+.one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero,
+
+.colon, .semicolon, .period, .dash, .equal, .osqbr, .csqbr, .quote, .slash, .larr{
+    fill: white;
+    filter: drop-shadow(0px 0px 3px #7d7d7d68);
+    ry: 4px;
+    transition: 0.1s ease-in;
+    -webkit-transition: 0.1s ease-in;
+    -moz-transition: 0.1s ease-in;
+    -o-transition: 0.1s ease-in;
+    
+
+    &__pressed {
+        fill: url(#gradient);
+        filter: drop-shadow(0px 0px 3px #71fb8d68);
+        
+    };
+};
+
+#keyboard {
+    scale: 1;
+}
+
+</style>
