@@ -17,7 +17,7 @@ const props = defineProps({
     typingSpeed: {
         type: Number,
         required: false,
-        default: 200
+        default: 100
     },
     maintainSpeed: {
         type: Number,
@@ -48,7 +48,13 @@ function type() {
         title.value.push(props.toType.charAt(i));
         title.value.push(props.typerChar);
         i++;
-        window.setTimeout(type, ts);
+        let n = getRndInteger(0,4)
+        if (n < 1) 
+            window.setTimeout(type, 2*ts);
+        else if (n < 2)
+            window.setTimeout(type, 0.5*ts);
+        else
+            window.setTimeout(type, ts);
     }
     else {
         maintain(0);
@@ -67,6 +73,10 @@ function maintain(n) {
         n--
     }
     window.setTimeout(maintain, ms, n);
+}
+
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min) ) + min;
 }
 </script>
 

@@ -24,7 +24,7 @@ function switchRegister() {
 </script>
 
 <template>
-    <Typer toType="TypingTrainer" typerChar="_"/>
+    <Typer toType="TypingTrainer" typerChar="|" :typingSpeed=100 />
 
     <Welcome v-if="showWelcome" @login-clicked="switchLogin" @register-clicked="switchRegister"/>
 
