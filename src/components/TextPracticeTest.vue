@@ -31,7 +31,6 @@ function start() {
                                 return
                         }
                         else if (ev.key == "Backspace") {
-                                console.log("bs")
                                 if (position == string.length) {
                                         position = string.length - 1;                               
                                 }
