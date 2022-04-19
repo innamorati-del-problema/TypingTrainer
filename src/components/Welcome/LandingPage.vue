@@ -4,7 +4,7 @@ import Login from './Login.vue';
 import Register from './Register.vue';
 import Welcome from './Welcome.vue';
 import { ref } from "vue";
-
+import Typer from "../Typer.vue"
 
 let showWelcome = ref(true);
 let showLogin = ref(false);
@@ -24,7 +24,7 @@ function switchRegister() {
 </script>
 
 <template>
-    <h1 class="page-title">TypingTrainer</h1>
+    <Typer toType="TypingTrainer" typerChar="_"/>
 
     <Welcome v-if="showWelcome" @login-clicked="switchLogin" @register-clicked="switchRegister"/>
 
