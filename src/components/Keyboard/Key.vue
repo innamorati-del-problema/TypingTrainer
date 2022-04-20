@@ -55,8 +55,8 @@ window.addEventListener('keyup', (ev) => {
 
 <style lang="scss" scoped>
 
-$big-letter: 2.3em;
-$small-letter: 2em;
+$big-letter: 2em;
+$small-letter: 2.3em;
 
 svg {
     filter: drop-shadow(0px 0px 5px #7d7d7d68);
