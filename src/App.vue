@@ -1,5 +1,12 @@
 <script setup>
+  var element;
+  function change(){
+  element = document.getElementById("b");
+  element.classList.toggle("dark");
+  console.log("ciao");
+  }
 
+  
 </script>
 
 <template>
@@ -7,8 +14,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600&display=swap" rel="stylesheet">
-  <div class="bground">
+  <div class="bground" id="b">
       <div class='bground-img'></div>
+  </div>
+  <div class="viewmode-container">
+    
+    <button class="btn-change" @click="change()"><h3>Change Color Mode</h3></button>
   </div>
   <router-view />
 </template>
@@ -16,7 +27,7 @@
 <style lang="scss">
 
 $background-light: #FCEFDC;
-$background-dark: #222328;
+$background-dark: #2D2D35;
 
 #app {
   font-family: 'IBM Plex Mono', monospace;
@@ -38,6 +49,13 @@ $background-dark: #222328;
   z-index: -100;
 }
 
+.bground.dark{
+  background-color: $background-dark;
+}
+
+.btn-change{
+  
+}
 .bground .bground-img {
   background-size: 15%;
   background-image: url('/ptn.svg');

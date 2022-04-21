@@ -22,6 +22,7 @@ function switchRegister() {
     showRegister.value = !showRegister.value;
 }
 
+
 </script>
 
 <template>
@@ -32,7 +33,6 @@ function switchRegister() {
     <Login v-if="showLogin" @close-login="switchLogin" />
 
     <Register v-if="showRegister" @close-register="switchRegister" />
-
 
 </template>
 
@@ -74,8 +74,6 @@ $primary-light: linear-gradient(178.19deg, #72C53F 1.53%, #5A9D31 132.54%);
     color: #484848;
 }
 
-
-
 .landing-box {
     height:600px;
     width:500px;
@@ -93,54 +91,6 @@ $primary-light: linear-gradient(178.19deg, #72C53F 1.53%, #5A9D31 132.54%);
 
 .landing-box.reg{
     height:700px;
-}
-
-.navbar{
-    width:93%;
-    height:110px;
-    margin:auto;
-}
-
-.navbar-title{
-    margin:0px;
-    margin-right:50px;
-    border:0px;
-    padding:0px;
-    font-weight: 600;
-    font-size: 70px;
-    background: linear-gradient(178.19deg, #72C53F 1.53%, #5A9D31 132.54%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    width:fit-content;
-}
-
-.navbar-pages{
-    margin:0px;
-    margin-right:50px;
-    margin-top:20px;
-    border:0px;
-    padding:0px;
-    font-weight: 600;
-    font-size: 50px;
-    background: black;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    width:fit-content;
-}
-
-.navbar-pages.selected{
-    color:white;  
-}
-
-.navbar-content{
-    display:inline-flex;
-    margin:0px;
-    padding:0px;
-    border:0px;
-    width:100%;
-    height: 100%;
 }
 
 .botton-xl {

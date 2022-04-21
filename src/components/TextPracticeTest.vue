@@ -1,5 +1,5 @@
 <template>
-        <Navigation />
+        <!--<Navigation />-->
         <h1 class="startertext">Clicca per iniziare!</h1>
         <div class="practice-text" :class="{ blur: !started }" @click="start">
                 <span v-for="(letter, index) in string">

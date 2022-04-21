@@ -4,6 +4,7 @@ import { getAuth, onAuthStateChanged } from '@firebase/auth';
 import { useRouter } from 'vue-router';
 import { onBeforeUnmount } from 'vue';
 import Navigation from './Navigation.vue';
+import TextPracticeTest from "./TextPracticeTest.vue";
 import { ref as vueref } from 'vue';
 import { getDatabase, ref, onValue } from "firebase/database";
 
@@ -46,6 +47,7 @@ const signOut = () => {
 
 <Navigation />
 
+<TextPracticeTest />
 
 <br>
 <br>
@@ -54,12 +56,6 @@ const signOut = () => {
 
 
 
-<div class="landing-box big d-flex justify-content-center">
-    <div class="box-content">
-        <h1>Ciao {{ username  }}</h1>
-    <button @click="signOut">Esci</button>
-    </div>
-</div>
 </template>
 
 <style scoped>
