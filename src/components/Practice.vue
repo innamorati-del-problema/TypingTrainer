@@ -46,10 +46,12 @@ const signOut = () => {
 
 <Navigation />
 
+<br>
+<br>
 <h1>Ciao {{ username  }}</h1>
 <button @click="signOut">Esci</button>
 
 </template>
 
-<style>
+<style scoped>
 </style>

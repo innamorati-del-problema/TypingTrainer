@@ -6,6 +6,7 @@ import Welcome from './Welcome.vue';
 import { ref } from "vue";
 import Typer from "../Typer.vue"
 
+
 let showWelcome = ref(true);
 let showLogin = ref(false);
 let showRegister = ref(false);
