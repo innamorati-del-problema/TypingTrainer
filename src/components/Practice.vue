@@ -46,11 +46,20 @@ const signOut = () => {
 
 <Navigation />
 
+
 <br>
 <br>
 <h1>Ciao {{ username  }}</h1>
 <button @click="signOut">Esci</button>
 
+
+
+<div class="landing-box big d-flex justify-content-center">
+    <div class="box-content">
+        <h1>Ciao {{ username  }}</h1>
+    <button @click="signOut">Esci</button>
+    </div>
+</div>
 </template>
 
 <style scoped>

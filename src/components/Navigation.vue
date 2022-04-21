@@ -4,6 +4,7 @@
 </script>
 <template>
 
+
   <nav>
     <div class="nav-bar d-flex justify-content-left">
       <div class="nav-title">Typing Trainer</div>
@@ -20,11 +21,12 @@
         <router-link to="/leaderboard" @click="addClass('leaderboard')"> Classifiche </router-link>
       </div>-->
     </div>
+
   </nav>
   <router-view />
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .body {
   display: inline;
 }
@@ -48,6 +50,7 @@
 }
 
 .nav-content {
+
 
   margin-right: 0%;
   margin-left: 2%;
