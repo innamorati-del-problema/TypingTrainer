@@ -78,13 +78,11 @@ import Spacebar from "./Spacebar.vue";
 <style lang="scss" scoped>
 
 .keyboard {
-    width: 100%;
+    display: contents;
 }
 .row {
     width: 60%;
     height: 10%;
-    margin-left: 50%;
-    transform: translateX(-50%);
     display: inline-block;
 }
 
