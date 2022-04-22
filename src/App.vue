@@ -1,8 +1,11 @@
 <script setup>
   var element;
+  let bimg;
   function change(){
   element = document.getElementById("b");
+  bimg = document.getElementById("b-img");
   element.classList.toggle("dark");
+  bimg.classList.toggle("dark");
   console.log("ciao");
   }
 
@@ -15,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600&display=swap" rel="stylesheet">
   <div class="bground" id="b">
-      <div class='bground-img'></div>
+      <div id="b-img" class='bground-img'></div>
   </div>
   <div class="viewmode-container">
     
@@ -47,10 +50,14 @@ $background-dark: #2D2D35;
   top: 0;
   left: 0;
   z-index: -100;
+
+  &.dark{
+      background-color: $background-dark;
+  }
+  
 }
 
 .bground.dark{
-  background-color: $background-dark;
 }
 
 .btn-change{
@@ -66,6 +73,10 @@ $background-dark: #2D2D35;
   left: 0;
   z-index: -99;
   opacity: 20%;
+  
+  &.dark {
+      background-image: url('/ptn-dark.svg');
+  }
 }
 
 </style>
