@@ -1,6 +1,4 @@
 <script setup>
-  var element;
-  let bimg;
   function change(){
     if (document.documentElement.className === "dark-mode")
     {
