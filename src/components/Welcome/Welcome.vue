@@ -12,9 +12,9 @@ import Register from './Register.vue';
     <div class="box-content">
         <h3 class="card-title">Benvenuto</h3>
         <p class="card-paragraph">per imparare a digitare:</p>
-        <button @click="$emit('login-clicked')" class="botton-primary-light botton-xl">Accedi</button>
+        <button @click="$emit('login-clicked')" class="botton b-primary b-xl">Accedi</button>
         <div class="hr"><h4><span>Oppure</span></h4></div>
-        <button @click="$emit('register-clicked')" class="botton-secondary-light botton-xl">Registrati</button> 
+        <button @click="$emit('register-clicked')" class="botton b-secondary b-xl">Registrati</button> 
     </div>
 </div>
 
@@ -33,12 +33,13 @@ h4 {
     margin:auto;
     margin-top:5%; 
     margin-bottom:5%;
-    background-color: #484848;
+    background-color: var(--paragraph-text-color);
+    color: var(--paragraph-text-color);
 
     span { 
     text-align:center;
     padding:0 10px; 
-    background-color: white;
+    background-color: var(--alt-background-color);
     
     }
 } 

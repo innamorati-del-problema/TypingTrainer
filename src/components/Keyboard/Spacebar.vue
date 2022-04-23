@@ -64,7 +64,7 @@ svg {
     to {font-size: 1.2em;}
 }
 .rect {
-    fill: white;
+    fill: var(--alt-background-color);
     ry: 8px;
     
 }

@@ -1,0 +1,22 @@
+:root {
+    --background-color: #FCEFDC;
+    --alt-background-color: white;
+    --paragraph-text-color: #484848;
+    --button-text-color: white;
+    --alt-paragraph-text-color: black;
+    --background-image: url('/ptn.svg');
+  
+    --botton-primary-shadow: 0px 4px 18px rgba(84, 169, 130, 0.5);
+    --botton-primary-color: linear-gradient(178.19deg, #72C53F 1.53%, #5A9D31 132.54%);
+  
+    --botton-secondary-shadow: 0px 4px 18px rgba(147, 236, 241, 0.5);
+    --botton-secondary-color: linear-gradient(180deg, #00B7C1 0%, #1B8AB9 100%);
+  
+    --botton-danger-shadow: 0px 4px 18px rgba(126, 4, 4, 0.5);
+    --botton-danger-color: linear-gradient(180deg, #D21212 0%, #700101 100%);
+  
+    --title-color: linear-gradient(178.19deg, #72C53F 1.53%, #5A9D31 132.54%);
+  
+    --passed-key: rgba(74, 74, 74, 0.5);
+    --next-char-color: lightgray;
+  } 

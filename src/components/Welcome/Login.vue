@@ -38,8 +38,8 @@ let password = "";
         <br>
       </div>
       <div class="buttons">
-        <button class="botton-danger-light botton-m" @click="$emit('close-login')">Indietro</button>
-        <button class="botton-primary-light botton-m" @click="login(email, password)">Accedi</button>
+        <button class="botton b-danger b-m" @click="$emit('close-login')">Indietro</button>
+        <button class="botton b-primary b-m" @click="login(email, password)">Accedi</button>
       </div>
     </div>
    

@@ -72,9 +72,9 @@ function writeUserData(userId, name, email, seed, paese) {
             </div>
 
             <div class="buttons">
-                <button id="indietro" class="botton-danger-light botton-m" @click="$emit('close-register')">Indietro</button>
+                <button id="indietro" class="botton b-danger b-m" @click="$emit('close-register')">Indietro</button>
                 
-                <button id='registrati' class="botton-primary-light botton-m" @click="register(email, password, checkPassword, username, paese)">Registrati</button> 
+                <button id='registrati' class="botton b-primary b-m" @click="register(email, password, checkPassword, username, paese)">Registrati</button> 
             </div>
     </div>
 
@@ -92,9 +92,11 @@ function writeUserData(userId, name, email, seed, paese) {
 
     h5 {
         padding-top: 30px;
+        color: var(--paragraph-text-color);
     }
     h4 {
-    margin-top: 20px;
+        margin-top: 20px;
+        color: var(--paragraph-text-color);
     }
     
     

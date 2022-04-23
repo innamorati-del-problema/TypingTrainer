@@ -2,11 +2,14 @@
   var element;
   let bimg;
   function change(){
-  element = document.getElementById("b");
-  bimg = document.getElementById("b-img");
-  element.classList.toggle("dark");
-  bimg.classList.toggle("dark");
-  console.log("ciao");
+    if (document.documentElement.className === "dark-mode")
+    {
+      document.documentElement.className = "";
+    }
+    else
+    {
+      document.documentElement.className = "dark-mode";
+    }
   }
 
   
@@ -24,13 +27,13 @@
     
     <button class="btn-change" @click="change()"><h3>Change Color Mode</h3></button>
   </div>
+
+
   <router-view />
 </template>
 
 <style lang="scss">
 
-$background-light: #FCEFDC;
-$background-dark: #2D2D35;
 
 #app {
   font-family: 'IBM Plex Mono', monospace;
@@ -42,7 +45,7 @@ $background-dark: #2D2D35;
 }
 
 .bground {
-  background-color: $background-light;
+  background-color: var(--background-color);
   background-size: 15%;
   width: 100%;
   height: 100%;
@@ -50,22 +53,19 @@ $background-dark: #2D2D35;
   top: 0;
   left: 0;
   z-index: -100;
-
-  &.dark{
-      background-color: $background-dark;
-  }
   
 }
 
-.bground.dark{
+.btn-change {
+  position: fixed;
+  top: 10px;
+  right: 10px;
 }
 
-.btn-change{
-  
-}
+
 .bground .bground-img {
   background-size: 15%;
-  background-image: url('/ptn.svg');
+  background-image: var(--background-image);
   width: 100%;
   height: 100%;
   position: fixed;
@@ -73,10 +73,10 @@ $background-dark: #2D2D35;
   left: 0;
   z-index: -99;
   opacity: 20%;
-  
-  &.dark {
-      background-image: url('/ptn-dark.svg');
-  }
 }
 
+
 </style>
+
+<style src="./styles/light.css"></style>
+<style src="./styles/dark.css"></style>

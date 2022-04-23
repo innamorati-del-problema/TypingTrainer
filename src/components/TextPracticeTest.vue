@@ -4,10 +4,10 @@
         <div class="practice-text" :class="{ blur: !started }" @click="start">
                 <span v-for="(letter, index) in string">
                         <span :class="{
-                                wrong: letterValues[index] == 1,
-                                right: letterValues[index] == 3,
+                                'passed wrong': letterValues[index] == 1,
+                                'passed right': letterValues[index] == 3,
                                 text: true,
-                                corrected: letterValues[index] == 2,
+                                'passed corrected': letterValues[index] == 2,
                                 nextChar: index == position && started
                         }">
                                 {{ letter }}
@@ -83,6 +83,8 @@ function getRndInteger(min, max) {
 </script>
 
 <style lang="scss" scoped>
+
+
 @keyframes right {
         from {
                 background-color: rgba(0, 0, 0, 0);
@@ -122,7 +124,7 @@ function getRndInteger(min, max) {
         }
 
         50% {
-                background-color: lightgray;
+                background-color: var(--next-char-color);
         }
 
         100% {
@@ -134,7 +136,7 @@ function getRndInteger(min, max) {
         width: 80%;
         margin-left: 50%;
         transform: translateX(-50%);
-        background-color: white;
+        background-color: var(--alt-background-color);
         border-radius: 12px;
         padding: 10px;
         box-shadow: 0px 4px 47px -9px #7E7E7E;
@@ -145,28 +147,27 @@ function getRndInteger(min, max) {
 .text {
         font-size: 20px;
         margin: 1px;
+        color: var(--paragraph-text-color)
 }
 
-.wrong {
-        background-color: rgba(255, 0, 0, 0.3);
-        color: rgba(76, 76, 76, 0.5);
+.passed {
         border-radius: 2px;
-        animation: wrong 200ms linear forwards;
-}
+        color: var(--passed-key-color);
 
-.right {
-        border-radius: 2px;
-        color: rgba(76, 76, 76, 0.5);
-        // color: rgba(66, 181, 66);
-        animation: right 200ms linear forwards;
-}
+        &.right {
+                animation: right 200ms linear forwards;
+                background-color: rgba(66, 181, 66, 0.296);
+        }
 
+        &.wrong {
+                background-color: rgba(255, 0, 0, 0.3);
+                animation: wrong 200ms linear forwards;
+        }
 
-.corrected {
-        background-color: rgba(253, 253, 24, 0.3);
-        color: rgba(76, 76, 76, 0.5);
-        animation: corrected 200ms linear forwards;
-
+        &.corrected {
+                background-color: rgba(253, 253, 24, 0.3);
+                animation: corrected 200ms linear forwards;
+        }
 }
 
 .nextChar {
