@@ -32,6 +32,10 @@
   <router-view />
 </template>
 
+
+
+<style src="./styles/light.css"></style>
+<style src="./styles/dark.css"></style>
 <style lang="scss">
 
 
@@ -77,6 +81,3 @@
 
 
 </style>
-
-<style src="./styles/light.css"></style>
-<style src="./styles/dark.css"></style>
