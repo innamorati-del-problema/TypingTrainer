@@ -1,6 +1,16 @@
 <template>
-        <!--<Navigation />-->
-        <h1 class="startertext ">Clicca per iniziare!</h1>
+
+        <!-- <Navigation /> -->
+        <br>
+        <br>
+        <br>
+        <div class="scores">
+                <div class="score timer"><h4>{{ timer }}</h4></div>
+                <div class="score wpm"><h4>WPM: {{ wpm }}</h4></div>
+                <div class="score errPercent"><h4>Precisione: {{ precision }}</h4></div>
+        </div>
+        <!-- <h1 style="color: var(--paragraph-text-color);" class="startertext">Clicca per iniziare!</h1> -->
+
         <div class="practice-text" :class="{ blur: !started }" @click="start">
                 <span v-for="(letter, index) in string">
                         <span :class="{
@@ -31,7 +41,16 @@ let position = ref(0);
 let specialCharacters = ['Tab', 'CapsLock', 'Shift', 'Control', 'Alt', 'Enter', 'Esc', 'AltGraph']
 
 let started = ref(false);
+let precision = ref('100%');
+let timer = ref('0:00');
+let secs = 0;
+let words = 0;
 
+var timerStop = false;
+
+let wrong = 0;
+
+const wpm = ref(0);
 let i = 0;
 let n = getRndInteger(1,5);
 for (i=0; i < texts[n].text.length; i++) {
@@ -42,38 +61,80 @@ let letterValues = ref(new Array(string.length).fill(0));
 function start() {
         if (!(started.value)) {
                 started.value = true;
-                window.addEventListener("keydown", (ev) => {
-                        if (specialCharacters.indexOf(ev.key) != -1) {
-                                return
-                        }
-                        else if (ev.key == "Backspace") {
-                                if (position.value >= string.length) {
-                                        position.value = string.length - 1;
-                                }
-                                else if (position.value <= 0) {
-                                        position.value = 0;
-                                }
-                                else {
-                                        (position.value)--;
-                                }
-                                (letterValues.value)[position.value] = -1;
-                        }
-                        else if (ev.key != string[position.value]) {
-                                (letterValues.value)[position.value] = 1;
-                                (position.value)++;
-                        }
-                        else {
-                                if ((letterValues.value)[position.value] != 0) {
-                                        (letterValues.value)[position.value] = 2;
-                                }
-                                else {
-                                        (letterValues.value)[position.value] = 3;
-                                }
-
-                                (position.value)++;
-                        }
-                })
+                timerStart();
+                window.addEventListener("keydown", keyHandler )
         }
+}
+
+function keyHandler(ev) {
+        if (specialCharacters.indexOf(ev.key) != -1) {
+                return
+        }
+        else if (position.value >= string.length) {
+                position.value = string.length - 1;
+                timerStop = true;
+                window.removeEventListener("keydown", keyHandler );
+        }
+        else if (ev.key == "Backspace") {
+
+                if (string[position.value-1]==' ') 
+                {
+
+                }
+                else if (position.value <= 0) {
+                        position.value = 0;
+                }
+                else {
+                        (position.value)--;
+                }
+                (letterValues.value)[position.value] = -1;
+        }
+        else if (string[position.value] == ' ') {
+                words++;
+                wpm.value = Math.floor(words*60/secs);
+                if (ev.key == ' ')
+                        (letterValues.value)[position.value] = 3;
+                else {
+                        (letterValues.value)[position.value] = 1;
+                        wrong++;
+                }
+                (position.value)++;
+        }
+        else if (ev.key != string[position.value]) {
+                (letterValues.value)[position.value] = 1;
+                (position.value)++;
+                wrong++;
+        }
+        else {
+                if ((letterValues.value)[position.value] != 0) {
+                        (letterValues.value)[position.value] = 2;
+                        wrong--;
+
+                }
+                else {
+                        (letterValues.value)[position.value] = 3;
+                }
+
+                (position.value)++;
+        }
+        precision.value = Math.floor((1 - (wrong/(position.value)))*100) + '%'; 
+}
+
+function timerStart() {
+
+        let minutes = Math.floor(secs / 60); 
+        let seconds = secs % 60;
+
+        
+        if (seconds < 10)
+                timer.value = ''+minutes+":0"+seconds;
+        else
+                timer.value = ''+minutes+":"+seconds;
+
+        secs++;
+        if (!timerStop)
+                setTimeout(timerStart, 1000);
+
 }
 
 function getRndInteger(min, max) {
@@ -178,5 +239,14 @@ function getRndInteger(min, max) {
 
 .blur {
         filter: blur(3px);
+}
+
+.scores {
+        display: flex;
+}
+
+.score {
+        flex-grow: 1;
+        color: var(--paragraph-text-color);
 }
 </style>
