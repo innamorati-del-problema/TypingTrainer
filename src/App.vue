@@ -23,7 +23,7 @@
   </div>
   <div class="viewmode-container">
     
-    <button class="btn-change" @click="change()"><h3>Change Color Mode</h3></button>
+    <button class="btn-change botton b-xl b-danger" @click="change()"><h3>Toggle Dark</h3></button>
   </div>
 
 

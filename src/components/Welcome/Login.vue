@@ -60,12 +60,11 @@ let password = "";
     h4 {
     margin-top: 20px;
     }
-    
 }
+
 .buttons {
     padding-top: 30px;
     padding-bottom: 30px;
-
 }
 
 </style>

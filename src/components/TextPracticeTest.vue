@@ -1,6 +1,6 @@
 <template>
         <!--<Navigation />-->
-        <h1 class="startertext">Clicca per iniziare!</h1>
+        <h1 class="startertext ">Clicca per iniziare!</h1>
         <div class="practice-text" :class="{ blur: !started }" @click="start">
                 <span v-for="(letter, index) in string">
                         <span :class="{
@@ -92,7 +92,7 @@ function getRndInteger(min, max) {
         }
 
         to {
-                background-color: rgba(66, 181, 66, 0.296);
+                background-color: var(--right-background-color);
         }
 }
 
@@ -103,7 +103,7 @@ function getRndInteger(min, max) {
         }
 
         to {
-                background-color: rgba(255, 0, 0, 0.328);
+                background-color: var(--wrong-background-color);
         }
 }
 
@@ -114,7 +114,7 @@ function getRndInteger(min, max) {
         }
 
         to {
-                background-color: rgba(253, 253, 24, 0.297);
+                background-color: var(--corrected-background-color);
         }
 }
 

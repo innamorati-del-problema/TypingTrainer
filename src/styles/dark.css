@@ -1,8 +1,8 @@
 :root.dark-mode {
   --background-color: #222328;
   --alt-background-color: #2D2D35;
-  --text-color: white;
   --paragraph-text-color: #e1e1e1;
+  --button-text-color: white;
   --alt-paragraph-text-color: white;
   --background-image: url('/ptn-dark.svg');
 
@@ -19,4 +19,7 @@
 
   --passed-key-color: rgba(208, 208, 208, 0.5);
   --next-char-color: rgba(204, 204, 204, 0.246);
+  --right-background-color: rgba(87, 241, 87, 0.43);
+  --wrong-background-color: rgba(186, 0, 0, 0.704);
+  --corrected-background-color: rgba(225, 225, 13, 0.377);
 }
