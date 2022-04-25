@@ -1,19 +1,12 @@
 <template>
-
-        <!-- <Navigation /> -->
-        <br>
-        <br>
-        <br>
         <div class="scores">
                 <div class="score timer"><h4>{{ timer }}</h4></div>
                 <div class="score wpm"><h4>WPM: {{ wpm }}</h4></div>
                 <div class="score errPercent"><h4>Precisione: {{ precision }}</h4></div>
         </div>
-        <!-- <h1 style="color: var(--paragraph-text-color);" class="startertext">Clicca per iniziare!</h1> -->
-
         <div class="practice-text" :class="{ blur: !started }" @click="start">
                 <span v-for="(letter, index) in string">
-                        <span :class="{
+                        <span v-if="position-1 == index || position == index || position+1 == index" :class="{
                                 'passed wrong': letterValues[index] == 1,
                                 'passed right': letterValues[index] == 3,
                                 text: true,
@@ -24,17 +17,11 @@
                         </span>
                 </span>
         </div>
-
-        <br>
-        <KeyboardIT />
 </template>
 
 <script setup>
 import { ref } from 'vue';
-import KeyboardUS from "./Keyboard/KeyboardUS.vue";
-import KeyboardIT from "./Keyboard/KeyboardIT.vue";
 import texts from "../assets/texts.json";
-import Navigation from "./Navigation.vue";
 
 var string = [];
 let position = ref(0);
@@ -54,7 +41,8 @@ const wpm = ref(0);
 let i = 0;
 let n = getRndInteger(1,5);
 for (i=0; i < texts[n].text.length; i++) {
-        string.push(texts[n].text[i]);
+        let s = texts[n].text[i] == " " ? "⦁" : texts[n].text[i];
+        string.push(s);
 }
 let letterValues = ref(new Array(string.length).fill(0));
 
@@ -89,7 +77,7 @@ function keyHandler(ev) {
                 }
                 (letterValues.value)[position.value] = -1;
         }
-        else if (string[position.value] == ' ') {
+        else if (string[position.value] == '⦁') {
                 words++;
                 wpm.value = Math.floor(words*60/secs);
                 if (ev.key == ' ')
@@ -122,19 +110,20 @@ function keyHandler(ev) {
 
 function timerStart() {
 
-        let minutes = Math.floor(secs / 60); 
-        let seconds = secs % 60;
+        if (!timerStop) {
+                let minutes = Math.floor(secs / 60); 
+                let seconds = secs % 60;
 
-        
-        if (seconds < 10)
-                timer.value = ''+minutes+":0"+seconds;
-        else
-                timer.value = ''+minutes+":"+seconds;
+                
+                if (seconds < 10)
+                        timer.value = ''+minutes+":0"+seconds;
+                else
+                        timer.value = ''+minutes+":"+seconds;
+                
+                secs++;
 
-        secs++;
-        if (!timerStop)
                 setTimeout(timerStart, 1000);
-
+        }               
 }
 
 function getRndInteger(min, max) {
@@ -170,7 +159,7 @@ function getRndInteger(min, max) {
 
 @keyframes corrected {
         from {
-                background-color: rgba(0, 0, 0, 0);
+                background-color: rgba(0, 0, 0, 0 );
 
         }
 
@@ -194,7 +183,7 @@ function getRndInteger(min, max) {
 }
 
 .practice-text {
-        width: 80%;
+        width: fit-content;
         margin-left: 50%;
         transform: translateX(-50%);
         background-color: var(--alt-background-color);
@@ -206,7 +195,7 @@ function getRndInteger(min, max) {
 }
 
 .text {
-        font-size: 20px;
+        font-size: 70px;
         margin: 1px;
         color: var(--paragraph-text-color)
 }
