@@ -8,6 +8,7 @@ const router = createRouter({
         { path: "/textpractice", component: () => import("../components/TextPractice.vue")},
         { path: "/letterpractice", component: () => import("../components/SingleLetterPractice.vue")},
         { path: "/profile", component: () => import("../components/Profile.vue")},
+        { path: "/test", component: () => import("../components/Test.vue")},
     ]
 });
 
