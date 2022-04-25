@@ -95,13 +95,13 @@ svg {
     to {font-size: $small-letter;}
 }
 .rect {
-    fill: white;
+    fill: var(--alt-background-color);
     ry: 8px;
     
 }
 
 .text {
-    fill: black;
+    fill: var(--paragraph-text-color);
     animation: unpressed 100ms ease forwards;
 
     
