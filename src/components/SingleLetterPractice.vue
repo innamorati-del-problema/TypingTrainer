@@ -6,7 +6,7 @@
         </div>
         <div class="practice-text" :class="{ blur: !started }" @click="start">
                 <span v-for="(letter, index) in string">
-                        <span v-if="position-1 == index || position == index || position+1 == index" :class="{
+                        <span v-if="position-1 == index || position+2 == index || position == index || position+1 == index" :class="{
                                 'passed wrong': letterValues[index] == 1,
                                 'passed right': letterValues[index] == 3,
                                 text: true,

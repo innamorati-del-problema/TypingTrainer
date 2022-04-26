@@ -27,7 +27,6 @@ function switchRegister() {
 
 <template>
     <Typer toType="TypingTrainer" typerChar="|" :typingSpeed=100 />
-
     <Welcome v-if="showWelcome" @login-clicked="switchLogin" @register-clicked="switchRegister" />
 
     <Login v-if="showLogin" @close-login="switchLogin" />
@@ -38,18 +37,16 @@ function switchRegister() {
 
 <style lang="scss">
 
-
-
 .page-title {
     font-weight: 700;
     font-size: 100px;
     background: var(--title-color);
     -webkit-background-clip: text;
-    background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0px 4px 16px rgba(84, 169, 130, 0.6);
+    background-clip: text;
+    text-shadow: var(--primary-shadow);
     margin-bottom: 80px;
-
+    
 }
 
 .card-title {

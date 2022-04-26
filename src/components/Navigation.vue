@@ -14,12 +14,10 @@
       <div class="nav-content d-flex align-items-center" v-bind:class="{ 'pressed': $route.path == '/profile' }">
         <router-link to="/profile"> Profilo </router-link>
       </div>
-      <!--<div class="nav-content d-flex align-items-center" :class="{ 'pressed': isAddClass == 'games' }">
-        <router-link to="/games" @click="addClass('games')"> Giochi </router-link>
-      </div>-->
-      <!--<div class="nav-content d-flex align-items-center" :class="{ 'pressed': isAddClass == 'leaderboard' }">
-        <router-link to="/leaderboard" @click="addClass('leaderboard')"> Classifiche </router-link>
-      </div>-->
+      <div class="nav-content d-flex align-items-center" v-bind:class="{ 'pressed': $route.path == '/challenges' }">
+        <router-link to="/challenges"> Sfide </router-link>
+      </div>
+
     </div>
 
   </nav>
@@ -50,8 +48,6 @@
 }
 
 .nav-content {
-
-
   margin-right: 0%;
   margin-left: 2%;
   font-weight: 600;
@@ -59,7 +55,7 @@
   line-height: 46px;
   line-height: 100%;
   vertical-align: text-bottom;
-  background: black;
+  background: var(--alt-paragraph-text-color);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

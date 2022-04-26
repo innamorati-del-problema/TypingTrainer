@@ -1,4 +1,5 @@
 <script setup>
+import Toggle from "./components/Toggle.vue";
   function change(){
     if (document.documentElement.className === "dark-mode")
     {
@@ -23,7 +24,7 @@
   </div>
   <div class="viewmode-container">
     
-    <button class="btn-change botton b-xl b-danger" @click="change()"><h3>Toggle Dark</h3></button>
+    <Toggle @click="change" class="btn-change"/>
   </div>
 
 
@@ -62,6 +63,8 @@
   position: fixed;
   top: 10px;
   right: 10px;
+  width:fit-content;
+  height:fit-content;
 }
 
 

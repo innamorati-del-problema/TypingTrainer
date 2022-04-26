@@ -77,7 +77,7 @@ function keyHandler(ev) {
                 }
                 (letterValues.value)[position.value] = -1;
         }
-        else if (string[position.value] == '_') {
+        else if (string[position.value] == ' ') {
                 words++;
                 wpm.value = Math.floor(words*60/secs);
                 if (ev.key == ' ')

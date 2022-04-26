@@ -4,7 +4,7 @@ import { getAuth, onAuthStateChanged } from '@firebase/auth';
 import { useRouter } from 'vue-router';
 import { onBeforeUnmount } from 'vue';
 import Navigation from './Navigation.vue';
-import TextPracticeTest from "./TextPracticeTest.vue";
+import TextPracticeTest from "./TextPractice.vue";
 import { ref as vueref } from 'vue';
 import { getDatabase, ref, onValue } from "firebase/database";
 

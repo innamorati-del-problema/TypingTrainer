@@ -9,6 +9,7 @@ const router = createRouter({
         { path: "/letterpractice", component: () => import("../components/SingleLetterPractice.vue")},
         { path: "/profile", component: () => import("../components/Profile.vue")},
         { path: "/test", component: () => import("../components/Test.vue")},
+        { path: "/challenges", component: () => import("../components/Challenges.vue")},
     ]
 });
 

@@ -81,7 +81,6 @@ function getRndInteger(min, max) {
 </script>
 
 <style lang="scss" scoped>
-$primary-light: linear-gradient(178.19deg, #72C53F 1.53%, #5A9D31 132.54%);
 
 
 * {
