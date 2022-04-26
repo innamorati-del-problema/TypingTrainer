@@ -127,7 +127,7 @@ function switchRegister() {
 
 
 
-@media (min-width: 800px) and (max-width:1919px) {
+@media (min-width: 750px) and (max-width:1919px) {
     .landing-box {
         height: 500px;
         width: 400px;
@@ -161,46 +161,8 @@ function switchRegister() {
         }
     }
 }
-@media (max-width: 799px) {
-    .landing-box {
-        height: 490px;
-        width: 400px;
-        &.big {
-            height: 330px;
-            width: 640px;
-        }
-        &.reg {
-            height: 550px;
-        }
-    }
-    .page-title {
-        font-size: 60px;
-    }
-    .card-title {
-        font-size: 40px;
-    }
-    .card-paragraph {
-        font-size: 19px;
 
-        &-s {
-            font-size: 17px;
-        }
-    }
-    .botton {
-        &.b-m {
-            width: 50px;
-            height: 25px;
-            font-size: 0.8em;
-        }
-        &.b-xl {
-            width: 160px;
-            height: 45px;
-            font-size: 1.3em;
-        }
-    }
-}
-
-@media (max-width: 599px) {
+@media (max-width: 749px) {
 
 
     .landing-box {

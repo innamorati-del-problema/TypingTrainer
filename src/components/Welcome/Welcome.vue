@@ -50,6 +50,9 @@ h4 {
     .card-title {
         flex-grow: 1;
         margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .card-paragraph {
         flex-grow: 1;
