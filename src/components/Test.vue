@@ -1,6 +1,7 @@
 <template>
     <div>
         <!-- <Toggle /> -->
+        <Keyboard lang="us" />
     </div>
 </template>
 

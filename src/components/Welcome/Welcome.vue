@@ -8,13 +8,15 @@ import Register from './Register.vue';
 
 <template>
 
-<div class="landing-box d-flex justify-content-center align-items-center">
+<div class="landing-box">
     <div class="box-content">
         <h3 class="card-title">Benvenuto</h3>
         <p class="card-paragraph">per imparare a digitare:</p>
-        <button @click="$emit('login-clicked')" class="botton b-primary b-xl">Accedi</button>
-        <div class="hr"><h4><span>Oppure</span></h4></div>
-        <button @click="$emit('register-clicked')" class="botton b-secondary b-xl">Registrati</button> 
+        <div class="buttons">
+            <button @click="$emit('login-clicked')" class="botton b-primary b-xl">Accedi</button>
+            <div class="hr"><h4><span>Oppure</span></h4></div>
+            <button @click="$emit('register-clicked')" class="botton b-secondary b-xl">Registrati</button>
+        </div>
     </div>
 </div>
 
@@ -22,17 +24,11 @@ import Register from './Register.vue';
 
 <style scoped lang="scss">
 
-.box-content * {
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
 h4 {
     text-align: center; 
     line-height: 0.1em;
-    margin:auto;
-    margin-top:5%; 
-    margin-bottom:5%;
+    font-size: 1.5em;
+    margin: 5% 5%;
     background-color: var(--paragraph-text-color);
     color: var(--paragraph-text-color);
 
@@ -44,5 +40,33 @@ h4 {
     }
 } 
 
-    
+.box-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: start;
+
+
+    .card-title {
+        flex-grow: 1;
+        margin-top: 20px;
+    }
+    .card-paragraph {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .buttons {
+        flex-grow: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        .botton {
+            align-self: center;
+        }
+    }
+}
+
 </style>

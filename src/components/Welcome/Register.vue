@@ -51,9 +51,12 @@ function writeUserData(userId, name, email, seed, paese) {
 
 <template>
 
-    <div class="landing-box reg">
-            <div class="box-content">
-                <h5 class="card-title">Registrati</h5>
+    <div class="landing-box">
+            <div class="back" @click="$emit('close-register')">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M447.1 256C447.1 273.7 433.7 288 416 288H109.3l105.4 105.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448s-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L109.3 224H416C433.7 224 447.1 238.3 447.1 256z"/></svg>
+            </div>
+            <h5 class="card-title">Registrati</h5>
+            <div class="box-content"> 
                 <h4 class="card-paragraph-s">Email</h4>
                 <input type="text"  placeholder="@" v-model="email">
                 <h4 class="card-paragraph-s">Username</h4>
@@ -71,10 +74,8 @@ function writeUserData(userId, name, email, seed, paese) {
                 <br>
             </div>
 
-            <div class="buttons">
-                <button id="indietro" class="botton b-danger b-m" @click="$emit('close-register')">Indietro</button>
-                
-                <button id='registrati' class="botton b-primary b-m" @click="register(email, password, checkPassword, username, paese)">Registrati</button> 
+            <div class="buttons">                
+                <button id='registrati' class="botton b-primary b-xl" @click="register(email, password, checkPassword, username, paese)">Registrati</button> 
             </div>
     </div>
 
@@ -90,22 +91,89 @@ function writeUserData(userId, name, email, seed, paese) {
 
 .box-content {
 
-    h5 {
-        padding-top: 30px;
-        color: var(--paragraph-text-color);
-    }
+
     h4 {
-        margin-top: 20px;
+        margin-top: 10px;
         color: var(--paragraph-text-color);
     }
+    width: 55%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: start;   
     
-    
+}
+
+
+
+.back {
+  align-self: start;
+  margin: 20px 0 -30px 20px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 1;
+  svg
+  {
+    width: 20px;
+    fill: var(--secondary-color);
+  }
+  &:hover {
+    svg
+    {
+      fill: var(--primary-color);
+    }
+  }
+}
+.landing-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .buttons {
-    padding-top: 30px;
-    padding-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    bottom: 10px;
+    align-self: center;
+}
+
+.botton {
+    align-self: center;
+    margin-bottom: 20px;
+}
+
+input {
+  height: 30px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--secondary-color);
+  &::placeholder {
+    font-family: "IBM Plex Mono", monospace;
+  }
+
+  &[type="text"]
+    {
+        font-family: "IBM Plex Mono", monospace;
+    }
+}
+
+select {
+  height: 30px;
+  width: 100%;
+  padding: 2px 0 2px 6px;
+  border-radius: 6px;
+  border: 1px solid var(--secondary-color);
+  font-family: "IBM Plex Mono", monospace;
+
+    option
+    {
+        font-family: "IBM Plex Mono", monospace;
+    }
 
 }
+
 
 
 </style>

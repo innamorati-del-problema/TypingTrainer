@@ -27,7 +27,8 @@ function switchRegister() {
 
 <template>
     <Typer toType="TypingTrainer" typerChar="|" :typingSpeed=100 />
-    <Welcome v-if="showWelcome" @login-clicked="switchLogin" @register-clicked="switchRegister" />
+
+    <Welcome  v-if="showWelcome"  @login-clicked="switchLogin" @register-clicked="switchRegister" />
 
     <Login v-if="showLogin" @close-login="switchLogin" />
 
@@ -38,7 +39,6 @@ function switchRegister() {
 <style lang="scss">
 
 .page-title {
-    font-weight: 700;
     font-size: 100px;
     background: var(--title-color);
     -webkit-background-clip: text;
@@ -50,7 +50,6 @@ function switchRegister() {
 }
 
 .card-title {
-    font-weight: 600;
     font-size: 50px;
     background: var(--title-color);
     -webkit-background-clip: text;
@@ -59,7 +58,6 @@ function switchRegister() {
 }
 
 .card-paragraph {
-    font-weight: 600;
     font-size: 30px;
     color: var(--paragraph-text-color);
 
@@ -90,10 +88,13 @@ function switchRegister() {
 
 .botton {
 
+    font-family: 'IBM Plex Mono', monospace;
     border-radius: 4px;
     border: 0;
     color: var(--button-text-color);
-
+    &:hover {
+        cursor: pointer;
+    }
     &.b-xl {
         width: 250px;
         height: 60px;
@@ -127,93 +128,120 @@ function switchRegister() {
 
 
 @media (min-width: 800px) and (max-width:1919px) {
-
     .landing-box {
-        height: 400px;
-        width: 300px;
-
+        height: 500px;
+        width: 400px;
         &.big {
             width: 1400px;
             height: 600px;
         }
-
         &.reg {
             height: 600px;
         }
     }
-
     .page-title {
         font-size: 80px;
     }
-
     .card-title {
         font-size: 35px;
     }
-
     .card-paragraph {
-        font-size: 18px;
+        font-size: 22px;
     }
-
     .botton {
-
         &.b-xl {
-            width: 140px;
+            width: 170px;
             height: 50px;
             font-size: 1.2em;
         }
-
         &.b-m {
             width: 100px;
             height: 50px;
             font-size: 0.8em;
         }
-
     }
 }
-
 @media (max-width: 799px) {
-
     .landing-box {
-        height: 350px;
-        width: 250px;
-
+        height: 490px;
+        width: 400px;
         &.big {
             height: 330px;
             width: 640px;
         }
-
         &.reg {
             height: 550px;
         }
     }
-
-
     .page-title {
-        font-size: 50px;
+        font-size: 60px;
     }
-
     .card-title {
-        font-size: 20px;
+        font-size: 40px;
     }
-
     .card-paragraph {
-        font-size: 15px;
+        font-size: 19px;
+
+        &-s {
+            font-size: 17px;
+        }
     }
-
     .botton {
-
         &.b-m {
             width: 50px;
             height: 25px;
-            font-size: 0.5em;
+            font-size: 0.8em;
         }
-
         &.b-xl {
-            width: 150px;
-            height: 35px;
-            font-size: 1em;
+            width: 160px;
+            height: 45px;
+            font-size: 1.3em;
         }
     }
-
 }
+
+@media (max-width: 599px) {
+
+
+    .landing-box {
+        height: calc(100vh - 55px);
+        width: 100%;
+
+
+    }
+
+    .page-title {
+        font-size: 2.1em;
+        margin: 10px;
+        display: flex;
+        justify-content: start;
+        margin-bottom: 0;
+    }
+    .card-title {
+        font-size: 45px;
+    }
+    .card-paragraph {
+        
+        font-size: 25px;
+    }
+
+
+    .botton {
+
+
+        &.b-xl {
+            width: 250px;
+            height: 60px;
+            font-size: 1.5em;
+        }
+
+        &.b-m {
+            width: 150px;
+            height: 50px;
+            font-size: 1em;
+        }
+}
+}
+
+
 </style>

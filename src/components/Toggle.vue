@@ -57,7 +57,7 @@ function toggle() {
     background-color: var(--alt-background-color);
     border-radius: 20px;
     padding: 2px;
-    border: 1px solid var(--paragraph-text-color);
+    border: 1px solid var(--primary-color);
 }
 
 .ball {
@@ -65,7 +65,7 @@ function toggle() {
     width: 24px;
     height: 24px;
     border-radius: 50px;
-    background-color: var(--primary-color-solid);
+    background-color: var(--primary-color);
     animation: untoggle-ball 0.3s cubic-bezier(0.79, 0.33, 0.14, 0.53);
 }
 
@@ -80,7 +80,7 @@ function toggle() {
 
 
 svg {
-    margin: 2px 4px 5px 4px;
+    margin: 4px;
     fill: white;
 }
 

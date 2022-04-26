@@ -6,7 +6,7 @@
 
 
   <nav>
-    <div class="nav-bar d-flex justify-content-left">
+    <div class="nav-bar">
       <div class="nav-title">Typing Trainer</div>
       <div class="nav-content d-flex align-items-center" v-bind:class="{ 'pressed': $route.path == '/practice' }">
         <router-link to="/practice" > Pratica </router-link>
@@ -31,7 +31,9 @@
 
 .nav-bar {
   text-align: left;
-  display: inline-block;
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
 
 .nav-title {
