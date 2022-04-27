@@ -56,7 +56,6 @@ import Toggle from "./components/Toggle.vue";
   top: 0;
   left: 0;
   z-index: -100;
-  
 }
 
 .btn-change {
