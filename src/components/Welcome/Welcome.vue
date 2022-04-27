@@ -10,7 +10,7 @@ import Register from './Register.vue';
 
 <div class="landing-box">
     <div class="box-content">
-        <h3 class="card-title">Benvenuto</h3>
+        <h3 class="card-title">Benvenuto!</h3>
         <p class="card-paragraph">per imparare a digitare:</p>
         <div class="buttons">
             <button @click="$emit('login-clicked')" class="botton b-primary b-xl">Accedi</button>

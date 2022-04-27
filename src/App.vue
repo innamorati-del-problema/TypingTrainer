@@ -34,6 +34,7 @@ import Toggle from "./components/Toggle.vue";
 
 <style src="./styles/light.css"></style>
 <style src="./styles/dark.css"></style>
+<style src="./styles/buttons.scss"></style>
 <style lang="scss">
 
 * {

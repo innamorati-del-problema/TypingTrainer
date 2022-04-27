@@ -131,6 +131,7 @@ function switchRegister() {
     .landing-box {
         height: 500px;
         width: 400px;
+
         &.big {
             width: 1400px;
             height: 600px;
@@ -141,9 +142,10 @@ function switchRegister() {
     }
     .page-title {
         font-size: 80px;
+        margin-bottom: 20px;
     }
     .card-title {
-        font-size: 35px;
+        font-size: 32px;
     }
     .card-paragraph {
         font-size: 22px;
@@ -161,6 +163,8 @@ function switchRegister() {
         }
     }
 }
+
+
 
 @media (max-width: 749px) {
 

@@ -10,22 +10,36 @@
 <div class = "chal-container">
     <!--Sfida maiuscole-->
     <div class="challenge">
-        <div class="chal-title">Maiuscole e minuscole</div> 
-        <div class="description">Metti alla prova la tua capacità di adattarti ai cambi improvvisi di testo</div>
+        <div class="info">
+            <div class="chal-title">Maiuscole e minuscole</div>
+            <div class="description">Metti alla prova la tua capacità di adattarti ai cambi improvvisi di testo</div>
+        </div>
+        <div class="button"><button class="botton b-primary b-m">Gioca!</button></div>
     </div>
     <!--Sfida contro il tempo-->
     <div class="challenge">
-        <div class="chal-title">Prova a tempo</div>
-        <div class="description">Combatti contro il tempo per completare più parole possibili</div>
+        <div class="info">
+            <div class="chal-title">Prova a tempo</div>
+            <div class="description">Combatti contro il tempo per completare più parole possibili</div>
+        </div>
+        <div class="button"><button class="botton b-primary b-m">Gioca!</button></div>
     </div>
     <!--Sfida parole random-->
     <div class="challenge">
-        <div class="chal-title">Parole in libertà</div>
-        <div class="description">Confrontati con il caso e completa più parole senza senso che puoi</div>
+        <div class="info">
+            <div class="chal-title">Parole in libertà</div>
+            <div class="description">Confrontati con il caso e completa più parole senza senso che puoi</div>
+        </div>
+        <div class="button"><button class="botton b-primary b-m">Gioca!</button></div>
     </div>
      <!--Sfida letter-by-letter-->
     <div class="challenge">
-        <div class="chal-title">Vicolo cieco</div>
+        <div class="info">
+            <div class="chal-title">Vicolo cieco</div>
+            <div class="description">Affina la tua prontezza avendo a disposizione solo poche lettere alla volta</div>
+        </div>
+        <div class="button"><button class="botton b-primary b-m">Gioca!</button></div>
+
     </div>
 </div>
 
@@ -41,19 +55,42 @@
         bottom:0;
         overflow-x: hidden;
         overflow-y: auto;
+        display: flex;
+        flex-wrap: wrap;
     }
 
     .challenge{
-        background:var(  --alt-background-color);
-        margin:2%;
-        height:30%;
+        background:var(--alt-background-color);
+        margin:10px;
         border-radius: 20px;
         text-align:left;
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-basis: 700px;
+        flex-grow: 1;
+        flex-wrap: wrap;
+
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        width: 60%;
+        margin: 25px;
+        flex-basis: 550px;
+    }
+
+    .button {
+        align-self: center;
+        margin-right: 25px;
+
     }
 
     .chal-title{
         font-weight: 600;
-        font-size: 40px;
+        font-size: 30px;
         background: var(--title-color);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -63,10 +100,10 @@
 
     .description{
         font-weight: 600;
-        font-size: 30px;
+        font-size: 20px;
         color: var(--paragraph-text-color);
-        width:50%;
         margin:1%;
-        margin-top:3%;
+        margin-top:20px;
     }
+
 </style>
