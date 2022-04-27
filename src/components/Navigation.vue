@@ -41,7 +41,7 @@
   margin-left: 2%;
   font-weight: 600;
   font-size: 50px;
-  background: linear-gradient(178.19deg, #72C53F 1.53%, #5A9D31 132.54%);
+  background: var(--title-color);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0px 4px 16px rgba(114, 197, 63, 0.6);
@@ -66,7 +66,7 @@
 
 .nav-content.pressed {
   vertical-align: text-bottom;
-  background: linear-gradient(178.19deg, #72C53F 1.53%, #5A9D31 132.54%);
+  background: var(--title-color);
   background-clip: text;
   -webkit-background-clip: text;
 }
