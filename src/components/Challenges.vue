@@ -1,5 +1,6 @@
 <script setup>
     import Navigation from './Navigation.vue';
+
 </script>
 
 <template>
@@ -14,6 +15,7 @@
             <div class="chal-title">Maiuscole e minuscole</div>
             <div class="description">Metti alla prova la tua capacità di adattarti ai cambi improvvisi di testo</div>
         </div>
+        <div class="gif"><img src="https://c.tenor.com/iL1-s5TP0yQAAAAd/el-papu-sdlg.gif" alt="el gato"></div>
         <div class="button"><button class="botton b-primary b-m">Gioca!</button></div>
     </div>
     <!--Sfida contro il tempo-->
@@ -22,6 +24,7 @@
             <div class="chal-title">Prova a tempo</div>
             <div class="description">Combatti contro il tempo per completare più parole possibili</div>
         </div>
+        <div class="gif"><img src="https://64.media.tumblr.com/1012e4f0fcddc5e25401ac7f7bb0c5b9/tumblr_p48v6mWtfo1tdrpkqo1_640.gifv" alt="fast"></div>
         <div class="button"><button class="botton b-primary b-m">Gioca!</button></div>
     </div>
     <!--Sfida parole random-->
@@ -30,6 +33,7 @@
             <div class="chal-title">Parole in libertà</div>
             <div class="description">Confrontati con il caso e completa più parole senza senso che puoi</div>
         </div>
+        <div class="gif"><img src="https://c.tenor.com/E1v6K3PamfcAAAAC/vegeta-dragonballsuper.gif" alt="random"></div>
         <div class="button"><button class="botton b-primary b-m">Gioca!</button></div>
     </div>
      <!--Sfida letter-by-letter-->
@@ -38,6 +42,7 @@
             <div class="chal-title">Vicolo cieco</div>
             <div class="description">Affina la tua prontezza avendo a disposizione solo poche lettere alla volta</div>
         </div>
+        <div class="gif"><img src="https://c.tenor.com/o4AneVsjyLgAAAAC/typing-slow.gif" alt="pro typer"></div>
         <div class="button"><button class="botton b-primary b-m">Gioca!</button></div>
 
     </div>
@@ -106,4 +111,22 @@
         margin-top:20px;
     }
 
+    img {
+        
+        height: 100%;
+        width: 100%;
+        border-radius: 4px;
+        
+       
+    }
+    .gif {
+        display:flex;
+        height: 300px;
+        width: 400px;
+        object-fit: contain;
+        margin: 25px;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
 </style>
