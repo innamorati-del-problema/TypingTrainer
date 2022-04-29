@@ -3,6 +3,7 @@ import App from './App.vue'
 import { initializeApp } from "firebase/app";
 import router from './router';
 import { getDatabase } from "firebase/database";
+import './index.css';
 
 // Firebase configuration
 const firebaseConfig = {

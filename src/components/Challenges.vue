@@ -9,10 +9,10 @@
 
 <div class = "chal-container">
     <!--Sfida maiuscole-->
-    <div class="challenge">
+    <div class="challenge bg-white dark:bg-black shadow-md">
         <div class="info">
-            <div class="chal-title">Maiuscole e minuscole</div>
-            <div class="description">Metti alla prova la tua capacità di adattarti ai cambi improvvisi di testo</div>
+            <div class="text-3xl text-green dark:text-purple">Maiuscole e minuscole</div>
+            <div class="description dark:text-white">Metti alla prova la tua capacità di adattarti ai cambi improvvisi di testo</div>
         </div>
         <div class="button"><button class="botton b-primary b-m">Gioca!</button></div>
     </div>
@@ -60,7 +60,6 @@
     }
 
     .challenge{
-        background:var(--alt-background-color);
         margin:10px;
         border-radius: 20px;
         text-align:left;
@@ -91,7 +90,7 @@
     .chal-title{
         font-weight: 600;
         font-size: 30px;
-        background: var(--title-color);
+        /* background: var(--title-color); */
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -101,7 +100,6 @@
     .description{
         font-weight: 600;
         font-size: 20px;
-        color: var(--paragraph-text-color);
         margin:1%;
         margin-top:20px;
     }

@@ -1,13 +1,16 @@
 <script setup>
 import Toggle from "./components/Toggle.vue";
-  function change(){
-    if (document.documentElement.className === "dark-mode")
-    {
-      document.documentElement.className = "";
+
+  localStorage.theme = 'light';
+
+  function change() {
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage))) {
+      document.documentElement.classList.remove('dark')
+      localStorage.theme = 'light';
     }
-    else
-    {
-      document.documentElement.className = "dark-mode";
+    else {
+      document.documentElement.classList.add('dark')
+      localStorage.theme = 'dark';
     }
   }
 
