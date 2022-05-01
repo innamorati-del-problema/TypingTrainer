@@ -3,12 +3,22 @@
         <Navigation />
 
         <div class="flex h-full flex-wrap m-4 gap-2">
-            <div class="flex flex-col basis-96 grow bg-white dark:bg-graphite-light rounded-xl shadow-lg w-full h-full p-4">
-                <h1 class="self-center dark:text-white">Classifica globale</h1>
-                <div v-if='allTime.length != 0' class="flex flex-col" v-for="score in allTime">
-                    <h1>{{ score.wpm }}</h1>
+            <div class="flex flex-col basis-96 grow bg-white dark:bg-graphite-light rounded-xl shadow-lg w-full h-full p-8">
+                <h1 class="self-center dark:text-white mb-5">Classifica globale</h1>
+                <div class="flex justify-between text-green-500 dark:text-purple-500">
+                        <h1>Username</h1>
+                        <h1>WPM</h1>
+                        <h1>Precisione</h1>
                 </div>
-                <button class="custom-button primary" @click="updateLeaderboard">Update</button>
+                <div v-if='allTime.length != 0' class="flex flex-col  w-full" v-for="score in allTime">
+                    
+                    <div class="flex justify-between dark:text-white">
+                        <h1>{{ score.username }}</h1>
+                        <h1>{{ score.wpm }}</h1>
+                        <h1>{{ score.precision }}</h1>
+                    </div>
+                </div>
+                
             </div>
             <div class="flex flex-col basis-96 grow bg-white dark:bg-graphite-light rounded-xl shadow-lg w-full h-full p-4">
                 <h1 class="self-center dark:text-white">Classifica globale</h1>
@@ -29,10 +39,13 @@ import { ref as vueref } from 'vue';
 const db = getDatabase();
 let allTime = vueref([]);
 
-const topTenWpm = query(ref(db, '/scores/'), orderByChild('wpm'), limitToFirst(3))
+const topTenWpm = query(ref(db, '/scores/'), orderByChild('wpm'), limitToFirst(3));
 onValue(topTenWpm, (snapshot => {
-    allTime.value = snapshot.val();
+    snapshot.forEach(function(scoreSnapshot) {
+        allTime.value.push(scoreSnapshot.val());
+    })
 }))
+
 
 </script>
 

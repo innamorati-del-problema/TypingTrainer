@@ -2,6 +2,10 @@
 
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "vue-router";
+import { getDatabase, ref, onValue } from "firebase/database";
+import { createAvatar } from '@dicebear/avatars';
+import * as style from '@dicebear/adventurer-neutral';
+
 
 const router = useRouter();
 
@@ -12,6 +16,15 @@ function login(email, password) {
     // Signed in 
     const user = userCredential.user;
     router.push("/practice");
+
+    const db = getDatabase();
+    let userRef = ref(db, "/users/" + user.uid);
+    onValue(userRef, (snapshot) => {
+        const currentUser = snapshot.val();
+        localStorage.username = currentUser.username;
+        localStorage.avatar = createAvatar(style, {seed: currentUser.seed, radius: 50, scale: 80});
+    });
+
     // ...
     })
     .catch((error) => {
