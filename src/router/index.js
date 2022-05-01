@@ -10,6 +10,7 @@ const router = createRouter({
         { path: "/profile", component: () => import("../components/Profile.vue")},
         { path: "/test", component: () => import("../components/Test.vue")},
         { path: "/challenges", component: () => import("../components/Challenges.vue")},
+        { path: "/leaderboards", component: () => import("../components/Leaderboards.vue")},
     ]
 });
 

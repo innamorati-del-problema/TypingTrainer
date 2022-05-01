@@ -1,7 +1,7 @@
 <script setup>
 import Navigation from './Navigation.vue';
 import { getAuth, onAuthStateChanged, updatePassword, signInWithEmailAndPassword } from '@firebase/auth';
-import { getDatabase, ref, onValue, set } from "firebase/database";
+import { getDatabase, ref, onValue, set, update } from "firebase/database";
 import { onBeforeMount, ref as vueref } from "vue";
 import { useRouter } from 'vue-router';
 import { createAvatar } from '@dicebear/avatars';
@@ -67,6 +67,8 @@ function changePassword() {
         const user = auth.currentUser;
         updatePassword(user, newPassword.value).then(() => {
             alert('Password cambiata con successo')
+            oldPassword1.value = '';
+            newPassword.value = '';
         }).catch((error) => {
             alert(error);
         })
@@ -74,8 +76,6 @@ function changePassword() {
     .catch((error) => {
         alert(error)
     });
-    oldPassword1.value = '';
-    newPassword.value = '';
 };
 
 
@@ -83,17 +83,12 @@ function changeUsername() {
     signInWithEmailAndPassword(auth, currentUser.email, oldPassword2.value)
     .then((userCredential) => {
         const user = auth.currentUser;
-        set(ref(db, "/users/" + user.uid), {
-        username : newUsername.value,
-        country : currentUser.country,
-        email : currentUser.email,
-        seed : currentUser.seed,
-        })}).then(console.log(newUsername.value)).catch((error) => alert(error))
-    .catch((error) => {
-        alert(error)
+        const updates = {}
+        updates["/users/" + user.uid + '/username'] = newUsername.value;
+        update(ref(db), updates)
+        oldPassword2.value = '';
+        newUsername.value = '';
     });
-    oldPassword2.value = '';
-    newUsername.value = '';
 };
 
 </script>
@@ -118,6 +113,7 @@ function changeUsername() {
                 <h1 class="text-5xl xl:text-7xl flex text-graphite dark:text-white m-2">{{ username }}</h1>                
             </div>
             
+
             <div class="flex flex-wrap  w-full h-fit">
                 
                 <div class="flex flex-col shadow-gray shadow grow  basis-72 shrink rounded-xl h-full m-2 dark:shadow-none dark:bg-graphite">
@@ -133,7 +129,7 @@ function changeUsername() {
                     <button class="custom-button primary mb-3" @click="changePassword">Cambia</button>
                 </div>
                 
-                <!-- <div class="flex flex-col shadow-gray shadow basis-72 shrink grow rounded-xl h-full m-2 dark:shadow-none dark:bg-graphite">
+                <div class="flex flex-col shadow-gray shadow basis-72 shrink grow rounded-xl h-full m-2 dark:shadow-none dark:bg-graphite">
                     <h2 class="self-center m-2 text-lg text-green-500 dark:text-purple-500">Cambia Nome Utente</h2>
                     <label class="flex flex-col self-center text-center m-2 ">
                         <div class="dark:text-white">Password attuale</div>
@@ -144,9 +140,9 @@ function changeUsername() {
                         <input class="border-[1px] border-gray rounded-lg" v-model="newUsername" type="text">
                     </label>
                     <button class="custom-button primary mb-3" v @click="changeUsername">Cambia</button>
-                </div> -->
+                </div>
 
-                <div class="flex flex-col basis-72 grow shrink shadow-gray shadow rounded-xl h-full m-2 dark:shadow-none dark:bg-graphite p-4">
+                <div class="flex flex-col basis-full grow shrink shadow-gray shadow rounded-xl h-full m-2 dark:shadow-none dark:bg-graphite p-4">
                     <h2 class="self-center text-lg text-green-500 dark:text-purple-500">Preferenze</h2>
                     <div class="flex flex-col">
                         <label class="flex m-2">
