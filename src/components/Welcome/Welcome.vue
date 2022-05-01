@@ -8,68 +8,20 @@ import Register from './Register.vue';
 
 <template>
 
-<div class="landing-box">
-    <div class="box-content">
-        <h3 class="card-title">Benvenuto!</h3>
-        <p class="card-paragraph">per imparare a digitare:</p>
-        <div class="buttons">
-            <button @click="$emit('login-clicked')" class="botton b-primary b-xl">Accedi</button>
-            <div class="hr"><h4><span>Oppure</span></h4></div>
-            <button @click="$emit('register-clicked')" class="botton b-secondary b-xl">Registrati</button>
+<div class="bg-white dark:bg-graphite-light 
+            flex flex-col justify-evenly 
+            rounded-xl drop-shadow-2xl p-4 
+            w-screen sm:w-96  h-5/6 sm:h-[26rem]
+            mx-auto sm:my-12">
+        <h1 class="text-green-500 dark:text-purple-500 text-4xl mt-10">Benvenuto!</h1>
+        <p class="dark:text-white mt-10">per imparare a digitare:</p>
+        <div class="buttons flex flex-col shrink-1 justify-evenly mt-10">
+            <button @click="$emit('login-clicked')" class="custom-button from-green-500 to-green-600 dark:from-purple-500 dark:to-purple-600">Accedi</button>
+            <div class="py-6"><h4 class="bg-gray-dark dark:bg-white text-2xl m-3 leading-min"><span class="pl-3 pr-3 bg-white dark:text-white dark:bg-graphite-light ">Oppure</span></h4></div>
+            <button @click="$emit('register-clicked')" class="custom-button from-blue-500 to-blue-600 mb-4">Registrati</button>
         </div>
-    </div>
 </div>
+
 
 </template>
 
-<style scoped lang="scss">
-
-h4 {
-    text-align: center; 
-    line-height: 0.1em;
-    font-size: 1.5em;
-    margin: 5% 5%;
-    background-color: var(--paragraph-text-color);
-    color: var(--paragraph-text-color);
-
-    span { 
-    text-align:center;
-    padding:0 10px; 
-    background-color: var(--alt-background-color);
-    
-    }
-} 
-
-.box-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: start;
-
-
-    .card-title {
-        flex-grow: 1;
-        margin-top: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .card-paragraph {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .buttons {
-        flex-grow: 2;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        .botton {
-            align-self: center;
-        }
-    }
-}
-
-</style>
