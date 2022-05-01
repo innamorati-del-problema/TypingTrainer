@@ -94,7 +94,7 @@ function keyHandler(ev) {
                 (position.value)++;
         }
         else if (ev.key != string[position.value]) {
-                // if ((letterValues.value)[position.value-1] != 1)
+                if ((letterValues.value)[position.value-1] != 1)
                 {
                         (letterValues.value)[position.value] = 1;
                         (position.value)++;
