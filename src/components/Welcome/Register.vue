@@ -57,7 +57,7 @@ function writeUserData(userId, name, email, seed, paese) {
             w-screen sm:w-96  h-5/6 sm:h-[26rem]
             mx-auto sm:my-12">
             
-            <font-awesome-icon @click="$emit('close-register')" icon="arrow-left" class="h-5 absolute top-5 left-5 hover:text-green-500"/>
+            <font-awesome-icon @click="$emit('close-register')" icon="arrow-left" class="h-5 absolute top-5 left-5 hover:text-green-500 dark:text-white dark:hover:text-purple-500"/>
             <h5 class="text-green-500 dark:text-purple-500 text-3xl">Registrati</h5>
 
             <form @submit.prevent="register(email, password, checkPassword, username, paese)" class="flex flex-col justify-evenly grow"> 
@@ -85,7 +85,7 @@ function writeUserData(userId, name, email, seed, paese) {
                     <option class="text-xs" value="other">Altro</option>
                 </select>
                 </label>
-                <button type='submit' class="custom-button mt-4 from-green-500 to-green-600">Registrati</button>            
+                <button type='submit' class="custom-button mt-4 primary">Registrati</button>            
             </form>
     
             

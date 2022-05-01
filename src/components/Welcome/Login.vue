@@ -34,20 +34,20 @@ let password = "";
             rounded-xl drop-shadow-2xl p-4 
             w-screen sm:w-96  h-5/6 sm:h-[26rem]
             mx-auto sm:my-12">
-        <font-awesome-icon @click="$emit('close-login')" icon="arrow-left" class="h-5 absolute top-5 left-5 hover:text-green-500"/>
+        <font-awesome-icon @click="$emit('close-login')" icon="arrow-left" class="h-5 absolute top-5 left-5 hover:text-green-500 dark:text-white dark:hover:text-purple-500"/>
 
-        <h5 class="text-green-500 text-4xl mt-5">Accedi</h5>
+        <h5 class="text-green-500 dark:text-purple-500 text-4xl mt-5">Accedi</h5>
 
         <form @submit.prevent="login(email, password)" class="flex flex-col justify-evenly grow">
           <label class="flex flex-col justify-around ">
-            Email
-            <input class="border-[1px] rounded border-graphite p-[2px] w-4/6 self-center" type="text"  placeholder="@" v-model="email">
+            <div class="text-md dark:text-white">Email</div>
+            <input class="border-[1px] rounded border-graphite p-1 w-4/6 self-center text-sm" type="text"  placeholder="@" v-model="email">
           </label>
           <label class="flex flex-col">
-            Password
-            <input class="border-[1px] rounded border-graphite p-[2px] w-4/6 self-center" type="password" placeholder="Password" v-model="password">
+            <div class="text-md dark:text-white">Password</div>
+            <input class="border-[1px] rounded border-graphite p-1 w-4/6 self-center text-sm" type="password" placeholder="Password" v-model="password">
           </label>
-            <button type='submit' class="custom-button-big from-green-500 to-green-600">Accedi</button>
+            <button type='submit' class="custom-button-big primary">Accedi</button>
         </form>
 </div>
 
