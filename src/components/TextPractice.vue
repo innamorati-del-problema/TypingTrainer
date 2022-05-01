@@ -60,11 +60,6 @@ function keyHandler(ev) {
         if (specialCharacters.indexOf(ev.key) != -1) {
                 return
         }
-        // else if (position.value >= string.length) {
-        //         position.value = string.length - 1;
-        //         timerStop = true;
-                
-        // }
         else if (ev.key == "Backspace") {
 
                 if (string[position.value-1]==' ') 
@@ -94,7 +89,7 @@ function keyHandler(ev) {
                 (position.value)++;
         }
         else if (ev.key != string[position.value]) {
-                if ((letterValues.value)[position.value-1] != 1)
+                // if ((letterValues.value)[position.value-1] != 1)
                 {
                         (letterValues.value)[position.value] = 1;
                         (position.value)++;
@@ -139,7 +134,7 @@ function timerStart() {
         else
         {
                 window.removeEventListener("keydown", keyHandler );
-                emits('practice-end');      
+                emits('practice-end', wpm.value, precision.value, timer.value);      
         }    
 }
 

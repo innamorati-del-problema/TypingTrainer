@@ -6,7 +6,7 @@ import { onBeforeUnmount } from 'vue';
 import Navigation from './Navigation.vue';
 import TextPracticeTest from "./TextPractice.vue";
 import { ref as vueref } from 'vue';
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, set } from "firebase/database";
 
 const db = getDatabase();
 const router = useRouter()
@@ -41,6 +41,16 @@ const signOut = () => {
     auth.signOut();
 }
 
+function sendData(wpm, precision, timer) {
+    const user = auth.currentUser;
+    set(ref(db, "/scores/" + new Date()), {
+        uid : user.uid,
+        wpm : wpm,
+        precision : precision,
+        timer : timer
+    });
+}
+
 </script>
 
 <template>
@@ -48,14 +58,8 @@ const signOut = () => {
 <Navigation />
 
 <div class="mt-10">
-    <TextPracticeTest />
+    <TextPracticeTest @practice-end="sendData"/>
 </div>
-
-
-<h1>Ciao {{ username  }}</h1>
-<button @click="signOut">Esci</button>
-
-
 
 </template>
 
