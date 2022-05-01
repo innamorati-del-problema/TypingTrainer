@@ -9,13 +9,13 @@ import './index.css';
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 /* import specific icons */
-import { faArrowLeft, faSun, faMoon, faArrowRotateLeft } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faSun, faMoon, faArrowRotateLeft, faBars } from '@fortawesome/free-solid-svg-icons'
 
 /* import font awesome icon component */
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* add icons to the library */
-library.add(faArrowLeft, faSun, faMoon, faArrowRotateLeft);
+library.add(faArrowLeft, faSun, faMoon, faArrowRotateLeft, faBars);
 
 
 
