@@ -47,10 +47,11 @@ const signOut = () => {
 
 <Navigation />
 
-<TextPracticeTest />
+<div class="mt-10">
+    <TextPracticeTest />
+</div>
 
-<br>
-<br>
+
 <h1>Ciao {{ username  }}</h1>
 <button @click="signOut">Esci</button>
 

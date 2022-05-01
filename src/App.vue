@@ -1,5 +1,14 @@
 <script setup>
 
+
+  if (localStorage.theme === 'light' || (!('theme' in localStorage))) {
+    document.documentElement.classList.remove('dark')
+    localStorage.theme = 'light';
+  }
+  else {
+    document.documentElement.classList.add('dark')
+    localStorage.theme = 'dark';
+  }
   
 </script>
 

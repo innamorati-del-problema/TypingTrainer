@@ -18,10 +18,12 @@ const changing = vueref(false);
 var loaded = vueref(false);
 var currentUser;
 
-var oldPassword1 = vueref();
-var oldPassword2 = vueref();
-var newPassword = vueref();
-var newUsername = vueref();
+var oldPassword1 = vueref('');
+var oldPassword2 = vueref('');
+var newPassword = vueref('');
+var newUsername = vueref('');
+
+var darkMode = vueref();
 
 onBeforeMount(authListener);
 
@@ -47,7 +49,7 @@ function changeAvatar() {
     changing.value = true;
     let random = Math.random().toString(36).substr(2, 10);
     const user = auth.currentUser;
-    set(ref(db, "/users/" + user.uid), {
+    set(ref(db, "users/" + user.uid), {
         username : currentUser.username,
         country : currentUser.country,
         email : currentUser.email,
@@ -86,7 +88,7 @@ function changeUsername() {
         country : currentUser.country,
         email : currentUser.email,
         seed : currentUser.seed,
-        })}).then(console.log(newUsername.value))
+        })}).then(console.log(newUsername.value)).catch((error) => alert(error))
     .catch((error) => {
         alert(error)
     });
@@ -99,7 +101,7 @@ function changeUsername() {
 <template >
 
     <div v-if="!loaded">
-        <h1 class="flex justify-center items-center text-5xl h-screen text-green-500 dark:bg-purple-500">Caricamento...</h1>
+        <h1 class="flex justify-center items-center text-3xl lg:text-5xl h-screen text-green-500 dark:text-purple-500 ">Caricamento...</h1>
     </div>
 
     <div v-else class="flex flex-col min-h-screen">
@@ -128,10 +130,10 @@ function changeUsername() {
                         <div class="dark:text-white">Nuova password</div>
                         <input class="border-[1px] border-gray rounded-lg" v-model="newPassword" type="password">
                     </label>
-                    <button class="custom-button from-green-500 to-green-600 mb-3" @click="changePassword">Cambia</button>
+                    <button class="custom-button primary mb-3" @click="changePassword">Cambia</button>
                 </div>
                 
-                <div class="flex flex-col  w-1/2 shadow-gray shadow  basis-72 shrink grow rounded-xl h-full m-2 dark:shadow-none dark:bg-graphite">
+                <!-- <div class="flex flex-col shadow-gray shadow basis-72 shrink grow rounded-xl h-full m-2 dark:shadow-none dark:bg-graphite">
                     <h2 class="self-center m-2 text-lg text-green-500 dark:text-purple-500">Cambia Nome Utente</h2>
                     <label class="flex flex-col self-center text-center m-2 ">
                         <div class="dark:text-white">Password attuale</div>
@@ -141,18 +143,21 @@ function changeUsername() {
                         <div class="dark:text-white">Nuovo nome utente</div>
                         <input class="border-[1px] border-gray rounded-lg" v-model="newUsername" type="text">
                     </label>
-                    <button class="custom-button from-green-500 to-green-600 mb-3" v @click="changeUsername">Cambia</button>
-                </div>
+                    <button class="custom-button primary mb-3" v @click="changeUsername">Cambia</button>
+                </div> -->
 
-                <div class="flex flex-col basis-full grow shrink shadow-gray shadow rounded-xl h-full m-2 dark:shadow-none dark:bg-graphite">
-                    <h2 class="self-center m-2 text-lg text-green-500 dark:text-purple-500">Preferenze</h2>
-                    <label>
-                        Lingua
-                        <select>
-                            <option value="it">Italiano</option>
-                            <option value="en">English</option>
-                        </select>
-                    </label>
+                <div class="flex flex-col basis-72 grow shrink shadow-gray shadow rounded-xl h-full m-2 dark:shadow-none dark:bg-graphite p-4">
+                    <h2 class="self-center text-lg text-green-500 dark:text-purple-500">Preferenze</h2>
+                    <div class="flex flex-col">
+                        <label class="flex m-2">
+                            <h1 class="text-graphite dark:text-white">Lingua</h1>
+                            <select class="mx-auto w-4/6 rounded-lg text-sm p-1 bg-white border-[1px] border-gray">
+                                <option value="it">Italiano</option>
+                                <option value="en">English</option>
+                            </select>
+                        </label>
+                        
+                    </div>
                 </div>
             </div>
             

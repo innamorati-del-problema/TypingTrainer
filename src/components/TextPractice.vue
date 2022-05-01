@@ -1,22 +1,24 @@
 <template>
-        <div class="scores">
-                <div class="score timer"><h4>{{ timer }}</h4></div>
-                <div class="score wpm"><h4>WPM: {{ wpm }}</h4></div>
-                <div class="score errPercent"><h4>Precisione: {{ precision }}</h4></div>
-        </div>
-        <div class="practice-text" :class="{ blur: !started }" @click="start">
-                <span v-for="(letter, index) in string">
-                        <span :class="{
-                                'passed wrong': letterValues[index] == 1,
-                                'passed right': letterValues[index] == 3,
-                                text: true,
-                                'passed corrected': letterValues[index] == 2,
-                                nextChar: index == position && started
-                        }">
-                                {{ letter }}
+                <div class="flex justify-evenly m-2 text-3xl text-graphite dark:text-white">
+                        <div class=""><h4>{{ timer }}</h4></div>
+                        <div class=""><h4>WPM: {{ wpm }}</h4></div>
+                        <div class=""><h4>Precisione: {{ precision }}</h4></div>
+                </div>
+                <div class="w-5/6 mx-auto text-center text-md bg-white m-4 rounded-xl p-3 shadow-xl"  @click="start">
+                        <div v-if='!started' class="">
+                                <h1 class="absolute w-screen left-0 text-4xl mt-2 text-black dark:text-purple-500 z-50">Clicca per iniziare</h1>
+                        </div>
+                        <span :class="{ blur: !started }"  v-for="(letter, index) in string">
+                                <span :class="{
+                                        'passed wrong': letterValues[index] == 1,
+                                        'passed right': letterValues[index] == 3,
+                                        'passed corrected': letterValues[index] == 2,
+                                        nextChar: index == position && started
+                                }">
+                                        {{ letter }}
+                                </span>
                         </span>
-                </span>
-        </div>
+                </div>
 </template>
 
 <script setup>
@@ -35,7 +37,7 @@ let words = 0;
 
 var timerStop = false;
 
-let wrong = 0;
+var wrong = 0;
 
 const wpm = ref(0);
 let i = 0;
@@ -73,6 +75,9 @@ function keyHandler(ev) {
                         position.value = 0;
                 }
                 else {
+                        if (string[position.value] == 1) {
+                                wrong--;
+                        }
                         (position.value)--;
                 }
                 (letterValues.value)[position.value] = -1;
