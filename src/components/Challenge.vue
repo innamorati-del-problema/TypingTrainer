@@ -24,8 +24,12 @@ const props = defineProps( {
         type: String,
     },
     gif: {
-        require: true,
+        required: true,
         type: String,
+    },
+    level: {
+        //required: true,
+        type: Number
     }
 })
 

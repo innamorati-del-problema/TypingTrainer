@@ -39,7 +39,7 @@ import { ref as vueref } from 'vue';
 const db = getDatabase();
 let allTime = vueref([]);
 
-const topTenWpm = query(ref(db, '/scores/'), orderByChild('wpm'), limitToFirst(3));
+const topTenWpm = query(ref(db, '/scores/'), orderByChild('wpm'), limitToFirst(10));
 onValue(topTenWpm, (snapshot => {
     snapshot.forEach(function(scoreSnapshot) {
         allTime.value.push(scoreSnapshot.val());

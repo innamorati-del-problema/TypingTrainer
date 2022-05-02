@@ -6,10 +6,11 @@
         </div>
         <div class="practice-text" :class="{ blur: !started }" @click="start">
                 <span v-for="(letter, index) in string">
-                        <span v-if="position-1 == index || position+2 == index || position == index || position+1 == index" :class="{
+                        <span :class="{
                                 'passed wrong': letterValues[index] == 1,
                                 'passed right': letterValues[index] == 3,
                                 text: true,
+                                'blur-sm' : position-1 != index && position != index && position+2 != index && position+1 != index,
                                 'passed corrected': letterValues[index] == 2,
                                 nextChar: index == position && started
                         }">
@@ -41,7 +42,7 @@ const wpm = ref(0);
 let i = 0;
 let n = getRndInteger(1,5);
 for (i=0; i < texts[n].text.length; i++) {
-        let s = texts[n].text[i] == " " ? "⦁" : texts[n].text[i];
+        let s = texts[n].text[i] == " " ? " " : texts[n].text[i];
         string.push(s);
 }
 let letterValues = ref(new Array(string.length).fill(0));
@@ -77,7 +78,7 @@ function keyHandler(ev) {
                 }
                 (letterValues.value)[position.value] = -1;
         }
-        else if (string[position.value] == '⦁') {
+        else if (string[position.value] == ' ') {
                 words++;
                 wpm.value = Math.floor(words*60/secs);
                 if (ev.key == ' ')
@@ -116,11 +117,6 @@ function timerStart() {
 
                 
                 if (seconds < 10)
-                        timer.value = ''+minutes+":0"+seconds;
-                else
-                        timer.value = ''+minutes+":"+seconds;
-                
-                secs++;
 
                 setTimeout(timerStart, 1000);
         }               
@@ -183,7 +179,7 @@ function getRndInteger(min, max) {
 }
 
 .practice-text {
-        width: fit-content;
+        width: 80%;
         margin-left: 50%;
         transform: translateX(-50%);
         background-color: var(--alt-background-color);
@@ -195,7 +191,7 @@ function getRndInteger(min, max) {
 }
 
 .text {
-        font-size: 70px;
+        font-size: 1.2rem;
         margin: 1px;
         color: var(--paragraph-text-color)
 }
