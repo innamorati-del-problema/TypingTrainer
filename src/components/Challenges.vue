@@ -7,6 +7,7 @@
         router.push(route);
     };
 
+
 </script>
 
 <template>
@@ -26,5 +27,5 @@
 <style scoped>
 
 
- 
+
 </style>
