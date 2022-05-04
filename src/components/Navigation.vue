@@ -29,18 +29,18 @@ function toggleNavbar() {
 
   <nav class=" w-full md:h-10 flex justify-center pt-1 pb-0  dark:border-purple-500">
     <div class=" md:flex text-center items-center m-2 justify-evenly lg:justify-between w-full lg:w-4/6 mx-auto">
-      <div class="bg-clip-text text-left text-transparent bg-gradient-to-b from-green-500 to-green-600 dark:from-purple-500 dark:to-purple-500 ml-2 text-2xl sm:3text-xl drop-shadow-lg">TypingTrainer</div>
+      <div class="bg-clip-text text-left text-transparent bg-gradient-to-b from-green-500 to-green-600 text-shadow-primary dark:from-purple-500 dark:to-purple-500 ml-2 text-2xl sm:3text-xl drop-shadow-lg">TypingTrainer</div>
       <div :class="{'hidden' : showResponsiveNavbar}" class="realtive md:flex lg:ml-12 transition-all">
-        <div class="text-2xl m-1 sm:text-xl sm:mx-3 " v-bind:class="[ $route.path == '/practice' ? 'text-green-500 dark:text-purple-500 underline': 'text-graphite dark:text-white' ]">
+        <div class="text-2xl text-shadow transition-all m-1 sm:text-xl sm:mx-3 " v-bind:class="[ $route.path == '/practice' ? 'text-green-500 text-shadow-primary dark:text-purple-500 underline': 'text-graphite dark:text-white' ]">
           <router-link to="/practice"> Pratica </router-link>
         </div>
-        <div class="text-2xl m-1 sm:text-xl sm:mx-3 " v-bind:class="[ $route.path == '/profile' ? 'text-green-500 dark:text-purple-500 underline': 'text-graphite dark:text-white' ]">
+        <div class="text-2xl text-shadow m-1 sm:text-xl sm:mx-3 " v-bind:class="[ $route.path == '/profile' ? 'text-green-500 text-shadow-primary dark:text-purple-500 underline': 'text-graphite dark:text-white' ]">
           <router-link to="/profile"> Profilo </router-link>
         </div>
-        <div class="text-2xl m-1 sm:text-xl sm:mx-3 " v-bind:class="[ $route.path == '/challenges' ? 'text-green-500 dark:text-purple-500 underline': 'text-graphite dark:text-white' ]">
+        <div class="text-2xl text-shadow m-1 sm:text-xl sm:mx-3 " v-bind:class="[ $route.path == '/challenges' ? 'text-green-500 text-shadow-primary dark:text-purple-500 underline': 'text-graphite dark:text-white' ]">
           <router-link to="/challenges"> Sfide </router-link>
         </div>
-        <div class="text-2xl m-1 sm:text-xl sm:mx-3 " v-bind:class="[ $route.path == '/leaderboards' ? 'text-green-500 dark:text-purple-500 underline': 'text-graphite dark:text-white' ]">
+        <div class="text-2xl text-shadow m-1 sm:text-xl sm:mx-3 " v-bind:class="[ $route.path == '/leaderboards' ? 'text-green-500 text-shadow-primary dark:text-purple-500 underline': 'text-graphite dark:text-white' ]">
           <router-link to="/leaderboards"> Leaderboards </router-link>
         </div>
         

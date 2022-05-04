@@ -44,6 +44,7 @@ onValue(topTenWpm, (snapshot => {
     snapshot.forEach(function(scoreSnapshot) {
         allTime.value.push(scoreSnapshot.val());
     })
+    allTime.value.reverse();
 }))
 
 

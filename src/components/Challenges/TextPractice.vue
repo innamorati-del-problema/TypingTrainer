@@ -10,9 +10,9 @@
                         </div>
                         <span :class="{ blur: !started }"  v-for="(letter, index) in string">
                                 <span :class="{
-                                        'opacity-50 bg-red-300 rounded-sm': letterValues[index] == 1,
-                                        'opacity-50 bg-green-300 rounded-sm': letterValues[index] == 3,
-                                        'opacity-50 bg-[#f5f90f] rounded-sm': letterValues[index] == 2,
+                                        'text-[#858585] bg-[#ff00004d] rounded-sm transition-colors': letterValues[index] == 1,
+                                        'text-[#858585] bg-[#42b5424b] rounded-sm transition-colors': letterValues[index] == 3,
+                                        'text-[#858585] bg-[#fdfd184d] rounded-sm transition-colors': letterValues[index] == 2,
                                         nextChar: index == position && started
                                 }">
                                         {{ letter }}
@@ -23,7 +23,7 @@
 
 <script setup>
 import { ref, watch } from 'vue';
-import texts from "../assets/texts.json";
+import texts from "../../assets/texts.json";
 
 var string = [];
 let position = ref(0);
@@ -41,7 +41,7 @@ var wrong = 0;
 
 const wpm = ref(0);
 let i = 0;
-let n = getRndInteger(1,5);
+let n = getRndInteger(0,9);
 for (i=0; i < texts[n].text.length; i++) {
 
         string.push(texts[n].text[i]);
@@ -150,46 +150,13 @@ const emits = defineEmits(["practice-end"]);
 <style lang="scss" scoped>
 
 
-@keyframes right {
-        from {
-                background-color: rgba(0, 0, 0, 0);
-
-        }
-
-        to {
-                background-color: var(--right-background-color);
-        }
-}
-
-@keyframes wrong {
-        from {
-                background-color: rgba(0, 0, 0, 0);
-
-        }
-
-        to {
-                background-color: var(--wrong-background-color);
-        }
-}
-
-@keyframes corrected {
-        from {
-                background-color: rgba(0, 0, 0, 0);
-
-        }
-
-        to {
-                background-color: var(--corrected-background-color);
-        }
-}
-
 @keyframes nextChar {
         0% {
                 background-color: rgba(0, 0, 0, 0);
         }
 
         50% {
-                background-color: var(--next-char-color);
+                background-color: rgba(129, 129, 129, 0.581);
         }
 
         100% {
@@ -197,40 +164,7 @@ const emits = defineEmits(["practice-end"]);
         }
 }
 
-.practice-text {
-        width: 80%;
-        margin-left: 50%;
-        transform: translateX(-50%);
-        background-color: var(--alt-background-color);
-        border-radius: 12px;
-        padding: 10px;
-        box-shadow: 0px 4px 47px -9px #7E7E7E;
-}
 
-.text {
-        font-size: 20px;
-        margin: 1px;
-        color: var(--paragraph-text-color)
-}
-
-.passed {
-        border-radius: 2px;
-
-        &.right {
-                animation: right 200ms linear forwards;
-                background-color: rgba(66, 181, 66, 0.296);
-        }
-
-        &.wrong {
-                background-color: rgba(255, 0, 0, 0.3);
-                animation: wrong 200ms linear forwards;
-        }
-
-        &.corrected {
-                background-color: rgba(253, 253, 24, 0.3);
-                animation: corrected 200ms linear forwards;
-        }
-}
 
 .nextChar {
         animation: nextChar 1200ms cubic-bezier(0, 1.03, 0, 0.99) infinite;
@@ -242,12 +176,4 @@ const emits = defineEmits(["practice-end"]);
         filter: blur(3px);
 }
 
-.scores {
-        display: flex;
-}
-
-.score {
-        flex-grow: 1;
-        color: var(--paragraph-text-color);
-}
 </style>

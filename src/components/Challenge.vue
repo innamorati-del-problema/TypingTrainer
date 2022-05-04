@@ -10,9 +10,9 @@
             <h1 class="self-center xl:ml-3 dark:text-white">Livello</h1>
             <div class="flex self-center m-3">
                 
-                <div @click="clicked(1)" :class="{ 'bg-green-500 dark:bg-purple-500 text-white' : selected===1}" class="rounded-l hover:cursor-pointer w-10 h-10 bg-white shadow shadow-gray hover:shadow-md hover:shadow-gray transition-all dark:bg-white self-center border-r-2 border-white dark:border-graphite-light flex justify-center items-center">1</div>
-                <div @click="clicked(2)" :class="{ 'bg-green-500 dark:bg-purple-500 text-white' : selected===2}" class="w-10 h-10 hover:cursor-pointer bg-white shadow shadow-gray self-center hover:shadow-md hover:shadow-gray transition-all dark:bg-white border-r-2 border-white dark:border-graphite-light flex justify-center items-center">2</div>
-                <div @click="clicked(3)" :class="{ 'bg-green-500 dark:bg-purple-500 text-white' : selected===3}" class="rounded-r hover:cursor-pointer w-10 h-10 bg-white shadow shadow-gray hover:shadow-md hover:shadow-gray transition-all dark:bg-white self-center flex justify-center items-center">3</div>
+                <div @click="clicked(1)" :class="{ 'dark:bg-purple-500 bg-green-500 text-white ' : selected===1}" class="rounded-l hover:cursor-pointer w-10 h-10 bg-white shadow shadow-gray hover:shadow-md hover:shadow-gray transition-all dark:bg-white self-center border-r-2 border-white dark:border-graphite-light flex justify-center items-center">1</div>
+                <div @click="clicked(2)" :class="{ 'dark:bg-purple-500 bg-green-500 text-white' : selected===2}" class="w-10 h-10 hover:cursor-pointer bg-white shadow shadow-gray self-center hover:shadow-md hover:shadow-gray transition-all dark:bg-white border-r-2 border-white dark:border-graphite-light flex justify-center items-center">2</div>
+                <div @click="clicked(3)" :class="{ 'dark:bg-purple-500 bg-green-500 text-white' : selected===3}" class="rounded-r hover:cursor-pointer w-10 h-10 bg-white shadow shadow-gray hover:shadow-md hover:shadow-gray transition-all dark:bg-white self-center flex justify-center items-center">3</div>
             </div>
             <button class="custom-button from-green-500 to-green-600 dark:from-purple-500 dark:to-purple-600 xl:self-end m-2" @click="$emit('play-game', selected.value)">Gioca!</button>
         </div>

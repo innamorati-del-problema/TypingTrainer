@@ -22,4 +22,45 @@
     .custom-button-big.primary {
         @apply from-green-500 to-green-600 dark:from-purple-500 dark:to-purple-600
     }
+
+    .text-responsive {
+        font-size: calc(100vw/51);
+    }
+
+    .text-shadow {
+        text-shadow: 0px 1px 1px black;
+        transition: text-shadow 400ms ease-in-out forwards;
+    }
+
+    .text-shadow:hover {
+        text-shadow: 0px 1px 2px black;
+    }
+
+    .text-shadow-primary {
+        text-shadow: 0px 1px 1px #72C53F;
+        transition: text-shadow 400ms ease-in-out forwards;
+    }
+    .text-shadow-primary:hover {
+        text-shadow: 0px 1px 2px #72C53F;
+    }
+
+
+
+    .dark *> .text-shadow {
+        text-shadow: 0px 1px 1px white;
+        transition: text-shadow 400ms ease-in-out forwards;
+    }
+    
+    .dark *> .text-shadow:hover {
+        text-shadow: 0px 1px 2px white;
+    }
+
+    .dark *> .text-shadow-primary {
+        text-shadow: 0px 1px 1px #D01FC9;
+        transition: text-shadow 400ms ease-in-out forwards;
+    }
+    .dark *> .text-shadow-primary:hover {
+        text-shadow: 0px 1px 2px #D01FC9;
+    }
+
 }
