@@ -1,22 +1,15 @@
 <script setup>
-
-import Navigation from './Navigation.vue'
-
+import Navigation from "./Navigation.vue";
 </script>
- 
+
 <template>
+  <Navigation />
 
-    <Navigation />
-
-
-<div class="chal-container">
+  <div class="chal-container">
     <div class="chal-card">
-        <div class="chal-title">Maiuscole e minuscole</div>
+      <div class="chal-title">Maiuscole e minuscole</div>
     </div>
-</div>
-
-
+  </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

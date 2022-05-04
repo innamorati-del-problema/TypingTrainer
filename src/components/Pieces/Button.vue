@@ -1,15 +1,7 @@
 <template>
-    <div>
-        
-    </div>
+  <div></div>
 </template>
 
-<script script>
+<script script></script>
 
-
-
-</script>
-
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

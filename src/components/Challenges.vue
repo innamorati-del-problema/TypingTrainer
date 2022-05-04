@@ -1,31 +1,35 @@
 <script setup>
-    import Navigation from './Navigation.vue';
-    import Challenge from './Challenge.vue';
-    import router from '../router';
+import Navigation from "./Navigation.vue";
+import Challenge from "./Challenge.vue";
+import router from "../router";
 
-    function game(route) {
-        router.push(route);
-    };
-
-
+function game(route) {
+  router.push(route);
+}
 </script>
 
 <template>
+  <Navigation />
 
-<Navigation />
-
-
-<div class = "flex flex-wrap xl:flex-nowrap mt-2 justify-center gap-1 xl:p-24">
+  <div class="mt-2 flex flex-wrap justify-center gap-1 xl:flex-nowrap xl:p-24">
     <!-- <Challenge titolo="Maiuscole e minuscole" descrizione="Metti alla prova la tua capacità di adattarti ai cambi improvvisi di testo" gif="/test22.gif" /> -->
-    <Challenge titolo="Prova a tempo" descrizione="Combatti contro il tempo per completare più parole possibili" gif="/test22.gif" />
-    <Challenge titolo="Parole in libertà" descrizione="Confrontati con il caso e completa più parole senza senso che puoi"  gif="/test22.gif"/>
-    <Challenge titolo="Vicolo cieco" descrizione="Affina la tua prontezza avendo a disposizione solo poche lettere alla volta" gif="/test22.gif" @play-game='game("letterpractice")' />
-</div>
-
+    <Challenge
+      titolo="Prova a tempo"
+      descrizione="Combatti contro il tempo per completare più parole possibili"
+      gif="/test22.gif"
+    />
+    <Challenge
+      titolo="Parole in libertà"
+      descrizione="Confrontati con il caso e completa più parole senza senso che puoi"
+      gif="/test22.gif"
+    />
+    <Challenge
+      titolo="Vicolo cieco"
+      descrizione="Affina la tua prontezza avendo a disposizione solo poche lettere alla volta"
+      gif="/test22.gif"
+      @play-game="game('letterpractice')"
+    />
+  </div>
 </template>
 
-<style scoped>
-
-
-
-</style>
+<style scoped></style>

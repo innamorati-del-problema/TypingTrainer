@@ -3,64 +3,57 @@
 @tailwind utilities;
 
 @layer components {
-    .custom-button {
-        @apply text-white w-36 h-12 rounded-lg shadow hover:shadow-lg self-center bg-gradient-to-b
+  .custom-button {
+    @apply h-12 w-36 self-center rounded-lg bg-gradient-to-b text-white shadow hover:shadow-lg;
+  }
 
-        
-    }
+  .custom-button.primary {
+    @apply from-green-500 to-green-600 dark:from-purple-500 dark:to-purple-600;
+  }
 
-    .custom-button.primary {
-        @apply from-green-500 to-green-600 dark:from-purple-500 dark:to-purple-600
-    }
-    
-    
-    
-    .custom-button-big {
-        @apply text-white text-xl w-48 h-14 rounded-lg shadow hover:shadow-lg self-center bg-gradient-to-b
-    }
+  .custom-button-big {
+    @apply h-14 w-48 self-center rounded-lg bg-gradient-to-b text-xl text-white shadow hover:shadow-lg;
+  }
 
-    .custom-button-big.primary {
-        @apply from-green-500 to-green-600 dark:from-purple-500 dark:to-purple-600
-    }
+  .custom-button-big.primary {
+    @apply from-green-500 to-green-600 dark:from-purple-500 dark:to-purple-600;
+  }
 
-    .text-responsive {
-        font-size: calc(100vw/51);
-    }
+  .text-responsive {
+    font-size: calc(100vw / 51);
+  }
 
-    .text-shadow {
-        text-shadow: 0px 1px 1px black;
-        transition: text-shadow 400ms ease-in-out forwards;
-    }
+  .text-shadow {
+    text-shadow: 0px 1px 1px black;
+    transition: text-shadow 400ms ease-in-out forwards;
+  }
 
-    .text-shadow:hover {
-        text-shadow: 0px 1px 2px black;
-    }
+  .text-shadow:hover {
+    text-shadow: 0px 1px 2px black;
+  }
 
-    .text-shadow-primary {
-        text-shadow: 0px 1px 1px #72C53F;
-        transition: text-shadow 400ms ease-in-out forwards;
-    }
-    .text-shadow-primary:hover {
-        text-shadow: 0px 1px 2px #72C53F;
-    }
+  .text-shadow-primary {
+    text-shadow: 0px 1px 1px #72c53f;
+    transition: text-shadow 400ms ease-in-out forwards;
+  }
+  .text-shadow-primary:hover {
+    text-shadow: 0px 1px 2px #72c53f;
+  }
 
+  .dark * > .text-shadow {
+    text-shadow: 0px 1px 1px white;
+    transition: text-shadow 400ms ease-in-out forwards;
+  }
 
+  .dark * > .text-shadow:hover {
+    text-shadow: 0px 1px 2px white;
+  }
 
-    .dark *> .text-shadow {
-        text-shadow: 0px 1px 1px white;
-        transition: text-shadow 400ms ease-in-out forwards;
-    }
-    
-    .dark *> .text-shadow:hover {
-        text-shadow: 0px 1px 2px white;
-    }
-
-    .dark *> .text-shadow-primary {
-        text-shadow: 0px 1px 1px #D01FC9;
-        transition: text-shadow 400ms ease-in-out forwards;
-    }
-    .dark *> .text-shadow-primary:hover {
-        text-shadow: 0px 1px 2px #D01FC9;
-    }
-
+  .dark * > .text-shadow-primary {
+    text-shadow: 0px 1px 1px #d01fc9;
+    transition: text-shadow 400ms ease-in-out forwards;
+  }
+  .dark * > .text-shadow-primary:hover {
+    text-shadow: 0px 1px 2px #d01fc9;
+  }
 }
