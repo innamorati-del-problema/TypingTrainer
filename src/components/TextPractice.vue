@@ -10,9 +10,9 @@
                         </div>
                         <span :class="{ blur: !started }"  v-for="(letter, index) in string">
                                 <span :class="{
-                                        'passed wrong': letterValues[index] == 1,
-                                        'passed right': letterValues[index] == 3,
-                                        'passed corrected': letterValues[index] == 2,
+                                        'opacity-50 bg-red-300 rounded-sm': letterValues[index] == 1,
+                                        'opacity-50 bg-green-300 rounded-sm': letterValues[index] == 3,
+                                        'opacity-50 bg-[#f5f90f] rounded-sm': letterValues[index] == 2,
                                         nextChar: index == position && started
                                 }">
                                         {{ letter }}
@@ -215,7 +215,6 @@ const emits = defineEmits(["practice-end"]);
 
 .passed {
         border-radius: 2px;
-        color: var(--passed-key-color);
 
         &.right {
                 animation: right 200ms linear forwards;
