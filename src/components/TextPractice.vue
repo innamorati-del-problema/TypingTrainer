@@ -1,26 +1,28 @@
 <template>
-        <div class="scores">
-                <div class="score timer"><h4>{{ timer }}</h4></div>
-                <div class="score wpm"><h4>WPM: {{ wpm }}</h4></div>
-                <div class="score errPercent"><h4>Precisione: {{ precision }}</h4></div>
-        </div>
-        <div class="practice-text" :class="{ blur: !started }" @click="start">
-                <span v-for="(letter, index) in string">
-                        <span :class="{
-                                'passed wrong': letterValues[index] == 1,
-                                'passed right': letterValues[index] == 3,
-                                text: true,
-                                'passed corrected': letterValues[index] == 2,
-                                nextChar: index == position && started
-                        }">
-                                {{ letter }}
+                <div class="flex justify-evenly m-2 text-3xl text-graphite dark:text-white">
+                        <div class=""><h4>{{ timer }}</h4></div>
+                        <div class=""><h4>WPM: {{ wpm }}</h4></div>
+                        <div class=""><h4>Precisione: {{ precision }}</h4></div>
+                </div>
+                <div class="w-5/6 mx-auto text-center text-md bg-white m-4 rounded-xl p-3 shadow-xl"  @click="start">
+                        <div v-if='!started' class="">
+                                <h1 class="absolute w-screen left-0 text-4xl mt-2 text-black z-50">Clicca per iniziare</h1>
+                        </div>
+                        <span :class="{ blur: !started }"  v-for="(letter, index) in string">
+                                <span :class="{
+                                        'opacity-50 bg-red-300 rounded-sm': letterValues[index] == 1,
+                                        'opacity-50 bg-green-300 rounded-sm': letterValues[index] == 3,
+                                        'opacity-50 bg-[#f5f90f] rounded-sm': letterValues[index] == 2,
+                                        nextChar: index == position && started
+                                }">
+                                        {{ letter }}
+                                </span>
                         </span>
-                </span>
-        </div>
+                </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import texts from "../assets/texts.json";
 
 var string = [];
@@ -35,7 +37,7 @@ let words = 0;
 
 var timerStop = false;
 
-let wrong = 0;
+var wrong = 0;
 
 const wpm = ref(0);
 let i = 0;
@@ -58,11 +60,6 @@ function keyHandler(ev) {
         if (specialCharacters.indexOf(ev.key) != -1) {
                 return
         }
-        else if (position.value >= string.length) {
-                position.value = string.length - 1;
-                timerStop = true;
-                window.removeEventListener("keydown", keyHandler );
-        }
         else if (ev.key == "Backspace") {
 
                 if (string[position.value-1]==' ') 
@@ -73,6 +70,9 @@ function keyHandler(ev) {
                         position.value = 0;
                 }
                 else {
+                        if ((letterValues.value)[position.value-1] == 1) {
+                                wrong--;
+                        }
                         (position.value)--;
                 }
                 (letterValues.value)[position.value] = -1;
@@ -89,14 +89,16 @@ function keyHandler(ev) {
                 (position.value)++;
         }
         else if (ev.key != string[position.value]) {
-                (letterValues.value)[position.value] = 1;
-                (position.value)++;
-                wrong++;
+                if ((letterValues.value)[position.value-1] != 1)
+                {
+                        (letterValues.value)[position.value] = 1;
+                        (position.value)++;
+                        wrong++;
+                }
         }
         else {
                 if ((letterValues.value)[position.value] != 0) {
                         (letterValues.value)[position.value] = 2;
-                        wrong--;
 
                 }
                 else {
@@ -105,11 +107,16 @@ function keyHandler(ev) {
 
                 (position.value)++;
         }
-        precision.value = Math.floor((1 - (wrong/(position.value)))*100) + '%'; 
+        precision.value = Math.floor((((position.value - wrong)/(position.value)))*100) + '%'; 
 }
+
+watch(position, () => {
+        timerStop = position.value >= string.length;
+})
 
 function timerStart() {
 
+        
         if (!timerStop) {
                 let minutes = Math.floor(secs / 60); 
                 let seconds = secs % 60;
@@ -123,12 +130,20 @@ function timerStart() {
                 secs++;
 
                 setTimeout(timerStart, 1000);
-        }               
+        }
+        else
+        {
+                window.removeEventListener("keydown", keyHandler );
+                emits('practice-end', wpm.value, precision.value, timer.value);      
+        }    
 }
+
 
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min) ) + min;
 }
+
+const emits = defineEmits(["practice-end"]);
 
 </script>
 
@@ -200,7 +215,6 @@ function getRndInteger(min, max) {
 
 .passed {
         border-radius: 2px;
-        color: var(--passed-key-color);
 
         &.right {
                 animation: right 200ms linear forwards;

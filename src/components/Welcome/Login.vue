@@ -2,6 +2,10 @@
 
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "vue-router";
+import { getDatabase, ref, onValue } from "firebase/database";
+import { createAvatar } from '@dicebear/avatars';
+import * as style from '@dicebear/adventurer-neutral';
+
 
 const router = useRouter();
 
@@ -12,6 +16,15 @@ function login(email, password) {
     // Signed in 
     const user = userCredential.user;
     router.push("/practice");
+
+    const db = getDatabase();
+    let userRef = ref(db, "/users/" + user.uid);
+    onValue(userRef, (snapshot) => {
+        const currentUser = snapshot.val();
+        localStorage.username = currentUser.username;
+        localStorage.avatar = createAvatar(style, {seed: currentUser.seed, radius: 50, scale: 80});
+    });
+
     // ...
     })
     .catch((error) => {
@@ -28,91 +41,31 @@ let password = "";
 
 <template>
 
-    <div class="landing-box">
-      <div class="back" @click="$emit('close-login')">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M447.1 256C447.1 273.7 433.7 288 416 288H109.3l105.4 105.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448s-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L109.3 224H416C433.7 224 447.1 238.3 447.1 256z"/></svg>
-      </div>
-      <div class="fields">
-        <div class="box-content">
-          <h5 class="card-title">Accedi</h5>
-          <h4 class="card-paragraph">Email</h4>
-          <input type="text"  placeholder="@" v-model="email">
-          <h4 class="card-paragraph">Password</h4>
-          <input type="password" placeholder="Password" v-model="password">
-          <br>
-        </div>
-        <div class="buttons">
-          <button class="botton b-primary b-xl" @click="login(email, password)">Accedi</button>
-        </div>
-      </div>
-        
 
-    </div>
+<div class="bg-white dark:bg-graphite-light 
+            flex flex-col justify-evenly 
+            rounded-xl drop-shadow-2xl p-4 
+            w-screen sm:w-96  h-5/6 sm:h-[26rem]
+            mx-auto sm:my-12">
+        <font-awesome-icon @click="$emit('close-login')" icon="arrow-left" class="h-5 absolute top-5 left-5 hover:text-green-500 dark:text-white dark:hover:text-purple-500"/>
+
+        <h5 class="text-green-500 dark:text-purple-500 text-4xl mt-5">Accedi</h5>
+
+        <form @submit.prevent="login(email, password)" class="flex flex-col justify-evenly grow">
+          <label class="flex flex-col justify-around ">
+            <div class="text-md dark:text-white">Email</div>
+            <input class="border-[1px] rounded border-graphite p-1 w-4/6 self-center text-sm" type="text"  placeholder="@" v-model="email">
+          </label>
+          <label class="flex flex-col">
+            <div class="text-md dark:text-white">Password</div>
+            <input class="border-[1px] rounded border-graphite p-1 w-4/6 self-center text-sm" type="password" placeholder="Password" v-model="password">
+          </label>
+            <button type='submit' class="custom-button-big primary">Accedi</button>
+        </form>
+</div>
 
 </template>
 
 <style scoped lang="scss">
-
-.box-content {
-
-
-    h4 {
-    margin-top: 20px;
-    }
-}
-
-
-.landing-box {
-  display: flex;
-  flex-direction: column;
-}
-.box-content {
-  align-self: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.back {
-  align-self: start;
-  margin: 20px;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  svg
-  {
-    width: 20px;
-    fill: var(--secondary-color);
-  }
-  &:hover {
-    svg
-    {
-      fill: var(--primary-color);
-    }
-  }
-}
-.botton {
-  margin: 30px;
-}
-
-.buttons {
-}
-
-.fields {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-input {
-  height: 35px;
-  width: 130%;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid var(--secondary-color);
-  &::placeholder {
-    font-family: "IBM Plex Mono", monospace;
-  }
-}
 
 </style>

@@ -6,7 +6,7 @@ import { onBeforeUnmount } from 'vue';
 import Navigation from './Navigation.vue';
 import TextPracticeTest from "./TextPractice.vue";
 import { ref as vueref } from 'vue';
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, set, push } from "firebase/database";
 
 const db = getDatabase();
 const router = useRouter()
@@ -22,14 +22,6 @@ const authListener = onAuthStateChanged(auth, (user) => {
         // alert('you must be logged in to view this. redirecting to the home page')
         router.push('/')
     }
-    else {
-        
-        userRef = ref(db, "/users/" + user.uid);
-        onValue(userRef, (snapshot) => {
-            userObj = snapshot.val();
-            username.value = userObj.username;
-        });
-    }
 });
 
 onBeforeUnmount(() => {
@@ -41,20 +33,32 @@ const signOut = () => {
     auth.signOut();
 }
 
+function sendData(wpm, precision, timer) {
+    const user = auth.currentUser;
+    const scoresListRef = ref(db, '/scores/');
+    const newScoreRef = push(scoresListRef);
+    const date = new Date();
+    set(newScoreRef, {
+        username : localStorage.username,
+        wpm : wpm,
+        precision : precision,
+        timer : timer,
+        day : date.getDay(),
+        month : date.getMonth(),
+        year : date.getFullYear(),
+    });
+}
+
+
 </script>
 
 <template>
 
 <Navigation />
 
-<TextPracticeTest />
-
-<br>
-<br>
-<h1>Ciao {{ username  }}</h1>
-<button @click="signOut">Esci</button>
-
-
+<div class="mt-10">
+    <TextPracticeTest @practice-end="sendData"/>
+</div>
 
 </template>
 

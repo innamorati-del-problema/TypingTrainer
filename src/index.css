@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .custom-button {
+        @apply text-white w-36 h-12 rounded-lg shadow hover:shadow-lg self-center bg-gradient-to-b
+
+        
+    }
+
+    .custom-button.primary {
+        @apply from-green-500 to-green-600 dark:from-purple-500 dark:to-purple-600
+    }
+    
+    
+    
+    .custom-button-big {
+        @apply text-white text-xl w-48 h-14 rounded-lg shadow hover:shadow-lg self-center bg-gradient-to-b
+    }
+
+    .custom-button-big.primary {
+        @apply from-green-500 to-green-600 dark:from-purple-500 dark:to-purple-600
+    }
+}

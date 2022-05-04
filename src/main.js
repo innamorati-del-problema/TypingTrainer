@@ -3,6 +3,22 @@ import App from './App.vue'
 import { initializeApp } from "firebase/app";
 import router from './router';
 import { getDatabase } from "firebase/database";
+import './index.css';
+
+/* import the fontawesome core */
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+/* import specific icons */
+import { faArrowLeft, faSun, faMoon, faArrowRotateLeft, faBars } from '@fortawesome/free-solid-svg-icons'
+
+/* import font awesome icon component */
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+/* add icons to the library */
+library.add(faArrowLeft, faSun, faMoon, faArrowRotateLeft, faBars);
+
+
+
 
 // Firebase configuration
 const firebaseConfig = {
@@ -21,5 +37,5 @@ const database = getDatabase(appfb);
 const app = createApp(App);
 
 app.use(router);
-
+app.component('font-awesome-icon', FontAwesomeIcon);
 app.mount('#app')

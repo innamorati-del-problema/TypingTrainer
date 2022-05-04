@@ -1,73 +1,67 @@
 <script setup>
+import { ref, watch } from "vue";
 
+let light = ref(localStorage.theme==='light');
+
+
+  function change() {
+    if (localStorage.theme === 'light' || (!('theme' in localStorage))) {
+      document.documentElement.classList.add('dark')
+      localStorage.theme = 'dark';
+      light.value = !light.value;
+    }
+    else {
+      document.documentElement.classList.remove('dark')
+      localStorage.theme = 'light';
+      light.value = !light.value;
+    }
+  }
+
+let showResponsiveNavbar = ref(false);
+
+function toggleNavbar() {
+  showResponsiveNavbar.value = !showResponsiveNavbar.value;
+}
 
 </script>
 <template>
 
 
-  <nav>
-    <div class="nav-bar">
-      <div class="nav-title">Typing Trainer</div>
-      <div class="nav-content d-flex align-items-center" v-bind:class="{ 'pressed': $route.path == '/practice' }">
-        <router-link to="/practice" > Pratica </router-link>
+  <nav class=" w-full md:h-10 flex justify-center pt-1 pb-0  dark:border-purple-500">
+    <div class=" md:flex text-center items-center m-2 justify-evenly lg:justify-between w-full lg:w-4/6 mx-auto">
+      <div class="bg-clip-text text-left text-transparent bg-gradient-to-b from-green-500 to-green-600 dark:from-purple-500 dark:to-purple-500 ml-2 text-2xl sm:3text-xl drop-shadow-lg">TypingTrainer</div>
+      <div :class="{'hidden' : showResponsiveNavbar}" class="realtive md:flex lg:ml-12 transition-all">
+        <div class="text-2xl m-1 sm:text-xl sm:mx-3 " v-bind:class="[ $route.path == '/practice' ? 'text-green-500 dark:text-purple-500 underline': 'text-graphite dark:text-white' ]">
+          <router-link to="/practice"> Pratica </router-link>
+        </div>
+        <div class="text-2xl m-1 sm:text-xl sm:mx-3 " v-bind:class="[ $route.path == '/profile' ? 'text-green-500 dark:text-purple-500 underline': 'text-graphite dark:text-white' ]">
+          <router-link to="/profile"> Profilo </router-link>
+        </div>
+        <div class="text-2xl m-1 sm:text-xl sm:mx-3 " v-bind:class="[ $route.path == '/challenges' ? 'text-green-500 dark:text-purple-500 underline': 'text-graphite dark:text-white' ]">
+          <router-link to="/challenges"> Sfide </router-link>
+        </div>
+        <div class="text-2xl m-1 sm:text-xl sm:mx-3 " v-bind:class="[ $route.path == '/leaderboards' ? 'text-green-500 dark:text-purple-500 underline': 'text-graphite dark:text-white' ]">
+          <router-link to="/leaderboards"> Leaderboards </router-link>
+        </div>
+        
+
+        
+        
       </div>
-      <div class="nav-content d-flex align-items-center" v-bind:class="{ 'pressed': $route.path == '/profile' }">
-        <router-link to="/profile"> Profilo </router-link>
-      </div>
-      <div class="nav-content d-flex align-items-center" v-bind:class="{ 'pressed': $route.path == '/challenges' }">
-        <router-link to="/challenges"> Sfide </router-link>
-      </div>
+        <font-awesome-icon @click="toggleNavbar" class="md:hidden absolute top-4 right-4 text-green-500 dark:text-purple-500 bg-white p-2 rounded-lg shadow-lg" icon="bars"/>
+        <div class="absolute md:static top-6 right-14 ">
+          <div @click="change" class="flex flex-col self-center w-8 h-4 rounded-xl bg-white  justify-center border-[1px] border-green-500 dark:border-none hover:cursor-pointer">
+            <font-awesome-icon v-if="light"  icon="sun" class="text-green-500 h-3 ml-[2px] self-start "/>
+            <font-awesome-icon v-else icon="moon"  class="text-purple-500 h-3 mr-[2px] self-end  "/>
+          </div>
+        </div>
+        
+      
 
     </div>
-
   </nav>
   <router-view />
 </template>
 
 <style scoped lang="scss">
-.body {
-  display: inline;
-}
-
-.nav-bar {
-  text-align: left;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-}
-
-.nav-title {
-  margin-right: 3%;
-  margin-left: 2%;
-  font-weight: 600;
-  font-size: 50px;
-  background: var(--title-color);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0px 4px 16px rgba(114, 197, 63, 0.6);
-  background-clip: text;
-  width: max-content;
-}
-
-.nav-content {
-  margin-right: 0%;
-  margin-left: 2%;
-  font-weight: 600;
-  font-size: 40px;
-  line-height: 46px;
-  line-height: 100%;
-  vertical-align: text-bottom;
-  background: var(--alt-paragraph-text-color);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  width: max-content;
-}
-
-.nav-content.pressed {
-  vertical-align: text-bottom;
-  background: var(--title-color);
-  background-clip: text;
-  -webkit-background-clip: text;
-}
 </style>

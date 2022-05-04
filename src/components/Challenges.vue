@@ -1,5 +1,12 @@
 <script setup>
     import Navigation from './Navigation.vue';
+    import Challenge from './Challenge.vue';
+    import router from '../router';
+
+    function game(route) {
+        router.push(route);
+    };
+
 
 </script>
 
@@ -8,125 +15,17 @@
 <Navigation />
 
 
-<div class = "chal-container">
-    <!--Sfida maiuscole-->
-    <div class="challenge">
-        <div class="info">
-            <div class="chal-title">Maiuscole e minuscole</div>
-            <div class="description">Metti alla prova la tua capacità di adattarti ai cambi improvvisi di testo</div>
-        </div>
-        <div class="gif"><img src="https://c.tenor.com/iL1-s5TP0yQAAAAd/el-papu-sdlg.gif" alt="el gato"></div>
-        <div class="button"><button class="botton b-primary b-m">Gioca!</button></div>
-    </div>
-    <!--Sfida contro il tempo-->
-    <div class="challenge">
-        <div class="info">
-            <div class="chal-title">Prova a tempo</div>
-            <div class="description">Combatti contro il tempo per completare più parole possibili</div>
-        </div>
-        <div class="gif"><img src="https://64.media.tumblr.com/1012e4f0fcddc5e25401ac7f7bb0c5b9/tumblr_p48v6mWtfo1tdrpkqo1_640.gifv" alt="fast"></div>
-        <div class="button"><button class="botton b-primary b-m">Gioca!</button></div>
-    </div>
-    <!--Sfida parole random-->
-    <div class="challenge">
-        <div class="info">
-            <div class="chal-title">Parole in libertà</div>
-            <div class="description">Confrontati con il caso e completa più parole senza senso che puoi</div>
-        </div>
-        <div class="gif"><img src="https://c.tenor.com/E1v6K3PamfcAAAAC/vegeta-dragonballsuper.gif" alt="random"></div>
-        <div class="button"><button class="botton b-primary b-m">Gioca!</button></div>
-    </div>
-     <!--Sfida letter-by-letter-->
-    <div class="challenge">
-        <div class="info">
-            <div class="chal-title">Vicolo cieco</div>
-            <div class="description">Affina la tua prontezza avendo a disposizione solo poche lettere alla volta</div>
-        </div>
-        <div class="gif"><img src="https://c.tenor.com/o4AneVsjyLgAAAAC/typing-slow.gif" alt="pro typer"></div>
-        <div class="button"><button class="botton b-primary b-m">Gioca!</button></div>
-
-    </div>
+<div class = "flex flex-wrap xl:flex-nowrap mt-2 justify-center gap-1 xl:p-24">
+    <!-- <Challenge titolo="Maiuscole e minuscole" descrizione="Metti alla prova la tua capacità di adattarti ai cambi improvvisi di testo" gif="/test22.gif" /> -->
+    <Challenge titolo="Prova a tempo" descrizione="Combatti contro il tempo per completare più parole possibili" gif="/test22.gif" />
+    <Challenge titolo="Parole in libertà" descrizione="Confrontati con il caso e completa più parole senza senso che puoi"  gif="/test22.gif"/>
+    <Challenge titolo="Vicolo cieco" descrizione="Affina la tua prontezza avendo a disposizione solo poche lettere alla volta" gif="/test22.gif" @play-game='game("letterpractice")' />
 </div>
 
 </template>
 
 <style scoped>
 
-    .chal-container{
-        position:fixed;
-        height:90%;
-        width:100%;
-        margin-top:2%;
-        bottom:0;
-        overflow-x: hidden;
-        overflow-y: auto;
-        display: flex;
-        flex-wrap: wrap;
-    }
 
-    .challenge{
-        background:var(--alt-background-color);
-        margin:10px;
-        border-radius: 20px;
-        text-align:left;
-        display:flex;
-        flex-direction: row;
-        justify-content: space-between;
-        flex-basis: 700px;
-        flex-grow: 1;
-        flex-wrap: wrap;
 
-    }
-
-    .info {
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
-        width: 60%;
-        margin: 25px;
-        flex-basis: 550px;
-    }
-
-    .button {
-        align-self: center;
-        margin-right: 25px;
-
-    }
-
-    .chal-title{
-        font-weight: 600;
-        font-size: 30px;
-        background: var(--title-color);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin:1%;
-    }
-
-    .description{
-        font-weight: 600;
-        font-size: 20px;
-        color: var(--paragraph-text-color);
-        margin:1%;
-        margin-top:20px;
-    }
-
-    img {
-        
-        height: 100%;
-        width: 100%;
-        border-radius: 4px;
-        
-       
-    }
-    .gif {
-        display:flex;
-        height: 300px;
-        width: 400px;
-        object-fit: contain;
-        margin: 25px;
-        flex-direction: column;
-        justify-content: center;
-    }
-    
 </style>
