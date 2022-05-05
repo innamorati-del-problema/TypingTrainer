@@ -21,6 +21,10 @@ const router = createRouter({
       path: "/leaderboards",
       component: () => import("../components/Leaderboards.vue"),
     },
+    {
+      path: "/deadend",
+      component: () => import("../components/Challenges/DeadEnd.vue"),
+    },
   ],
 });
 

@@ -15,27 +15,27 @@
         <div
           @click="clicked(1)"
           :class="{
-            'bg-green-500 text-white dark:bg-purple-500 ': selected === 1,
+            'bg-green-500 text-white dark:bg-purple-500 dark:text-black': selected === 1,
           }"
-          class="flex h-10 w-10 items-center justify-center self-center rounded-l border-r-2 border-white bg-white shadow shadow-gray transition-all hover:cursor-pointer hover:shadow-md hover:shadow-gray dark:border-graphite-light dark:bg-white"
+          class="flex h-10 w-10 items-center justify-center self-center rounded-l border-r-2 border-white bg-white shadow shadow-gray transition-all hover:cursor-pointer hover:shadow-md hover:shadow-gray dark:border-graphite-light"
         >
           1
         </div>
         <div
           @click="clicked(2)"
           :class="{
-            'bg-green-500 text-white dark:bg-purple-500': selected === 2,
+            'bg-green-500 text-white dark:bg-purple-500 text-black': selected === 2,
           }"
-          class="flex h-10 w-10 items-center justify-center self-center border-r-2 border-white bg-white shadow shadow-gray transition-all hover:cursor-pointer hover:shadow-md hover:shadow-gray dark:border-graphite-light dark:bg-white"
+          class="flex h-10 w-10 items-center justify-center self-center border-r-2 border-white bg-white shadow shadow-gray transition-all hover:cursor-pointer hover:shadow-md hover:shadow-gray dark:border-graphite-light"
         >
           2
         </div>
         <div
           @click="clicked(3)"
           :class="{
-            'bg-green-500 text-white dark:bg-purple-500': selected === 3,
+            'bg-green-500 text-white dark:bg-purple-500 text-black': selected === 3,
           }"
-          class="flex h-10 w-10 items-center justify-center self-center rounded-r bg-white shadow shadow-gray transition-all hover:cursor-pointer hover:shadow-md hover:shadow-gray dark:bg-white"
+          class="flex h-10 w-10 items-center justify-center self-center rounded-r bg-white shadow shadow-gray transition-all hover:cursor-pointer hover:shadow-md hover:shadow-gray"
         >
           3
         </div>

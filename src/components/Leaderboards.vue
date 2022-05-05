@@ -7,9 +7,10 @@
         class="flex h-full w-full grow basis-96 flex-col rounded-xl bg-white p-8 shadow-lg dark:bg-graphite-light"
       >
         <h1 class="mb-5 self-center dark:text-white">Classifica globale</h1>
-        <div class="flex justify-between text-green-500 dark:text-purple-500">
+        <div class="flex justify-around text-green-500 dark:text-purple-500">
           <h1>Username</h1>
           <h1>WPM</h1>
+          <h1>WPM Raw</h1>
           <h1>Precisione</h1>
         </div>
         <div
@@ -17,10 +18,11 @@
           class="flex w-full flex-col"
           v-for="score in allTime"
         >
-          <div class="flex justify-between dark:text-white">
+          <div class="flex justify-between  dark:text-white">
             <h1>{{ score.username }}</h1>
             <h1>{{ score.wpm }}</h1>
-            <h1>{{ score.precision }}</h1>
+            <h1>{{ score.wpm_raw }}</h1>
+            <h1>{{ score.precision }}%</h1>
           </div>
         </div>
       </div>

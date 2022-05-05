@@ -1,5 +1,6 @@
 <template>
-  <div class="scores">
+  <Navigation />
+  <div class="scores m-2 flex justify-evenly text-3xl text-graphite dark:text-white">
     <div class="score timer">
       <h4>{{ timer }}</h4>
     </div>
@@ -10,12 +11,22 @@
       <h4>Precisione: {{ precision }}</h4>
     </div>
   </div>
-  <div class="practice-text" :class="{ blur: !started }" @click="start">
-    <span v-for="(letter, index) in string">
+  
+  <div class="text-md m-4 mx-auto w-5/6 rounded-xl bg-white p-3 text-center text-black shadow-x dark:bg-black text-white" @click="start"> 
+    <div v-if="!started" class="">
+      <h1 class="absolute left-0 z-50 mt-2 rght-0 mb-2 w-fit w-full text-4xl text-black dark:text-white">
+        Clicca per iniziare
+      </h1>
+    </div> 
+    <span :class="{ blur: !started }" v-for="(letter, index) in string">
       <span
         :class="{
-          'passed wrong': letterValues[index] == 1,
-          'passed right': letterValues[index] == 3,
+          'rounded-sm bg-[#ff00004d] text-[#858585] transition-colors dark:bg-[#ff00007d] text-[#f5f5f5]':
+            letterValues[index] == 1,
+          'rounded-sm bg-[#42b5424b] text-[#858585] transition-colors dark:bg-[#42b5427b] text-[#f5f5f5]':
+            letterValues[index] == 3,
+          'rounded-sm bg-[#fdfd184d] text-[#858585] transition-colors dark:bg-[#fdfd187d] text-[#f5f5f5]':
+            letterValues[index] == 2,
           text: true,
           'blur-sm':
             position - 1 != index &&
@@ -34,7 +45,8 @@
 
 <script setup>
 import { ref } from "vue";
-import texts from "../assets/texts.json";
+import texts from "../../assets/texts.json";
+import Navigation from "../Navigation.vue";
 
 var string = [];
 let position = ref(0);
@@ -132,43 +144,13 @@ function getRndInteger(min, max) {
 </script>
 
 <style lang="scss" scoped>
-@keyframes right {
-  from {
-    background-color: rgba(0, 0, 0, 0);
-  }
-
-  to {
-    background-color: var(--right-background-color);
-  }
-}
-
-@keyframes wrong {
-  from {
-    background-color: rgba(0, 0, 0, 0);
-  }
-
-  to {
-    background-color: var(--wrong-background-color);
-  }
-}
-
-@keyframes corrected {
-  from {
-    background-color: rgba(0, 0, 0, 0);
-  }
-
-  to {
-    background-color: var(--corrected-background-color);
-  }
-}
-
 @keyframes nextChar {
   0% {
     background-color: rgba(0, 0, 0, 0);
   }
 
   50% {
-    background-color: var(--next-char-color);
+    background-color: rgba(129, 129, 129, 0.581);
   }
 
   100% {
@@ -176,41 +158,6 @@ function getRndInteger(min, max) {
   }
 }
 
-.practice-text {
-  width: 80%;
-  margin-left: 50%;
-  transform: translateX(-50%);
-  background-color: var(--alt-background-color);
-  border-radius: 12px;
-  padding: 10px;
-  box-shadow: 0px 4px 47px -9px #7e7e7e;
-}
-
-.text {
-  font-size: 1.2rem;
-  margin: 1px;
-  color: var(--paragraph-text-color);
-}
-
-.passed {
-  border-radius: 2px;
-  color: var(--passed-key-color);
-
-  &.right {
-    animation: right 200ms linear forwards;
-    background-color: rgba(66, 181, 66, 0.296);
-  }
-
-  &.wrong {
-    background-color: rgba(255, 0, 0, 0.3);
-    animation: wrong 200ms linear forwards;
-  }
-
-  &.corrected {
-    background-color: rgba(253, 253, 24, 0.3);
-    animation: corrected 200ms linear forwards;
-  }
-}
 
 .nextChar {
   animation: nextChar 1200ms cubic-bezier(0, 1.03, 0, 0.99) infinite;
@@ -221,12 +168,4 @@ function getRndInteger(min, max) {
   filter: blur(3px);
 }
 
-.scores {
-  display: flex;
-}
-
-.score {
-  flex-grow: 1;
-  color: var(--paragraph-text-color);
-}
 </style>

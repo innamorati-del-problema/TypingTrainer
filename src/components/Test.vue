@@ -1,12 +1,60 @@
+<script setup>
+import { getAuth, onAuthStateChanged } from "@firebase/auth";
+import { useRouter } from "vue-router";
+import { onBeforeUnmount } from "vue";
+import Navigation from "./Navigation.vue";
+import TextPracticeTest2 from "./Challenges/TextPractice2.vue";
+import { ref as vueref } from "vue";
+import { getDatabase, ref, onValue, set, push } from "firebase/database";
+
+const db = getDatabase();
+const router = useRouter();
+const auth = getAuth();
+
+let username = vueref();
+let userObj;
+let userRef;
+
+const authListener = onAuthStateChanged(auth, (user) => {
+  if (!user) {
+    // not logged in
+    // alert('you must be logged in to view this. redirecting to the home page')
+    router.push("/");
+  }
+});
+
+onBeforeUnmount(() => {
+  // clear up listener
+  authListener();
+});
+
+const signOut = () => {
+  auth.signOut();
+};
+
+function sendData(wpm, precision, timer) {
+  const user = auth.currentUser;
+  const scoresListRef = ref(db, "/scores/");
+  const newScoreRef = push(scoresListRef);
+  const date = new Date();
+  set(newScoreRef, {
+    username: localStorage.username,
+    wpm: wpm,
+    precision: precision,
+    timer: timer,
+    day: date.getDay(),
+    month: date.getMonth(),
+    year: date.getFullYear(),
+  });
+}
+</script>
+
 <template>
-  <div class="text-center">
-    <!-- <Toggle /> -->
-    <Keyboard lang="us" />
+  <Navigation />
+
+  <div class="mt-10">
+    <TextPracticeTest2 @practice-end="sendData" />
   </div>
 </template>
 
-<script setup>
-import Keyboard from "./Keyboard/Keyboard.vue";
-</script>
-
-<style lang="scss" scoped></style>
+<style scoped></style>

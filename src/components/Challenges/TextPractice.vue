@@ -7,26 +7,26 @@
       <h4>WPM: {{ wpm }}</h4>
     </div>
     <div class="">
-      <h4>Precisione: {{ precision }}</h4>
+      <h4>Precisione: {{ precision }}%</h4>
     </div>
-  </div>
+  </div> 
   <div
-    class="text-md m-4 mx-auto w-5/6 rounded-xl bg-white p-3 text-center shadow-xl"
+    class="text-md m-4 mx-auto w-5/6 rounded-xl bg-white p-3 text-center text-black shadow-xl dark:bg-black text-white"
     @click="start"
   >
     <div v-if="!started" class="">
-      <h1 class="absolute left-0 z-50 mt-2 w-screen text-4xl text-black">
+      <h1 class="absolute left-0 z-50 mt-2 w-screen text-black text-4xl dark:text-white">
         Clicca per iniziare
       </h1>
     </div>
     <span :class="{ blur: !started }" v-for="(letter, index) in string">
       <span
         :class="{
-          'rounded-sm bg-[#ff00004d] text-[#858585] transition-colors':
+          'rounded-sm bg-[#ff00004d] text-[#7e7e7e] transition-colors dark:bg-[#ff00007d] text-[#f5f5f5]':
             letterValues[index] == 1,
-          'rounded-sm bg-[#42b5424b] text-[#858585] transition-colors':
+          'rounded-sm bg-[#42b5424b] text-[#7e7e7e] transition-colors dark:bg-[#42b5427b] text-[#f5f5f5]':
             letterValues[index] == 3,
-          'rounded-sm bg-[#fdfd184d] text-[#858585] transition-colors':
+          'rounded-sm bg-[#fdfd184d] text-[#7e7e7e]transition-colors dark:bg-[#fdfd187d] text-[#f5f5f5]':
             letterValues[index] == 2,
           nextChar: index == position && started,
         }"
@@ -55,7 +55,7 @@ let specialCharacters = [
 ];
 
 let started = ref(false);
-let precision = ref("100%");
+let precision = ref(100);
 let timer = ref("0:00");
 let secs = 0;
 let words = 0;
@@ -104,11 +104,9 @@ function keyHandler(ev) {
     }
     position.value++;
   } else if (ev.key != string[position.value]) {
-    if (letterValues.value[position.value - 1] != 1) {
       letterValues.value[position.value] = 1;
       position.value++;
       wrong++;
-    }
   } else {
     if (letterValues.value[position.value] != 0) {
       letterValues.value[position.value] = 2;
@@ -119,7 +117,7 @@ function keyHandler(ev) {
     position.value++;
   }
   precision.value =
-    Math.floor(((position.value - wrong) / position.value) * 100) + "%";
+    Math.floor(((position.value - wrong) / position.value) * 100);
 }
 
 watch(position, () => {
@@ -164,6 +162,7 @@ const emits = defineEmits(["practice-end"]);
     background-color: rgba(0, 0, 0, 0);
   }
 }
+
 
 .nextChar {
   animation: nextChar 1200ms cubic-bezier(0, 1.03, 0, 0.99) infinite;

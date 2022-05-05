@@ -37,9 +37,12 @@ function sendData(wpm, precision, timer) {
   const scoresListRef = ref(db, "/scores/");
   const newScoreRef = push(scoresListRef);
   const date = new Date();
+  const wpm_raw = wpm;
+  const wpm_good = wpm_raw*(precision/100);
   set(newScoreRef, {
     username: localStorage.username,
-    wpm: wpm,
+    wpm_raw: wpm_raw,
+    wpm: wpm_good,
     precision: precision,
     timer: timer,
     day: date.getDay(),

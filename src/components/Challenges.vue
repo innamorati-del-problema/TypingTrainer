@@ -27,7 +27,7 @@ function game(route) {
       titolo="Vicolo cieco"
       descrizione="Affina la tua prontezza avendo a disposizione solo poche lettere alla volta"
       gif="/test22.gif"
-      @play-game="game('letterpractice')"
+      @play-game="game('deadend')"
     />
   </div>
 </template>
