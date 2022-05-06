@@ -3,7 +3,6 @@ import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { useRouter } from "vue-router";
 import { onBeforeUnmount } from "vue";
 import Navigation from "./Navigation.vue";
-import TextPracticeTest2 from "./Challenges/TextPractice2.vue";
 import { ref as vueref } from "vue";
 import { getDatabase, ref, onValue, set, push } from "firebase/database";
 
@@ -52,9 +51,7 @@ function sendData(wpm, precision, timer) {
 <template>
   <Navigation />
 
-  <div class="mt-10">
-    <TextPracticeTest2 @practice-end="sendData" />
-  </div>
+  <div class="mt-10"></div>
 </template>
 
 <style scoped></style>
