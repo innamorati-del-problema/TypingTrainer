@@ -14,9 +14,14 @@ const props = defineProps(["wpm", "timer", "precision"]);
         <p class="text-3xl text-green-500 dark:text-purple-500">Tempo</p>
         <p>{{ timer }}</p>
         <p class="text-3xl text-green-500 dark:text-purple-500">Precisione</p>
-        <p>{{ precision }}</p>
+        <p>{{ precision }}%</p>
       </div>
-      <button class="custom-button-big primary mt-2">Chiudi</button>
+      <button
+        @click="$emit('close-modal')"
+        class="custom-button-big primary mt-2"
+      >
+        Chiudi
+      </button>
     </div>
   </div>
 </template>

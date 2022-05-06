@@ -8,6 +8,7 @@ import { ref as vueref } from "vue";
 import { getDatabase, ref, onValue, set, push } from "firebase/database";
 import "../Keyboard/Keyboard.vue";
 import Keyboard from "../Keyboard/Keyboard.vue";
+import CompleteModal from "../CompleteModal.vue";
 
 const db = getDatabase();
 const router = useRouter();
@@ -36,11 +37,11 @@ const signOut = () => {
 
 function sendData(wpm, precision, timer) {
   const user = auth.currentUser;
-  const scoresListRef = ref(db, "/scores/");
+  const scoresListRef = ref(db, "/practice/");
   const newScoreRef = push(scoresListRef);
   const date = new Date();
   const wpm_raw = wpm;
-  const wpm_good = wpm_raw * (precision / 100);
+  const wpm_good = Math.floor(wpm_raw * (precision / 100));
   set(newScoreRef, {
     username: localStorage.username,
     wpm_raw: wpm_raw,
@@ -52,18 +53,54 @@ function sendData(wpm, precision, timer) {
     year: date.getFullYear(),
   });
 }
+
+let _wpm = vueref();
+let _precision = vueref();
+let _timer = vueref();
+
+let finished = vueref(false);
+
+function onPracticeEnd(wpm, precision, timer) {
+  _wpm.value = wpm;
+  _precision.value = precision;
+  _timer.value = timer;
+  finished.value = true;
+  sendData(wpm, precision, timer);
+}
 </script>
 
 <template>
   <Navigation />
 
   <div class="mt-10">
-    <TextPracticeTest @practice-end="sendData" />
+    <TextPracticeTest @practice-end="onPracticeEnd" />
   </div>
 
-  <div class="text-center">
-    <Keyboard lang="it" class="text-center" />
+  <Transition name="modal">
+    <div v-if="finished">
+      <CompleteModal
+        class="bg-gray-dark bg-opacity-50"
+        :wpm="_wpm"
+        :precision="_precision"
+        :timer="_timer"
+        @close-modal="router.go()"
+      />
+    </div>
+  </Transition>
+
+  <div class="-z-[100] text-center">
+    <Keyboard v-if="!finished" lang="it" class="text-center" />
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.3s ease-out;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+}
+</style>

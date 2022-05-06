@@ -18,7 +18,7 @@
           class="flex w-full flex-col"
           v-for="score in allTime"
         >
-          <div class="flex justify-between  dark:text-white">
+          <div class="flex justify-between dark:text-white">
             <h1>{{ score.username }}</h1>
             <h1>{{ score.wpm }}</h1>
             <h1>{{ score.wpm_raw }}</h1>
@@ -56,7 +56,7 @@ const db = getDatabase();
 let allTime = vueref([]);
 
 const topTenWpm = query(
-  ref(db, "/scores/"),
+  ref(db, "/practice/"),
   orderByChild("wpm"),
   limitToFirst(10)
 );

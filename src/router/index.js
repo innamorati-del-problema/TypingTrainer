@@ -22,8 +22,10 @@ const router = createRouter({
       component: () => import("../components/Leaderboards.vue"),
     },
     {
-      path: "/deadend",
+      name: "deadend",
+      path: "/deadend/:level",
       component: () => import("../components/Challenges/DeadEnd.vue"),
+      props: true,
     },
   ],
 });

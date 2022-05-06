@@ -15,7 +15,7 @@
         <div
           @click="clicked(1)"
           :class="{
-            'bg-green-500 text-white dark:bg-purple-500 dark:text-black': selected === 1,
+            'bg-green-500 text-white dark:bg-purple-500': level === 1,
           }"
           class="flex h-10 w-10 items-center justify-center self-center rounded-l border-r-2 border-white bg-white shadow shadow-gray transition-all hover:cursor-pointer hover:shadow-md hover:shadow-gray dark:border-graphite-light"
         >
@@ -24,7 +24,7 @@
         <div
           @click="clicked(2)"
           :class="{
-            'bg-green-500 text-white dark:bg-purple-500 text-black': selected === 2,
+            'bg-green-500 text-white dark:bg-purple-500': level === 2,
           }"
           class="flex h-10 w-10 items-center justify-center self-center border-r-2 border-white bg-white shadow shadow-gray transition-all hover:cursor-pointer hover:shadow-md hover:shadow-gray dark:border-graphite-light"
         >
@@ -33,7 +33,7 @@
         <div
           @click="clicked(3)"
           :class="{
-            'bg-green-500 text-white dark:bg-purple-500 text-black': selected === 3,
+            'bg-green-500 text-white dark:bg-purple-500': level === 3,
           }"
           class="flex h-10 w-10 items-center justify-center self-center rounded-r bg-white shadow shadow-gray transition-all hover:cursor-pointer hover:shadow-md hover:shadow-gray"
         >
@@ -42,7 +42,7 @@
       </div>
       <button
         class="custom-button m-2 from-green-500 to-green-600 dark:from-purple-500 dark:to-purple-600 xl:self-end"
-        @click="$emit('play-game', selected.value)"
+        @click="$emit('play-game', level)"
       >
         Gioca!
       </button>
@@ -72,12 +72,12 @@ const props = defineProps({
   },
 });
 
-const selected = ref(1);
+const level = ref(1);
 
 const emits = defineEmits(["play-game"]);
 
 function clicked(num) {
-  selected.value = num;
+  level.value = num;
 }
 </script>
 

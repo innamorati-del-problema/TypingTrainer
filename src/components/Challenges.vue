@@ -2,10 +2,6 @@
 import Navigation from "./Navigation.vue";
 import Challenge from "./Challenge.vue";
 import router from "../router";
-
-function game(route) {
-  router.push(route);
-}
 </script>
 
 <template>
@@ -27,7 +23,9 @@ function game(route) {
       titolo="Vicolo cieco"
       descrizione="Affina la tua prontezza avendo a disposizione solo poche lettere alla volta"
       gif="/test22.gif"
-      @play-game="game('deadend')"
+      @play-game="
+        (level) => router.push({ name: 'deadend', params: { level: level } })
+      "
     />
   </div>
 </template>

@@ -1,6 +1,8 @@
 <template>
   <Navigation />
-  <div class="scores m-2 flex justify-evenly text-3xl text-graphite dark:text-white">
+  <div
+    class="scores m-2 flex justify-evenly text-3xl text-graphite dark:text-white"
+  >
     <div class="score timer">
       <h4>{{ timer }}</h4>
     </div>
@@ -11,28 +13,29 @@
       <h4>Precisione: {{ precision }}</h4>
     </div>
   </div>
-  
-  <div class="text-md m-4 mx-auto w-5/6 rounded-xl bg-white p-3 text-center text-black shadow-x dark:bg-black text-white" @click="start"> 
+
+  <div
+    class="text-md shadow-x m-4 mx-auto w-5/6 rounded-xl bg-white p-3 text-center text-black dark:bg-graphite-light dark:text-white"
+    @click="start"
+  >
     <div v-if="!started" class="">
-      <h1 class="absolute left-0 z-50 mt-2 rght-0 mb-2 w-fit w-full text-4xl text-black dark:text-white">
+      <h1
+        class="rght-0 absolute left-0 z-50 mt-2 mb-2 w-full text-4xl text-black dark:text-white"
+      >
         Clicca per iniziare
       </h1>
-    </div> 
+    </div>
     <span :class="{ blur: !started }" v-for="(letter, index) in string">
       <span
         :class="{
-          'rounded-sm bg-[#ff00004d] text-[#858585] transition-colors dark:bg-[#ff00007d] text-[#f5f5f5]':
+          'rounded-sm bg-[#ff00004d] text-[#858585] transition-colors dark:bg-[#ff00007d] dark:text-[#f5f5f5]':
             letterValues[index] == 1,
-          'rounded-sm bg-[#42b5424b] text-[#858585] transition-colors dark:bg-[#42b5427b] text-[#f5f5f5]':
+          'rounded-sm bg-[#42b5424b] text-[#858585] transition-colors dark:bg-[#42b5427b] dark:text-[#f5f5f5]':
             letterValues[index] == 3,
-          'rounded-sm bg-[#fdfd184d] text-[#858585] transition-colors dark:bg-[#fdfd187d] text-[#f5f5f5]':
+          'rounded-sm bg-[#fdfd184d] text-[#858585] transition-colors dark:bg-[#fdfd187d] dark:text-[#f5f5f5]':
             letterValues[index] == 2,
           text: true,
-          'blur-sm':
-            position - 1 != index &&
-            position != index &&
-            position + 2 != index &&
-            position + 1 != index,
+          'blur-sm': position - 1 > index || position + 3 - level < index,
           'passed corrected': letterValues[index] == 2,
           nextChar: index == position && started,
         }"
@@ -44,8 +47,9 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import texts from "../../assets/texts.json";
+import "../Navigation.vue";
 import Navigation from "../Navigation.vue";
 
 var string = [];
@@ -61,22 +65,23 @@ let specialCharacters = [
   "AltGraph",
 ];
 
+const props = defineProps(["level"]);
+
 let started = ref(false);
-let precision = ref("100%");
+let precision = ref(100);
 let timer = ref("0:00");
 let secs = 0;
 let words = 0;
 
 var timerStop = false;
 
-let wrong = 0;
+var wrong = 0;
 
 const wpm = ref(0);
 let i = 0;
-let n = getRndInteger(1, 5);
+let n = getRndInteger(0, 9);
 for (i = 0; i < texts[n].text.length; i++) {
-  let s = texts[n].text[i] == " " ? " " : texts[n].text[i];
-  string.push(s);
+  string.push(texts[n].text[i]);
 }
 let letterValues = ref(new Array(string.length).fill(0));
 
@@ -91,15 +96,14 @@ function start() {
 function keyHandler(ev) {
   if (specialCharacters.indexOf(ev.key) != -1) {
     return;
-  } else if (position.value >= string.length) {
-    position.value = string.length - 1;
-    timerStop = true;
-    window.removeEventListener("keydown", keyHandler);
   } else if (ev.key == "Backspace") {
     if (string[position.value - 1] == " ") {
     } else if (position.value <= 0) {
       position.value = 0;
     } else {
+      if (letterValues.value[position.value - 1] == 1) {
+        wrong--;
+      }
       position.value--;
     }
     letterValues.value[position.value] = -1;
@@ -119,22 +123,35 @@ function keyHandler(ev) {
   } else {
     if (letterValues.value[position.value] != 0) {
       letterValues.value[position.value] = 2;
-      wrong--;
     } else {
       letterValues.value[position.value] = 3;
     }
 
     position.value++;
   }
-  precision.value = Math.floor((1 - wrong / position.value) * 100) + "%";
+  precision.value = Math.floor(
+    ((position.value - wrong) / position.value) * 100
+  );
 }
+
+watch(position, () => {
+  timerStop = position.value >= string.length;
+});
 
 function timerStart() {
   if (!timerStop) {
     let minutes = Math.floor(secs / 60);
     let seconds = secs % 60;
 
-    if (seconds < 10) setTimeout(timerStart, 1000);
+    if (seconds < 10) timer.value = "" + minutes + ":0" + seconds;
+    else timer.value = "" + minutes + ":" + seconds;
+
+    secs++;
+
+    setTimeout(timerStart, 1000);
+  } else {
+    window.removeEventListener("keydown", keyHandler);
+    emits("practice-end", wpm.value, precision.value, timer.value);
   }
 }
 
@@ -158,7 +175,6 @@ function getRndInteger(min, max) {
   }
 }
 
-
 .nextChar {
   animation: nextChar 1200ms cubic-bezier(0, 1.03, 0, 0.99) infinite;
   border-radius: 2px;
@@ -167,5 +183,4 @@ function getRndInteger(min, max) {
 .blur {
   filter: blur(3px);
 }
-
 </style>
