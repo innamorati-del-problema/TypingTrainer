@@ -6,6 +6,8 @@ import Navigation from "../Navigation.vue";
 import TextPracticeTest from "./TextPractice.vue";
 import { ref as vueref } from "vue";
 import { getDatabase, ref, onValue, set, push } from "firebase/database";
+import "../Keyboard/Keyboard.vue";
+import Keyboard from "../Keyboard/Keyboard.vue";
 
 const db = getDatabase();
 const router = useRouter();
@@ -38,7 +40,7 @@ function sendData(wpm, precision, timer) {
   const newScoreRef = push(scoresListRef);
   const date = new Date();
   const wpm_raw = wpm;
-  const wpm_good = wpm_raw*(precision/100);
+  const wpm_good = wpm_raw * (precision / 100);
   set(newScoreRef, {
     username: localStorage.username,
     wpm_raw: wpm_raw,
@@ -57,6 +59,10 @@ function sendData(wpm, precision, timer) {
 
   <div class="mt-10">
     <TextPracticeTest @practice-end="sendData" />
+  </div>
+
+  <div class="text-center">
+    <Keyboard lang="it" class="text-center" />
   </div>
 </template>
 

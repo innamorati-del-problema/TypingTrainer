@@ -100,12 +100,12 @@ svg {
   }
 }
 .rect {
-  fill: var(--alt-background-color);
+  fill: white;
   ry: 8px;
 }
 
 .text {
-  fill: var(--paragraph-text-color);
+  fill: black;
   animation: unpressed 100ms ease forwards;
 }
 

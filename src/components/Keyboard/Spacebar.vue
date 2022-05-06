@@ -59,7 +59,7 @@ svg {
   }
 }
 .rect {
-  fill: var(--alt-background-color);
+  fill: white;
   ry: 8px;
 }
 
