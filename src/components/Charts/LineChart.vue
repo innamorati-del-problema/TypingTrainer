@@ -1,6 +1,5 @@
 <template>
-  <h1 class="m-3 text-center text-3xl dark:text-white">Bar Chart test</h1>
-  <Bar
+  <Line
     :chart-options="chartOptions"
     :chart-data="chartData"
     :chart-id="chartId"
@@ -42,6 +41,7 @@ import {
   Tooltip,
   SubTitle,
 } from "chart.js";
+import { ref } from "vue";
 
 Chart.register(
   ArcElement,
@@ -99,17 +99,59 @@ defineProps({
     type: Object,
     default: () => {},
   },
+  chartOptions: {
+    type: Object,
+    default: () => {},
+  },
+  chartData: {
+    type: Object,
+    default: () => {},
+  },
 });
 
-let chartData = {
-  labels: ["January", "February", "March"],
-  datasets: [{ data: [40, 20, 12] }],
-};
+Chart.defaults.font.family = "IBM Plex Mono";
+
+const color = ref(localStorage.theme === "light" ? "#72C53F" : "#D01FC9");
+
 let chartOptions = {
   responsive: true,
+  plugins: {
+    title: {
+      display: true,
+      text: "Statistiche Pratica",
+    },
+    legend: {
+      display: false,
+    },
+    tooltip: {
+      enabled: true,
+    },
+  },
+  elements: {
+    line: {
+      tension: 0.4,
+      borderColor: color.value,
+    },
+    point: {
+      borderWidth: 2,
+      backgroundColor: color.value,
+      borderColor: "#ffffff",
+      radius: 5,
+    },
+  },
+  scales: {
+    x: {
+      grid: {
+        display: false,
+      },
+    },
+    y: {
+      grid: {
+        display: false,
+      },
+    },
+  },
 };
-
-let cssClasses = "bg-white h-96 w-96";
 </script>
 
 <style lang="scss" scoped></style>

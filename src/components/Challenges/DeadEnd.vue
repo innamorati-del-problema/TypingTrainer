@@ -44,16 +44,34 @@
       </span>
     </span>
   </div>
+
+  <Transition name="modal">
+    <div v-if="finished">
+      <CompleteModal
+        class="bg-gray-dark bg-opacity-50 dark:text-white"
+        :wpm="wpm"
+        :precision="precision"
+        :timer="timer"
+        @close-modal="router.go()"
+      />
+    </div>
+  </Transition>
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { ref as vueref, watch } from "vue";
+import { useRouter } from "vue-router";
 import texts from "../../assets/texts.json";
 import "../Navigation.vue";
 import Navigation from "../Navigation.vue";
+import CompleteModal from "../CompleteModal.vue";
+import { getDatabase, ref, onValue, set, push } from "firebase/database";
+
+const db = getDatabase();
+const router = useRouter();
 
 var string = [];
-let position = ref(0);
+let position = vueref(0);
 let specialCharacters = [
   "Tab",
   "CapsLock",
@@ -66,10 +84,11 @@ let specialCharacters = [
 ];
 
 const props = defineProps(["level"]);
+const finished = vueref(false);
 
-let started = ref(false);
-let precision = ref(100);
-let timer = ref("0:00");
+let started = vueref(false);
+let precision = vueref(100);
+let timer = vueref("0:00");
 let secs = 0;
 let words = 0;
 
@@ -77,13 +96,13 @@ var timerStop = false;
 
 var wrong = 0;
 
-const wpm = ref(0);
+const wpm = vueref(0);
 let i = 0;
 let n = getRndInteger(0, 9);
 for (i = 0; i < texts[n].text.length; i++) {
   string.push(texts[n].text[i]);
 }
-let letterValues = ref(new Array(string.length).fill(0));
+let letterValues = vueref(new Array(string.length).fill(0));
 
 function start() {
   if (!started.value) {
@@ -151,8 +170,27 @@ function timerStart() {
     setTimeout(timerStart, 1000);
   } else {
     window.removeEventListener("keydown", keyHandler);
-    emits("practice-end", wpm.value, precision.value, timer.value);
+    finished.value = true;
+    sendData(wpm.value, precision.value, timer.value);
   }
+}
+
+function sendData(wpm, precision, timer) {
+  const scoresListRef = ref(db, "/deadend/" + props.level);
+  const newScoreRef = push(scoresListRef);
+  const date = new Date();
+  const wpm_raw = wpm;
+  const wpm_good = Math.floor(wpm_raw * (precision / 100));
+  set(newScoreRef, {
+    username: localStorage.username,
+    wpm_raw: wpm_raw,
+    wpm: wpm_good,
+    precision: precision,
+    timer: timer,
+    day: date.getDay(),
+    month: date.getMonth(),
+    year: date.getFullYear(),
+  });
 }
 
 function getRndInteger(min, max) {
@@ -182,5 +220,15 @@ function getRndInteger(min, max) {
 
 .blur {
   filter: blur(3px);
+}
+
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.3s ease-out;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
 }
 </style>

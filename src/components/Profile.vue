@@ -34,9 +34,7 @@
         <div
           class="m-2 flex h-full shrink grow basis-full flex-col rounded-xl p-4 shadow shadow-gray dark:bg-graphite dark:shadow-none"
         >
-          <h2 class="self-center text-lg text-green-500 dark:text-purple-500">
-            Statistiche
-          </h2>
+          <Statistics />
         </div>
         <div
           class="m-2 flex h-full shrink grow basis-72 flex-col rounded-xl shadow shadow-gray dark:bg-graphite dark:shadow-none"
@@ -127,11 +125,24 @@ import {
   updatePassword,
   signInWithEmailAndPassword,
 } from "@firebase/auth";
-import { getDatabase, ref, onValue, set, update } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  onValue,
+  set,
+  update,
+  query,
+  orderByChild,
+  orderByKey,
+  limitToFirst,
+  equalTo,
+} from "firebase/database";
 import { onBeforeMount, ref as vueref } from "vue";
 import { useRouter } from "vue-router";
 import { createAvatar } from "@dicebear/avatars";
 import * as style from "@dicebear/adventurer-neutral";
+import LineChart from "./Charts/LineChart.vue";
+import Statistics from "./Statistics.vue";
 
 const db = getDatabase();
 const router = useRouter();
@@ -150,6 +161,8 @@ var newPassword = vueref("");
 var newUsername = vueref("");
 
 var darkMode = vueref();
+
+var selected = vueref();
 
 onBeforeMount(authListener);
 

@@ -76,10 +76,14 @@ function onPracticeEnd(wpm, precision, timer) {
     <TextPracticeTest @practice-end="onPracticeEnd" />
   </div>
 
+  <div class="-z-[100] text-center">
+    <Keyboard lang="it" class="text-center" />
+  </div>
+
   <Transition name="modal">
     <div v-if="finished">
       <CompleteModal
-        class="bg-gray-dark bg-opacity-50"
+        class="bg-gray-dark bg-opacity-50 dark:text-white"
         :wpm="_wpm"
         :precision="_precision"
         :timer="_timer"
@@ -87,10 +91,6 @@ function onPracticeEnd(wpm, precision, timer) {
       />
     </div>
   </Transition>
-
-  <div class="-z-[100] text-center">
-    <Keyboard v-if="!finished" lang="it" class="text-center" />
-  </div>
 </template>
 
 <style scoped>

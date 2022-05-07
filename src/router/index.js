@@ -29,7 +29,7 @@ const router = createRouter({
     },
     {
       path: "/chart",
-      component: () => import("../components/Charts/BarChart.vue"),
+      component: () => import("../components/Charts/LineChart.vue"),
     },
   ],
 });
