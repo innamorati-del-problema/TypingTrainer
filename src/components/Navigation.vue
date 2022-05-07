@@ -1,7 +1,8 @@
 <script setup>
 import { ref, watch } from "vue";
-
+import { getAuth } from "firebase/auth";
 let light = ref(localStorage.theme === "light");
+const showExit = ref(false);
 
 function change() {
   if (localStorage.theme === "light" || !("theme" in localStorage)) {
@@ -20,13 +21,20 @@ let showResponsiveNavbar = ref(false);
 function toggleNavbar() {
   showResponsiveNavbar.value = !showResponsiveNavbar.value;
 }
+
+const avatar = localStorage.avatar;
+
+function logOut() {
+  const auth = getAuth();
+  auth.signOut();
+}
 </script>
 <template>
   <nav
     class="flex w-full justify-center pt-1 pb-0 dark:border-purple-500 md:h-10"
   >
     <div
-      class="m-2 mx-auto w-full items-center justify-evenly text-center md:flex lg:w-4/6 lg:justify-between"
+      class="m-2 mx-auto w-full items-center justify-evenly text-center md:flex lg:w-5/6 lg:justify-between"
     >
       <div
         class="text-shadow-primary sm:3text-xl ml-2 bg-gradient-to-b from-green-500 to-green-600 bg-clip-text text-left text-2xl text-transparent drop-shadow-lg dark:from-purple-500 dark:to-purple-500"
@@ -35,7 +43,7 @@ function toggleNavbar() {
       </div>
       <div
         :class="{ hidden: showResponsiveNavbar }"
-        class="realtive transition-all md:flex lg:ml-12"
+        class="relative transition-all md:flex lg:ml-12"
       >
         <div
           class="text-shadow m-1 text-2xl transition-all sm:mx-3 sm:text-xl"
@@ -78,9 +86,10 @@ function toggleNavbar() {
           <router-link to="/leaderboards"> Leaderboards </router-link>
         </div>
       </div>
+
       <font-awesome-icon
         @click="toggleNavbar"
-        class="absolute top-4 right-4 rounded-lg bg-white p-2 text-green-500 shadow-lg dark:text-purple-500 md:hidden"
+        class="absolute top-4 right-4 rounded-lg bg-white p-2 text-green-500 shadow-lg hover:cursor-pointer dark:text-purple-500 md:hidden"
         icon="bars"
       />
       <div class="absolute top-6 right-14 md:static">
@@ -100,9 +109,31 @@ function toggleNavbar() {
           />
         </div>
       </div>
+      <div
+        class="fixed top-4 right-24 mt-1 mr-2 h-8 w-8 basis-8 rounded-full border-[1px] border-[rgba(0,0,0,0)] ring-2 ring-graphite-light hover:cursor-pointer dark:ring-white md:static"
+      >
+        <div @click="showExit = !showExit" v-html="avatar" class="avatar"></div>
+        <div
+          v-show="showExit"
+          @click="logOut"
+          class="absolute -right-10 -bottom-14 flex h-12 w-28 items-center justify-center rounded-xl bg-white shadow dark:bg-graphite-light"
+        >
+          <h1 class="texthover:cursor-pointer text-red-500">Esci</h1>
+        </div>
+      </div>
     </div>
   </nav>
   <router-view />
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.3s ease-out;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>
