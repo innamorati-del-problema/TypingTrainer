@@ -116,7 +116,7 @@ function logOut() {
         <div
           v-show="showExit"
           @click="logOut"
-          class="absolute -right-10 -bottom-14 flex h-12 w-28 items-center justify-center rounded-xl bg-white shadow dark:bg-graphite-light"
+          class="absolute -right-10 -bottom-14 flex h-12 w-28 items-center justify-center rounded-xl bg-white shadow dark:bg-graphite-light md:relative md:right-10 md:-bottom-2"
         >
           <h1 class="texthover:cursor-pointer text-red-500">Esci</h1>
         </div>
