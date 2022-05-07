@@ -11,7 +11,7 @@
     </div>
   </div>
   <div
-    class="text-md m-4 mx-auto w-5/6 rounded-xl bg-white p-3 text-center text-black shadow-xl dark:bg-black dark:text-white"
+    class="text-md m-4 mx-auto w-5/6 rounded-xl bg-white p-3 text-center text-black shadow-xl dark:bg-graphite-light dark:text-white"
     @click="start"
   >
     <div v-if="!started" class="">
