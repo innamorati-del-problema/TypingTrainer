@@ -15,45 +15,70 @@
   </div>
 
   <div
-    class="text-md shadow-x m-4 mx-auto w-5/6 rounded-xl bg-white p-3 text-center text-black dark:bg-graphite-light dark:text-white"
+    class="text-md shadow-x relative m-4 mx-auto w-5/6 rounded-xl bg-white p-3 text-black dark:bg-graphite-light dark:text-white"
     @click="start"
   >
-    <div v-if="!started" class="">
-      <h1
-        class="rght-0 absolute left-0 z-50 mt-2 mb-2 w-full text-4xl text-black dark:text-white"
-      >
+    <div
+      v-if="!started"
+      class="absolute top-0 left-0 z-50 flex h-full w-full items-center justify-center"
+    >
+      <h1 class="mb-2 text-4xl text-black dark:text-white">
         Clicca per iniziare
       </h1>
     </div>
-    <span :class="{ blur: !started }" v-for="(letter, index) in string">
-      <span
-        :class="{
-          'rounded-sm bg-[#ff00004d] text-[#858585] transition-colors dark:bg-[#ff00007d] dark:text-[#f5f5f5]':
-            letterValues[index] == 1,
-          'rounded-sm bg-[#42b5424b] text-[#858585] transition-colors dark:bg-[#42b5427b] dark:text-[#f5f5f5]':
-            letterValues[index] == 3,
-          'rounded-sm bg-[#fdfd184d] text-[#858585] transition-colors dark:bg-[#fdfd187d] dark:text-[#f5f5f5]':
-            letterValues[index] == 2,
-          text: true,
-          'blur-sm': position - 1 > index || position + 3 - level < index,
-          'passed corrected': letterValues[index] == 2,
-          nextChar: index == position && started,
-        }"
-      >
-        {{ letter }}
-      </span>
+    <div
+      v-if="started && !finished"
+      :style="{
+        left: refs[position].offsetLeft + 'px',
+        top: refs[position].offsetTop + 'px',
+      }"
+      class="absolute h-6 w-[3px] rounded-md bg-green-500 transition-all duration-200 ease-out"
+    ></div>
+    <span
+      class="text-xl"
+      :class="{
+        'blur-[7px]': !started,
+        active: index == position,
+        'rounded-sm text-[#ff0000]  dark:text-[#ff00007d] ':
+          letterValues[index] == 1,
+        'rounded-sm text-[#42b542]  dark:text-[#42b5427b] ':
+          letterValues[index] == 3,
+        'rounded-sm text-[#e1e100]  dark:text-[#fdfd187d] ':
+          letterValues[index] == 2,
+        'blur-sm': position + 3 - level < index,
+      }"
+      v-for="(letter, index) in string"
+    >
+      <span :ref="(el) => refs.push(el)">{{ letter }}</span>
     </span>
   </div>
+
+  <Transition name="modal">
+    <div v-if="finished">
+      <CompleteModal
+        class="bg-gray-dark bg-opacity-50 dark:text-white"
+        :wpm="wpm"
+        :precision="precision"
+        :timer="timer"
+        @close-modal="router.go()"
+      />
+    </div>
+  </Transition>
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { onMounted, ref as vueref, watch } from "vue";
+import { useRouter } from "vue-router";
 import texts from "../../assets/texts.json";
 import "../Navigation.vue";
 import Navigation from "../Navigation.vue";
+import CompleteModal from "../CompleteModal.vue";
+import { getDatabase, ref, onValue, set, push } from "firebase/database";
 
+const db = getDatabase();
+const router = useRouter();
 var string = [];
-let position = ref(0);
+let position = vueref(0);
 let specialCharacters = [
   "Tab",
   "CapsLock",
@@ -65,11 +90,14 @@ let specialCharacters = [
   "AltGraph",
 ];
 
-const props = defineProps(["level"]);
+var refs = [];
 
-let started = ref(false);
-let precision = ref(100);
-let timer = ref("0:00");
+const props = defineProps(["level"]);
+const finished = vueref(false);
+
+let started = vueref(false);
+let precision = vueref(100);
+let timer = vueref("0:00");
 let secs = 0;
 let words = 0;
 
@@ -77,13 +105,13 @@ var timerStop = false;
 
 var wrong = 0;
 
-const wpm = ref(0);
+const wpm = vueref(0);
 let i = 0;
 let n = getRndInteger(0, 9);
 for (i = 0; i < texts[n].text.length; i++) {
   string.push(texts[n].text[i]);
 }
-let letterValues = ref(new Array(string.length).fill(0));
+let letterValues = vueref(new Array(string.length).fill(0));
 
 function start() {
   if (!started.value) {
@@ -136,6 +164,11 @@ function keyHandler(ev) {
 
 watch(position, () => {
   timerStop = position.value >= string.length;
+  if (timerStop) {
+    window.removeEventListener("keydown", keyHandler);
+    finished.value = true;
+    sendData(wpm.value, precision.value, timer.value);
+  }
 });
 
 function timerStart() {
@@ -149,10 +182,25 @@ function timerStart() {
     secs++;
 
     setTimeout(timerStart, 1000);
-  } else {
-    window.removeEventListener("keydown", keyHandler);
-    emits("practice-end", wpm.value, precision.value, timer.value);
   }
+}
+
+function sendData(wpm, precision, timer) {
+  const scoresListRef = ref(db, "/deadend/" + props.level);
+  const newScoreRef = push(scoresListRef);
+  const date = new Date();
+  const wpm_raw = wpm;
+  const wpm_good = Math.floor(wpm_raw * (precision / 100));
+  set(newScoreRef, {
+    username: localStorage.username,
+    wpm_raw: wpm_raw,
+    wpm: wpm_good,
+    precision: precision,
+    timer: timer,
+    day: 1 + date.getDay(),
+    month: 1 + date.getMonth(),
+    year: 1 + date.getFullYear(),
+  });
 }
 
 function getRndInteger(min, max) {
@@ -182,5 +230,15 @@ function getRndInteger(min, max) {
 
 .blur {
   filter: blur(3px);
+}
+
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.3s ease-out;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
 }
 </style>

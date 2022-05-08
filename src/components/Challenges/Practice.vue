@@ -48,9 +48,9 @@ function sendData(wpm, precision, timer) {
     wpm: wpm_good,
     precision: precision,
     timer: timer,
-    day: date.getDay(),
-    month: date.getMonth(),
-    year: date.getFullYear(),
+    day: 1 + date.getDay(),
+    month: 1 + date.getMonth(),
+    year: 1 + date.getFullYear(),
   });
 }
 
@@ -72,14 +72,18 @@ function onPracticeEnd(wpm, precision, timer) {
 <template>
   <Navigation />
 
-  <div class="mt-10">
+  <div class="mx-auto mt-20 mb-20 max-w-[900px]">
     <TextPracticeTest @practice-end="onPracticeEnd" />
+  </div>
+
+  <div class="-z-[100] text-center">
+    <Keyboard lang="it" class="text-center" />
   </div>
 
   <Transition name="modal">
     <div v-if="finished">
       <CompleteModal
-        class="bg-gray-dark bg-opacity-50"
+        class="bg-gray-dark bg-opacity-50 dark:text-white"
         :wpm="_wpm"
         :precision="_precision"
         :timer="_timer"
@@ -87,10 +91,6 @@ function onPracticeEnd(wpm, precision, timer) {
       />
     </div>
   </Transition>
-
-  <div class="-z-[100] text-center">
-    <Keyboard v-if="!finished" lang="it" class="text-center" />
-  </div>
 </template>
 
 <style scoped>

@@ -11,29 +11,38 @@
     </div>
   </div>
   <div
-    class="text-md m-4 mx-auto w-5/6 rounded-xl bg-white p-3 text-center text-black shadow-xl dark:bg-black dark:text-white"
+    class="text-md relative m-4 mx-auto w-5/6 rounded-xl bg-white p-3 text-center text-black shadow-xl dark:bg-graphite-light dark:text-white"
     @click="start"
   >
-    <div v-if="!started" class="">
-      <h1
-        class="absolute left-0 z-50 mt-2 w-screen text-4xl text-black dark:text-white"
-      >
+    <div
+      v-if="!started"
+      class="absolute top-0 left-0 z-50 flex h-full w-full items-center justify-center"
+    >
+      <h1 class="mb-2 text-4xl text-black dark:text-white">
         Clicca per iniziare
       </h1>
     </div>
-    <span :class="{ blur: !started }" v-for="(letter, index) in string">
+    <div
+      v-if="started"
+      :style="{
+        left: refs[position].offsetLeft + 'px',
+        top: refs[position].offsetTop + 'px',
+      }"
+      class="absolute h-6 w-[3px] rounded-md bg-green-500 transition-all duration-200 ease-out"
+    ></div>
+    <span :class="{ 'blur-[7px]': !started }" v-for="(letter, index) in string">
       <span
+        class="text-xl"
         :class="{
-          'dark:stext-[#f5f5f5] rounded-sm bg-[#ff00004d] text-[#7e7e7e] transition-colors dark:bg-[#ff00007d]':
+          'rounded-sm text-[#ff0000]  dark:text-[#ff00007d] ':
             letterValues[index] == 1,
-          'dark:stext-[#f5f5f5] rounded-sm bg-[#42b5424b] text-[#7e7e7e] transition-colors dark:bg-[#42b5427b]':
+          'rounded-sm text-[#42b542]  dark:text-[#42b5427b] ':
             letterValues[index] == 3,
-          'text-[#7e7e7e]transition-colors rounded-sm bg-[#fdfd184d] text-[#f5f5f5] dark:bg-[#fdfd187d]':
+          'rounded-sm text-[#e1e100]  dark:text-[#fdfd187d] ':
             letterValues[index] == 2,
-          nextChar: index == position && started,
         }"
       >
-        {{ letter }}
+        <span :ref="(el) => refs.push(el)">{{ letter }}</span>
       </span>
     </span>
   </div>
@@ -55,6 +64,8 @@ let specialCharacters = [
   "Esc",
   "AltGraph",
 ];
+
+var refs = [];
 
 let started = ref(false);
 let precision = ref(100);

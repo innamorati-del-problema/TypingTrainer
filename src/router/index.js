@@ -27,6 +27,10 @@ const router = createRouter({
       component: () => import("../components/Challenges/DeadEnd.vue"),
       props: true,
     },
+    {
+      path: "/chart",
+      component: () => import("../components/Charts/LineChart.vue"),
+    },
   ],
 });
 
