@@ -11,6 +11,7 @@
       name="statistiche"
     >
       <option selected value="practice">Pratica</option>
+      <option value="timerrush">Prova a Tempo</option>
       <option value="deadend">Dead End</option>
       <option value="freewords">Parole Libertà</option>
       <option value="js">Codice</option>

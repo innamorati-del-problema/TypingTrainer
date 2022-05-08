@@ -110,7 +110,7 @@ function logOut() {
         </div>
       </div>
       <div
-        class="fixed top-4 right-24 mt-1 mr-2 h-8 w-8 basis-8 rounded-full border-[1px] border-[rgba(0,0,0,0)] ring-2 ring-graphite-light hover:cursor-pointer dark:ring-white md:static"
+        class="absolute top-4 right-24 mt-1 mr-2 h-8 w-8 basis-8 rounded-full border-[1px] border-[rgba(0,0,0,0)] ring-2 ring-graphite-light hover:cursor-pointer dark:ring-white md:static"
       >
         <div @click="showExit = !showExit" v-html="avatar" class="avatar"></div>
         <div

@@ -58,7 +58,7 @@ let allTime = vueref([]);
 const topTenWpm = query(
   ref(db, "/practice/"),
   orderByChild("wpm"),
-  limitToFirst(10)
+  limitToFirst(20)
 );
 onValue(topTenWpm, (snapshot) => {
   snapshot.forEach(function (scoreSnapshot) {

@@ -13,6 +13,9 @@ import router from "../router";
       titolo="Prova a tempo"
       descrizione="Combatti contro il tempo per completare più parole possibili"
       gif="/test22.gif"
+      @play-game="
+        (level) => router.push({ name: 'timerush', params: { level: level } })
+      "
     />
     <Challenge
       titolo="Parole in libertà"

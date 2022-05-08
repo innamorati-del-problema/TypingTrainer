@@ -22,14 +22,16 @@ const router = createRouter({
       component: () => import("../components/Leaderboards.vue"),
     },
     {
+      name: "timerush",
+      path: "/timerush/:level",
+      component: () => import("../components/Challenges/TimeRush.vue"),
+      props: true,
+    },
+    {
       name: "deadend",
       path: "/deadend/:level",
       component: () => import("../components/Challenges/DeadEnd.vue"),
       props: true,
-    },
-    {
-      path: "/chart",
-      component: () => import("../components/Charts/LineChart.vue"),
     },
   ],
 });
