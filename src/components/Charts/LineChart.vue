@@ -118,7 +118,7 @@ let chartOptions = {
   plugins: {
     title: {
       display: true,
-      text: "Statistiche Pratica",
+      text: "Parole al Minuto",
     },
     legend: {
       display: false,
