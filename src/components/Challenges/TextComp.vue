@@ -78,22 +78,32 @@ let specialCharacters = [
 var refs = [];
 
 const props = defineProps({
+  //nome del gioco, sono importanti solo deadend e timerrush per ora
+  //perchè dettano alcune proprietà di visualizzazione
   game: {
     type: String,
     required: true,
   },
+  //il livello del gioco che si gioca, potrebbe non essere necessario
+  //perchè passato nell'url. Tocca vedere
   level: {
     type: Number,
     required: false,
   },
+  //specificare la funzione era trobbi sbatti inutile, meglio passare
+  //l'array gia processato nei componenti DeadEnd, Practice, etc...
   string: {
     type: Array,
     required: true,
   },
+  //direzione del timer ('up' o 'down'), principalmente usato per il
+  //timerrush, detta se incrementa o aumenta il timer
   timerDirection: {
     type: String,
     required: false,
   },
+  //punto di partenza del timer, di default 0 ma viene usato per impostare
+  //la durata del timerrush
   timerStartValue: {
     type: Number,
     required: false,
