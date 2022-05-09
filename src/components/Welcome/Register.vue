@@ -23,7 +23,7 @@ function register(email, password, checkPassword, username, paese) {
       // Signed in
       const user = userCredential.user;
       writeUserData(user.uid, username, email, user.uid, paese);
-      router.push("/home");
+      router.push("/practice");
       // ...
     })
     .catch((error) => {
@@ -65,7 +65,7 @@ function writeUserData(userId, name, email, seed, paese) {
       <label class="mt-1 flex flex-col dark:text-white">
         Email
         <input
-          class="h-6 w-4/6 self-center rounded border-[1px] border-graphite p-2 text-xs"
+          class="h-6 w-4/6 self-center rounded border-[1px] border-graphite p-2 text-xs dark:text-black"
           type="text"
           placeholder="@"
           v-model="email"

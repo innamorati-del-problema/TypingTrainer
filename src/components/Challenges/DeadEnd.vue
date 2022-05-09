@@ -29,13 +29,28 @@
     <div
       v-if="started && !finished"
       :style="{
-        left: refs[position].offsetLeft + 'px',
-        top: refs[position].offsetTop + 'px',
+        left: refs[position].offsetLeft
+          ? refs[position].offsetLeft - 2 + 'px'
+          : '10px',
+        top:
+          refs[position].offsetTop > 0
+            ? refs[position].offsetTop + 'px'
+            : '12px',
       }"
-      class="absolute h-6 w-[3px] rounded-md bg-green-500 transition-all duration-200 ease-out"
+      class="absolute h-6 w-[3px] rounded-md bg-green-500 transition-all duration-200 ease-out dark:bg-purple-500"
     ></div>
     <span
       class="text-xl"
+      style="
+        -webkit-backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        -webkit-transform: translate3d(0, 0, 0);
+        -webkit-transform: translateZ(0);
+        backface-visibility: hidden;
+        perspective: 1000;
+        transform: translate3d(0, 0, 0);
+        transform: translateZ(0);
+      "
       :class="{
         'blur-[7px]': !started,
         active: index == position,
@@ -45,7 +60,7 @@
           letterValues[index] == 3,
         'rounded-sm text-[#e1e100]  dark:text-[#fdfd187d] ':
           letterValues[index] == 2,
-        'bg-black': position + 4 - level < index,
+        'text-white dark:text-graphite-light': position + 4 - level < index,
       }"
       v-for="(letter, index) in string"
     >

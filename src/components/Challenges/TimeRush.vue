@@ -29,8 +29,13 @@
     <div
       v-if="started && !finished"
       :style="{
-        left: refs[position].offsetLeft + 'px',
-        top: refs[position].offsetTop + 'px',
+        left: refs[position].offsetLeft
+          ? refs[position].offsetLeft + 'px'
+          : '12px',
+        top:
+          refs[position].offsetTop > 0
+            ? refs[position].offsetTop + 'px'
+            : '12px',
       }"
       class="absolute h-6 w-[3px] rounded-md bg-green-500 transition-all duration-200 ease-out"
     ></div>
@@ -68,7 +73,7 @@
 <script setup>
 import { onMounted, ref as vueref, watch } from "vue";
 import { useRouter } from "vue-router";
-import { words as wordsArray } from "../../assets/words.json";
+import wordsArray from "../../assets/words.json";
 import "../Navigation.vue";
 import Navigation from "../Navigation.vue";
 import CompleteModal from "../CompleteModal.vue";
@@ -107,9 +112,16 @@ var wrong = 0;
 const wpm = vueref(0);
 let i = 0;
 let n = getRndInteger(0, 9);
+console.log(wordsArray);
 for (i = 0; i < 50; i++) {
-  let rand = getRndInteger(0, wordsArray.length);
-  string = string.concat(wordsArray[rand].split(""));
+  string =
+    props.level == 1
+      ? string.concat(
+          wordsArray["1"][getRndInteger(0, wordsArray["1"])].split("")
+        )
+      : string.concat(
+          wordsArray["2"][getRndInteger(0, wordsArray["2"])].split("")
+        );
   string.push(" ");
 }
 string.pop();
