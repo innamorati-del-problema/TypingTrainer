@@ -68,6 +68,7 @@ import {
   orderByChild,
   equalTo,
   get,
+  limitToFirst,
 } from "firebase/database";
 import { ref as vueref, watch, watchEffect } from "vue";
 
@@ -84,6 +85,7 @@ let averagePrecision = vueref(0);
 watchEffect(async () => {
   let labels = [];
   let practiceData = [];
+  let finalData = [];
   averageWpm.value = 0;
   averagePrecision.value = 0;
 
@@ -98,7 +100,8 @@ watchEffect(async () => {
   let practiceDataQuery = query(
     ref(db, dbUrl),
     orderByChild("username"),
-    equalTo(localStorage.username)
+    equalTo(localStorage.username),
+    limitToFirst(40)
   );
 
   get(practiceDataQuery).then((snapshot) => {
@@ -109,12 +112,19 @@ watchEffect(async () => {
       averagePrecision.value += vals.precision;
       averageWpm.value += vals.wpm;
     });
+    finalData.push(practiceData[0]);
+    let i;
+    for (i = 1; i < practiceData.length; i++) {
+      finalData.push((finalData[i - 1] * i + practiceData[i]) / (i + 1));
+    }
+    console.log(practiceData);
+    console.log(finalData);
     chartData.value = {
       labels: labels,
       datasets: [
         {
           label: "WPM",
-          data: practiceData,
+          data: finalData,
         },
       ],
     };

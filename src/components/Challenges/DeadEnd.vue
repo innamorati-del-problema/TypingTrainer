@@ -45,7 +45,7 @@
           letterValues[index] == 3,
         'rounded-sm text-[#e1e100]  dark:text-[#fdfd187d] ':
           letterValues[index] == 2,
-        'blur-sm': position + 3 - level < index,
+        'bg-black': position + 4 - level < index,
       }"
       v-for="(letter, index) in string"
     >
@@ -197,7 +197,7 @@ function sendData(wpm, precision, timer) {
     wpm: wpm_good,
     precision: precision,
     timer: timer,
-    day: 1 + date.getDay(),
+    day: date.getDate(),
     month: 1 + date.getMonth(),
     year: 1 + date.getFullYear(),
   });

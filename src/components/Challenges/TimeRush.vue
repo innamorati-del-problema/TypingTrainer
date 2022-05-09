@@ -200,7 +200,7 @@ function sendData(wpm, precision, timer) {
     wpm: wpm_good,
     precision: precision,
     timer: timer,
-    day: 1 + date.getDay(),
+    day: date.getDate(),
     month: 1 + date.getMonth(),
     year: 1 + date.getFullYear(),
   });

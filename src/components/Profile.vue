@@ -203,6 +203,7 @@ function changeAvatar() {
     seed: random,
   }).then(() => {
     avatar.value = createAvatar(style, { seed: random, radius: 50, scale: 80 });
+    localStorage.avatar = avatar.value;
     changing.value = false;
   });
 }

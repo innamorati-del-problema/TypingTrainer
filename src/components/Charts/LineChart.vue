@@ -111,8 +111,8 @@ defineProps({
 
 Chart.defaults.font.family = "IBM Plex Mono";
 
-const color = ref(localStorage.theme === "light" ? "#72C53F" : "#D01FC9");
-
+// const color = ref(localStorage.theme === "light" ? "#72C53F" : "#D01FC9");
+const color = ref("#1B8AB9");
 let chartOptions = {
   responsive: true,
   plugins: {
