@@ -11,7 +11,7 @@
     </div>
   </div>
   <div
-    class="text-md relative m-4 mx-auto w-5/6 rounded-xl bg-white p-3 text-black shadow-xl dark:bg-graphite-light dark:text-white"
+    class="text-md relative m-4 mx-auto w-[60%] rounded-xl bg-white p-3 text-black shadow-xl dark:bg-graphite-light dark:text-white"
     @click="start"
   >
     <div
@@ -53,16 +53,28 @@
       </span>
     </span>
   </div>
+  <Transition name="modal">
+    <div v-if="timerStop">
+      <CompleteModal
+        class="bg-gray-dark bg-opacity-50 dark:text-white"
+        :wpm="wpm"
+        :precision="precision"
+        :timer="timer"
+        @close-modal="router.go()"
+      />
+    </div>
+  </Transition>
 </template>
 
 <script setup>
 import { ref, watch } from "vue";
-import texts from "../../assets/texts.json";
+import { useRouter } from "vue-router";
+import { ref as fbref, set, push, getDatabase } from "firebase/database";
+import CompleteModal from "../CompleteModal.vue";
 
-var string = [];
-
+const router = useRouter();
+const db = getDatabase();
 const position = ref(0);
-const styles = ref({});
 
 let specialCharacters = [
   "Tab",
@@ -87,7 +99,7 @@ const props = defineProps({
   //il livello del gioco che si gioca, potrebbe non essere necessario
   //perchè passato nell'url. Tocca vedere
   level: {
-    type: Number,
+    type: String,
     required: false,
   },
   //specificare la funzione era trobbi sbatti inutile, meglio passare
@@ -116,17 +128,13 @@ let precision = ref(100);
 let timer = ref("0:00");
 let secs = props.timerStartValue;
 let words = 0;
-
-var timerStop = false;
+let string = props.string;
+var timerStop = ref(false);
 
 var wrong = 0;
 
 const wpm = ref(0);
-let i = 0;
-let n = getRndInteger(0, 9);
-for (i = 0; i < texts[n].text.length; i++) {
-  string.push(texts[n].text[i]);
-}
+
 let letterValues = ref(new Array(string.length).fill(0));
 
 function start() {
@@ -141,7 +149,7 @@ function keyHandler(ev) {
   if (specialCharacters.indexOf(ev.key) != -1) {
     return;
   } else if (ev.key == "Backspace") {
-    if (string[position.value - 1] == " ") {
+    if (props.string[position.value - 1] == " ") {
     } else if (position.value <= 0) {
       position.value = 0;
     } else {
@@ -151,7 +159,7 @@ function keyHandler(ev) {
       position.value--;
     }
     letterValues.value[position.value] = -1;
-  } else if (string[position.value] == " ") {
+  } else if (props.string[position.value] == " ") {
     words++;
     wpm.value = Math.floor((words * 60) / secs);
     if (ev.key == " ") letterValues.value[position.value] = 3;
@@ -160,7 +168,7 @@ function keyHandler(ev) {
       wrong++;
     }
     position.value++;
-  } else if (ev.key != string[position.value]) {
+  } else if (ev.key != props.string[position.value]) {
     letterValues.value[position.value] = 1;
     position.value++;
     wrong++;
@@ -179,15 +187,16 @@ function keyHandler(ev) {
 }
 
 watch(position, () => {
-  timerStop = position.value >= string.length;
-  if (timerStop) {
+  timerStop.value = position.value >= props.string.length;
+  if (timerStop.value) {
     window.removeEventListener("keydown", keyHandler);
-    emits("game-end", wpm.value, precision.value, timer.value);
+    //emits("game-end", wpm.value, precision.value, timer.value);
+    sendData(wpm.value, precision.value, timer.value);
   }
 });
 
 function timerStart() {
-  if (!timerStop) {
+  if (!timerStop.value) {
     let minutes = Math.floor(secs / 60);
     let seconds = secs % 60;
     if (seconds < 10) timer.value = "" + minutes + ":0" + seconds;
@@ -197,8 +206,8 @@ function timerStart() {
       secs--;
       if (secs < 0) {
         window.removeEventListener("keydown", keyHandler);
-        emits("game-end", wpm.value, precision.value, timer.value);
-        timerStop = true;
+        //emits("game-end", wpm.value, precision.value, timer.value);
+        timerStop.value = true;
       }
     }
     setTimeout(timerStart, 1000);
@@ -207,6 +216,24 @@ function timerStart() {
 
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function sendData(wpm, precision, timer) {
+  const scoresListRef = fbref(db, "/" + props.game + "/" + props.level);
+  const newScoreRef = push(scoresListRef);
+  const date = new Date();
+  const wpm_raw = wpm;
+  const wpm_good = Math.floor(wpm_raw * (precision / 100));
+  set(newScoreRef, {
+    username: localStorage.username,
+    wpm_raw: wpm_raw,
+    wpm: wpm_good,
+    precision: precision,
+    timer: timer,
+    day: date.getDate(),
+    month: 1 + date.getMonth(),
+    year: 1 + date.getFullYear(),
+  });
 }
 
 const emits = defineEmits(["game-end"]);

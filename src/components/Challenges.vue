@@ -21,6 +21,9 @@ import router from "../router";
       titolo="Parole in libertà"
       descrizione="Confrontati con il caso e completa più parole senza senso che puoi"
       gif="/test.gif"
+      @play-game="
+        (level) => router.push({ name: 'freewords', params: { level: level } })
+      "
     />
     <Challenge
       titolo="Vicolo cieco"
