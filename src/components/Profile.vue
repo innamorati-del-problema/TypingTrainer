@@ -104,16 +104,28 @@
             <h2 class="self-center text-lg text-green-500 dark:text-purple-500">
               Preferenze
             </h2>
-            <div class="flex flex-col">
-              <label class="m-2 flex">
-                <h1 class="text-graphite dark:text-white">Lingua</h1>
+
+            <div class="flex justify-around">
+              <div class="m-1 flex flex-col">
+                <h1 class="m-2 text-graphite dark:text-white">Lingua</h1>
+                <h1 class="m-2 text-graphite dark:text-white">
+                  Font per lettori con dislessia
+                </h1>
+              </div>
+              <div class="m-1 flex w-full grow flex-col justify-start">
                 <select
-                  class="mx-auto w-4/6 rounded-lg border-[1px] border-gray bg-white p-1 text-sm"
+                  class="m-2 w-full rounded-lg border-[1px] border-gray bg-white p-1 text-sm"
                 >
                   <option value="it">Italiano</option>
                   <option value="en">English</option>
                 </select>
-              </label>
+                <input
+                  type="checkbox"
+                  v-model="dyslexic"
+                  class="m-2 h-6 w-6 border-[1px] border-gray bg-white text-sm"
+                  @change="changeFont"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -238,6 +250,19 @@ function changeUsername() {
       newUsername.value = "";
     }
   );
+}
+
+const dyslexic = vueref(localStorage.dyslexic == "true");
+function changeFont() {
+  if (localStorage.dyslexic == "true") {
+    document.documentElement.classList.remove("dyslexic");
+    localStorage.dyslexic = "false";
+    dyslexic.value = false;
+  } else {
+    document.documentElement.classList.add("dyslexic");
+    localStorage.dyslexic = "true";
+    dyslexic.value = true;
+  }
 }
 </script>
 

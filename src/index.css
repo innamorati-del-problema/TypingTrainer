@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    font-family: "IBM Plex Mono", monospace;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html.dyslexic {
+    font-family: "OpenDyslexicRegular";
+  }
+}
+
 @layer components {
   .custom-button {
     @apply h-12 w-36 self-center rounded-lg bg-gradient-to-b text-white shadow hover:shadow-lg;

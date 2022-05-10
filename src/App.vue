@@ -6,6 +6,14 @@ if (localStorage.theme === "light" || !("theme" in localStorage)) {
   document.documentElement.classList.add("dark");
   localStorage.theme = "dark";
 }
+
+if (localStorage.dyslexic === "false" || !("dyslexic" in localStorage)) {
+  document.documentElement.classList.remove("dyslexic");
+  localStorage.dyslexic = "false";
+} else {
+  document.documentElement.classList.add("dyslexic");
+  localStorage.dyslexic = "true";
+}
 </script>
 
 <template>
@@ -15,6 +23,11 @@ if (localStorage.theme === "light" || !("theme" in localStorage)) {
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600&display=swap"
     rel="stylesheet"
   />
+  <link
+    rel="stylesheet"
+    href="../node_modules/open-dyslexic/open-dyslexic-regular.css"
+  />
+
   <div
     class="fixed inset-0 -z-50 bg-beige transition-colors dark:bg-graphite"
     id="b"
@@ -32,11 +45,5 @@ if (localStorage.theme === "light" || !("theme" in localStorage)) {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-#app {
-  font-family: "IBM Plex Mono", monospace;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 </style>
