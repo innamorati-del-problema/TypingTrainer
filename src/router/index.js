@@ -33,6 +33,12 @@ const router = createRouter({
       component: () => import("../components/Challenges/DeadEnd.vue"),
       props: true,
     },
+    {
+      name: "freewords",
+      path: "/freewords/:level",
+      component: () => import("../components/Challenges/FreeWords.vue"),
+      props: true,
+    },
   ],
 });
 

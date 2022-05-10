@@ -117,8 +117,6 @@ watchEffect(async () => {
     for (i = 1; i < practiceData.length; i++) {
       finalData.push((finalData[i - 1] * i + practiceData[i]) / (i + 1));
     }
-    console.log(practiceData);
-    console.log(finalData);
     chartData.value = {
       labels: labels,
       datasets: [

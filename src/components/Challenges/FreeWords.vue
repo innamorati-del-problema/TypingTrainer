@@ -1,13 +1,13 @@
 <template>
-  <div class="flex h-screen flex-col">
+  <div class="h-screenszd">
     <Navigation />
     <div class="my-20 mx-auto max-w-[1000px]">
       <TextComp
-        game="timerrush"
+        game="freewords"
         :level="level"
         :string="string"
-        timerDirection="down"
-        :timerStartValue="60"
+        timerDirection="up"
+        :timerStartValue="0"
       />
     </div>
     <div class="text-center">
@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import words from "../../assets/words.json";
+import letters from "../../assets/letters.json";
 import Navigation from "../Navigation.vue";
 import TextComp from "./TextComp.vue";
 import Keyboard from "../Keyboard/Keyboard.vue";
@@ -27,7 +27,7 @@ function getRndInteger(min, max) {
 }
 
 function randomLevel(level) {
-  var probs = [[1], [1, 1, 1, 1, 1, 2], [1, 1, 1, 1, 1, 2, 2, 3, 3]];
+  var probs = [[1], [1, 1, 1, 1, 1, 1, 1, 2], [1, 1, 1, 1, 1, 1, 1, 1, 2, 3]];
   var idx = Math.floor(Math.random() * probs[level - 1].length);
   return probs[level - 1][idx].toString();
 }
@@ -35,11 +35,15 @@ function randomLevel(level) {
 let string = [];
 const props = defineProps(["level"]);
 let i = 0;
-for (i = 0; i < 50; i++) {
+for (i = 0; i < 30; i++) {
   let rLevel = randomLevel(Number.parseInt(props.level));
-  string = string.concat(
-    words[rLevel][getRndInteger(0, words[rLevel].length)].split("")
-  );
+  let j;
+  let wrdLength = getRndInteger(2, 8);
+  for (j = 0; j < wrdLength; j++) {
+    string = string.concat(
+      letters[rLevel][getRndInteger(0, letters[rLevel].length)]
+    );
+  }
   string.push(" ");
 }
 string.pop();
