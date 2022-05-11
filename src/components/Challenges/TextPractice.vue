@@ -56,8 +56,10 @@
 <script setup>
 import { ref, watch } from "vue";
 import texts from "../../assets/texts.json";
+import { useRouter } from "vue-router";
 
 var string = [];
+const router = useRouter();
 
 const position = ref(0);
 
@@ -71,6 +73,8 @@ let specialCharacters = [
   "Esc",
   "AltGraph",
 ];
+
+const props = defineProps(["key"]);
 
 var refs = [];
 console.log(refs);

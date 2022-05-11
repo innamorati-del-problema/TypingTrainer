@@ -60,6 +60,8 @@ let _timer = vueref();
 
 let finished = vueref(false);
 
+const key = vueref(0);
+
 function onPracticeEnd(wpm, precision, timer) {
   _wpm.value = wpm;
   _precision.value = precision;
@@ -67,16 +69,30 @@ function onPracticeEnd(wpm, precision, timer) {
   finished.value = true;
   sendData(wpm, precision, timer);
 }
+
+function reRender(cRef) {
+  key.value++;
+}
 </script>
 
 <template>
   <Navigation />
 
-  <div class="mx-auto mt-20 mb-20 max-w-[900px]">
-    <TextPracticeTest @practice-end="onPracticeEnd" />
+  <div class="mx-auto mt-20 mb-10 max-w-[900px] md:mb-20">
+    <TextPracticeTest @practice-end="onPracticeEnd" :key="key" />
+    <div
+      class="flex justify-center text-graphite hover:cursor-pointer hover:text-graphite dark:hover:text-white"
+      @click="reRender()"
+    >
+      <font-awesome-icon
+        icon="arrow-rotate-left"
+        class="self-center"
+      ></font-awesome-icon>
+      <h3 class="m-2">Genera un nuovo testo</h3>
+    </div>
   </div>
 
-  <div class="-z-[100] text-center">
+  <div class="-z-[100] mt-0 text-center md:mt-10">
     <Keyboard lang="it" class="text-center" />
   </div>
 
