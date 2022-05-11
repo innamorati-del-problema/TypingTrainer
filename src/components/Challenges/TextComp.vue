@@ -9,6 +9,9 @@
     <div class="">
       <h4>Precisione: {{ precision }}%</h4>
     </div>
+    <div v-if="game == 'timerrush'" class="">
+      <h4>Parole completate: {{ words }}</h4>
+    </div>
   </div>
   <div
     class="text-md relative m-4 mx-auto w-[60%] rounded-xl bg-white p-3 text-black shadow-xl dark:bg-graphite-light dark:text-white"
@@ -56,10 +59,18 @@
   <Transition name="modal">
     <div v-if="timerStop">
       <CompleteModal
+      v-if="game != 'timerrush'"
         class="bg-gray-dark bg-opacity-50 dark:text-white"
         :wpm="wpm"
         :precision="precision"
         :timer="timer"
+        @close-modal="router.go()"
+      />
+      <CompleteModal
+      v-else
+        class="bg-gray-dark bg-opacity-50 dark:text-white"
+        :words="words"
+        :precision="precision"
         @close-modal="router.go()"
       />
     </div>
@@ -126,8 +137,8 @@ const props = defineProps({
 let started = ref(false);
 let precision = ref(100);
 let timer = ref("0:00");
+let words = ref(0);
 let secs = props.timerStartValue;
-let words = 0;
 let string = props.string;
 var timerStop = ref(false);
 
@@ -160,8 +171,8 @@ function keyHandler(ev) {
     }
     letterValues.value[position.value] = -1;
   } else if (props.string[position.value] == " ") {
-    words++;
-    wpm.value = Math.floor((words * 60) / secs);
+    words.value++;
+    wpm.value = Math.floor((words.value * 60) / secs);
     if (ev.key == " ") letterValues.value[position.value] = 3;
     else {
       letterValues.value[position.value] = 1;
@@ -191,7 +202,10 @@ watch(position, () => {
   if (timerStop.value) {
     window.removeEventListener("keydown", keyHandler);
     //emits("game-end", wpm.value, precision.value, timer.value);
-    sendData(wpm.value, precision.value, timer.value);
+    if (props.game === 'timerrush')
+      sendDataTimerRush(words.value, precision.value);
+    else
+      sendData(wpm.value, precision.value, timer.value);
   }
 });
 
@@ -218,7 +232,21 @@ function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function sendData(wpm, precision, timer) {
+function sendDataTimerRush(words,precision){
+  const scoresListRef = fbref(db, "/" + props.game + "/" + props.level);
+  const newScoreRef = push(scoresListRef);
+  const date = new Date();
+  set(newScoreRef, {
+    username: localStorage.username,
+    words: words,
+    precision: precision,
+    day: date.getDate(),
+    month: 1 + date.getMonth(),
+    year: 1 + date.getFullYear(),
+  });
+}
+
+function sendData(wpm,precision,timer) {
   const scoresListRef = fbref(db, "/" + props.game + "/" + props.level);
   const newScoreRef = push(scoresListRef);
   const date = new Date();

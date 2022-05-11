@@ -112,7 +112,7 @@
               <div class="m-1 flex flex-col">
                 <h1 class="m-2 text-graphite dark:text-white">Lingua</h1>
                 <h1 class="m-2 text-graphite dark:text-white">
-                  Font per lettori con dislessia
+                  Font per utenti con dislessia
                 </h1>
               </div>
               <div class="m-1 flex w-full grow flex-col justify-start">

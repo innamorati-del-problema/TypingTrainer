@@ -4,7 +4,7 @@
 
     <div class="m-4 flex h-[calc(100vh-100px)] full flex-wrap gap-2">
       <div
-        class="flex h-full hide-scroll overflow-scroll w-full grow basis-96 flex-col rounded-xl bg-white p-8 shadow-lg dark:bg-graphite-light"
+        class="flex h-full hide-scroll overflow-scroll w-full grow basis-96 flex-col rounded-lg bg-white p-8 shadow-lg dark:bg-graphite-light"
       >
         <h1 class="mb-5 self-center dark:text-white">Classifica Pratica</h1>
         <div class="flex justify-between text-green-500 dark:text-purple-500">

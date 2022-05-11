@@ -118,27 +118,27 @@ defineProps({
 }
 
 .key {
-  width: 6%;
+  width: 4.69%;
   display: inline-block;
-  margin: 5px;
+  margin: 4px;
   box-sizing: content-box;
   padding: 0;
 }
 
 .spacebar {
-  width: 35%;
+  width: 25%;
   display: inline-block;
-  margin: 5px;
+  margin: 4px;
   box-sizing: content-box;
   padding: 0;
 }
 @media (max-width: 1100px) {
   .key {
-    width: 6%;
+    width: 5%;
     margin: 2px;
   }
   .spacebar {
-    width: 30%;
+    width: 20%;
     margin: 2px;
   }
 

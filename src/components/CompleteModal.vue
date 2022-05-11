@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(["wpm", "timer", "precision"]);
+const props = defineProps(["wpm", "timer", "precision", "words"]);
 </script>
 
 <template>
@@ -9,12 +9,14 @@ const props = defineProps(["wpm", "timer", "precision"]);
     >
       <h1 class="text-2xl">Complimenti!</h1>
       <div class="mt-4 flex grow flex-col justify-evenly text-center">
-        <p class="text-3xl text-green-500 dark:text-purple-500">WPM</p>
-        <p>{{ wpm }}</p>
-        <p class="text-3xl text-green-500 dark:text-purple-500">Tempo</p>
-        <p>{{ timer }}</p>
-        <p class="text-3xl text-green-500 dark:text-purple-500">Precisione</p>
-        <p>{{ precision }}%</p>
+        <p v-if="wpm" class="text-3xl text-green-500 dark:text-purple-500">WPM</p>
+        <p v-if="wpm">{{ wpm }}</p>
+        <p v-if="precision" class="text-3xl text-green-500 dark:text-purple-500">Words</p>
+        <p v-if="precision">{{ words }}</p>
+        <p v-if="timer" class="text-3xl text-green-500 dark:text-purple-500">Tempo</p>
+        <p v-if="timer">{{ timer }}</p>
+        <p v-if="precision" class="text-3xl text-green-500 dark:text-purple-500">Precisione</p>
+        <p v-if="precision">{{ precision }}%</p>
       </div>
       <button
         @click="$emit('close-modal')"

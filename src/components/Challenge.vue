@@ -4,7 +4,7 @@
   >
     <img class="w-fit self-center rounded-t-lg" :src="gif" alt="" />
     <div class="flex flex-col p-4">
-      <div class="text-xl text-green-500 dark:text-purple-500">
+      <div class="text-xl text-green-500 dark:text-purple-500"> 
         {{ titolo }}
       </div>
       <div class="text-sm dark:text-white">{{ descrizione }}</div>

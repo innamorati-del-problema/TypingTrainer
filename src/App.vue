@@ -60,16 +60,13 @@ if (localStorage.dyslexic === "false" || !("dyslexic" in localStorage)) {
 /* Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
-    border-radius: 10px;
-
-
-
+    border-radius: 0 10px 10px 0;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(132, 133, 134);
-    border-radius: 10px;
+  background: rgb(168, 168, 169);
+    border-radius: 0 10px 10px 0;
 
 }
 

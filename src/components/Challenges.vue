@@ -12,7 +12,7 @@ import router from "../router";
     <Challenge
       titolo="Prova a tempo"
       descrizione="Combatti contro il tempo per completare più parole possibili"
-      gif="/test.gif"
+      gif="/timerrush.gif"
       @play-game="
         (level) => router.push({ name: 'timerush', params: { level: level } })
       "
@@ -20,7 +20,7 @@ import router from "../router";
     <Challenge
       titolo="Parole in libertà"
       descrizione="Confrontati con il caso e completa più parole senza senso che puoi"
-      gif="/test.gif"
+      gif="/freewords.gif"
       @play-game="
         (level) => router.push({ name: 'freewords', params: { level: level } })
       "
@@ -28,7 +28,7 @@ import router from "../router";
     <Challenge
       titolo="Vicolo cieco"
       descrizione="Affina la tua prontezza avendo a disposizione solo poche lettere alla volta"
-      gif="/test.gif"
+      gif="/deadend.gif"
       @play-game="
         (level) => router.push({ name: 'deadend', params: { level: level } })
       "
