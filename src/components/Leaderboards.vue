@@ -1,10 +1,10 @@
 <template>
-  <div class="m-0 flex h-screen w-screen flex-col justify-start p-0">
+  <div class="m-0 flex h-screen w-[99%] flex-col justify-start p-0">
     <Navigation />
 
-    <div class="m-4 flex h-full flex-wrap gap-2">
+    <div class="m-4 flex h-[calc(100vh-100px)] full flex-wrap gap-2">
       <div
-        class="flex h-full w-full grow basis-96 flex-col rounded-xl bg-white p-8 shadow-lg dark:bg-graphite-light"
+        class="flex h-full hide-scroll overflow-scroll w-full grow basis-96 flex-col rounded-xl bg-white p-8 shadow-lg dark:bg-graphite-light"
       >
         <h1 class="mb-5 self-center dark:text-white">Classifica Pratica</h1>
         <div class="flex justify-between text-green-500 dark:text-purple-500">
@@ -68,4 +68,9 @@ onValue(topTenWpm, (snapshot) => {
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+.hide-scroll {
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+</style>
