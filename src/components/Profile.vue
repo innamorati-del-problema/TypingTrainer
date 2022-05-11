@@ -38,8 +38,10 @@
           >
             <Statistics />
           </div>
-          <div
+
+          <form
             class="m-2 flex h-full shrink grow basis-72 flex-col rounded-xl shadow shadow-gray dark:bg-graphite dark:shadow-none"
+            @submit.prevent="changePassword"
           >
             <h2
               class="m-2 self-center text-lg text-green-500 dark:text-purple-500"
@@ -49,6 +51,7 @@
             <label class="m-2 flex flex-col self-center text-center">
               <div class="dark:text-white">Password attuale</div>
               <input
+                required
                 class="rounded-lg border-[1px] border-gray pl-1"
                 v-model="oldPassword1"
                 type="password"
@@ -57,17 +60,19 @@
             <label class="m-2 mb-4 flex flex-col self-center text-center">
               <div class="dark:text-white">Nuova password</div>
               <input
+                required
                 class="rounded-lg border-[1px] border-gray pl-1"
                 v-model="newPassword"
                 type="password"
               />
             </label>
-            <button class="custom-button primary mb-3" @click="changePassword">
+            <button class="custom-button primary mb-3" type="submit">
               Cambia
             </button>
-          </div>
-          <div
+          </form>
+          <form
             class="m-2 flex h-full shrink grow basis-72 flex-col rounded-xl shadow shadow-gray dark:bg-graphite dark:shadow-none"
+            @submit.prevent="changeUsername"
           >
             <h2
               class="m-2 self-center text-lg text-green-500 dark:text-purple-500"
@@ -77,6 +82,7 @@
             <label class="m-2 flex flex-col self-center text-center">
               <div class="dark:text-white">Password attuale</div>
               <input
+                required
                 class="rounded-lg border-[1px] border-gray pl-1"
                 v-model="oldPassword2"
                 type="password"
@@ -85,19 +91,16 @@
             <label class="m-2 mb-4 flex flex-col self-center text-center">
               <div class="dark:text-white">Nuovo nome utente</div>
               <input
+                required
                 class="rounded-lg border-[1px] border-gray pl-1"
                 v-model="newUsername"
                 type="text"
               />
             </label>
-            <button
-              class="custom-button primary mb-3"
-              v
-              @click="changeUsername"
-            >
+            <button class="custom-button primary mb-3" type="submit">
               Cambia
             </button>
-          </div>
+          </form>
           <div
             class="m-2 flex h-full shrink grow basis-full flex-col rounded-xl p-4 shadow shadow-gray dark:bg-graphite dark:shadow-none"
           >

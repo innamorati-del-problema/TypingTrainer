@@ -65,6 +65,7 @@ function writeUserData(userId, name, email, seed, paese) {
       <label class="mt-1 flex flex-col dark:text-white">
         Email
         <input
+          required
           class="h-6 w-4/6 self-center rounded border-[1px] border-graphite p-2 text-xs dark:text-black"
           type="text"
           placeholder="@"
@@ -74,6 +75,7 @@ function writeUserData(userId, name, email, seed, paese) {
       <label class="mt-1 flex flex-col dark:text-white">
         Username
         <input
+          required
           class="h-6 w-4/6 self-center rounded border-[1px] border-graphite p-2 text-xs"
           type="text"
           placeholder="Username"
@@ -83,6 +85,7 @@ function writeUserData(userId, name, email, seed, paese) {
       <label class="mt-1 flex flex-col dark:text-white">
         Password
         <input
+          required
           class="h-6 w-4/6 self-center rounded border-[1px] border-graphite p-2 text-xs"
           type="password"
           placeholder="Password"
@@ -92,6 +95,7 @@ function writeUserData(userId, name, email, seed, paese) {
       <label class="mt-1 flex flex-col dark:text-white">
         Conferma Password
         <input
+          required
           class="h-6 w-4/6 self-center rounded border-[1px] border-graphite p-2 text-xs"
           type="password"
           placeholder="Conferma Password"
@@ -101,6 +105,7 @@ function writeUserData(userId, name, email, seed, paese) {
       <label class="mt-1 flex flex-col dark:text-white">
         Paese
         <select
+          required
           class="h-6 w-4/6 self-center rounded border-[1px] border-graphite bg-white text-xs"
           placeholder="Paese"
           v-model="paese"
