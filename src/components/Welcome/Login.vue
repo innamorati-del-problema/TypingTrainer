@@ -54,7 +54,7 @@ import { createAvatar } from "@dicebear/avatars";
 import * as style from "@dicebear/adventurer-neutral";
 import { ref as vueref } from "vue";
 import Button from "../Button.vue";
-import Test from "../Test.vue";
+import { spawnToast } from "../../errorHandler";
 
 const router = useRouter();
 const loading = vueref(false);
@@ -84,9 +84,7 @@ function login(email, password) {
       // ...
     })
     .catch((error) => {
-      alert(error);
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      spawnToast(error.code);
       loading.value = false;
     });
 }

@@ -4,6 +4,8 @@ import { initializeApp } from "firebase/app";
 import router from "./router";
 import { getDatabase } from "firebase/database";
 import "./index.css";
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
 
 /* import the fontawesome core */
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -39,7 +41,7 @@ const firebaseConfig = {
 const appfb = initializeApp(firebaseConfig);
 const database = getDatabase(appfb);
 const app = createApp(App);
-
+app.use(Toast);
 app.use(router);
 app.component("font-awesome-icon", FontAwesomeIcon);
 app.mount("#app");

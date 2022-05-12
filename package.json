@@ -20,7 +20,8 @@
     "sass": "^1.50.0",
     "vue": "^3.2.25",
     "vue-chartjs": "^4.0.7",
-    "vue-router": "^4.0.14"
+    "vue-router": "^4.0.14",
+    "vue-toastification": "^2.0.0-rc.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.1",
