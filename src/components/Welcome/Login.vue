@@ -54,6 +54,7 @@ import { createAvatar } from "@dicebear/avatars";
 import * as style from "@dicebear/adventurer-neutral";
 import { ref as vueref } from "vue";
 import Button from "../Button.vue";
+import Test from "../Test.vue";
 
 const router = useRouter();
 const loading = vueref(false);

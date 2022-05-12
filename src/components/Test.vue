@@ -1,11 +1,18 @@
 <template>
-  <div class="m-10">
-    <Button type="primary" size="md" :loading="true" text="Wassup" />
+  <div class="m-10" ref="divref">
+    <Alert title='ue' msg="sghi"/>
   </div>
 </template>
 
 <script setup>
-import Button from "./Button.vue";
+import Alert from './Alert.vue';
+import {ref} from 'vue';
+
+
+let divref = ref();
+
+
+
 </script>
 
 <style lang="scss" scoped></style>

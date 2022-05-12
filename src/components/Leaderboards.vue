@@ -4,13 +4,12 @@
 
     <div class="m-4 flex h-[calc(100vh-100px)] full flex-wrap gap-2">
       <div
-        class="flex h-full hide-scroll overflow-scroll w-full grow basis-96 flex-col rounded-lg bg-white p-8 shadow-lg dark:bg-graphite-light"
+        class="flex h-full hide-scroll overflow-scroll w-full grow basis-96 flex-col rounded-xl bg-white p-4 shadow-lg dark:bg-graphite-light"
       >
-        <h1 class="mb-5 self-center dark:text-white">Classifica Pratica</h1>
+        <h1 class="self-center dark:text-white">Classifica Prova a Tempo</h1>
         <div class="flex justify-between text-green-500 dark:text-purple-500">
           <h1 class="m-1 shrink grow basis-8">Username</h1>
-          <h1 class="m-1 shrink grow basis-8">WPM</h1>
-          <h1 class="m-1 shrink grow basis-8">RawWPM</h1>
+          <h1 class="m-1 shrink grow basis-8">Parole</h1>
           <h1 class="m-1 shrink grow basis-8">Precisione</h1>
         </div>
         <div
@@ -20,21 +19,20 @@
         >
           <div class="flex justify-between dark:text-white">
             <h1 class="m-1 shrink grow basis-8">{{ score.username }}</h1>
-            <h1 class="m-1 shrink grow basis-8">{{ score.wpm }}</h1>
-            <h1 class="m-1 shrink grow basis-8">{{ score.wpm_raw }}</h1>
+            <h1 class="m-1 shrink grow basis-8">{{ score.words }}</h1>
             <h1 class="m-1 shrink grow basis-8">{{ score.precision }}%</h1>
           </div>
         </div>
       </div>
       <div
-        class="flex h-full w-full grow basis-96 flex-col rounded-xl bg-white p-4 shadow-lg dark:bg-graphite-light"
+        class="flex h-full hide-scroll overflow-scroll w-full grow basis-96 flex-col rounded-xl bg-white p-4 shadow-lg dark:bg-graphite-light"
       >
-        <h1 class="self-center dark:text-white">Classifica globale</h1>
+        <h1 class="self-center dark:text-white">Classifica Parole in Libertà</h1>
       </div>
       <div
-        class="flex h-full w-full grow basis-96 flex-col rounded-xl bg-white p-4 shadow-lg dark:bg-graphite-light"
+        class="flex h-full hide-scroll overflow-scroll w-full grow basis-96 flex-col rounded-xl bg-white p-4 shadow-lg dark:bg-graphite-light"
       >
-        <h1 class="self-center dark:text-white">Classifica globale</h1>
+        <h1 class="self-center dark:text-white">Classifica Vicolo Cieco</h1>
       </div>
     </div>
   </div>
