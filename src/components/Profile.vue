@@ -163,6 +163,7 @@ import { createAvatar } from "@dicebear/avatars";
 import * as style from "@dicebear/adventurer-neutral";
 import LineChart from "./Charts/LineChart.vue";
 import Statistics from "./Statistics.vue";
+import { spawnToast } from "../errorHandler";
 
 const db = getDatabase();
 const router = useRouter();
@@ -229,30 +230,31 @@ function changePassword() {
       const user = auth.currentUser;
       updatePassword(user, newPassword.value)
         .then(() => {
-          alert("Password cambiata con successo");
           oldPassword1.value = "";
           newPassword.value = "";
         })
         .catch((error) => {
-          alert(error);
+          spawnToast(error.code);
         });
     })
     .catch((error) => {
-      alert(error);
+      spawnToast(error.code);
     });
 }
 
 function changeUsername() {
-  signInWithEmailAndPassword(auth, currentUser.email, oldPassword2.value).then(
-    (userCredential) => {
+  signInWithEmailAndPassword(auth, currentUser.email, oldPassword2.value)
+    .then((userCredential) => {
       const user = auth.currentUser;
       const updates = {};
       updates["/users/" + user.uid + "/username"] = newUsername.value;
       update(ref(db), updates);
       oldPassword2.value = "";
       newUsername.value = "";
-    }
-  );
+    })
+    .catch((error) => {
+      spawnToast(error.code);
+    });
 }
 
 const dyslexic = vueref(localStorage.dyslexic == "true");

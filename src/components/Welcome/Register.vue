@@ -2,7 +2,7 @@
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, set, ref } from "firebase/database";
 import { useRouter } from "vue-router";
-
+import { spawnToast } from "../../errorHandler";
 const router = useRouter();
 
 let email;
@@ -13,7 +13,7 @@ let checkPassword;
 
 function register(email, password, checkPassword, username, paese) {
   if (password !== checkPassword) {
-    alert("le password non corrispondono");
+    spawnToast("auth/passwords-dont-match");
     return;
   }
 
@@ -27,9 +27,7 @@ function register(email, password, checkPassword, username, paese) {
       // ...
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert(error);
+      spawnToast(error.code);
       // ..
     });
 }

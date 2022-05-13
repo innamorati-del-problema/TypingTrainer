@@ -59,7 +59,7 @@
   <Transition name="modal">
     <div v-if="timerStop">
       <CompleteModal
-      v-if="game != 'timerrush'"
+        v-if="game != 'timerrush'"
         class="bg-gray-dark bg-opacity-50 dark:text-white"
         :wpm="wpm"
         :precision="precision"
@@ -67,7 +67,7 @@
         @close-modal="router.go()"
       />
       <CompleteModal
-      v-else
+        v-else
         class="bg-gray-dark bg-opacity-50 dark:text-white"
         :words="words"
         :precision="precision"
@@ -202,10 +202,9 @@ watch(position, () => {
   if (timerStop.value) {
     window.removeEventListener("keydown", keyHandler);
     //emits("game-end", wpm.value, precision.value, timer.value);
-    if (props.game === 'timerrush')
+    if (props.game === "timerrush")
       sendDataTimerRush(words.value, precision.value);
-    else
-      sendData(wpm.value, precision.value, timer.value);
+    else sendData(wpm.value, precision.value, timer.value);
   }
 });
 
@@ -232,7 +231,7 @@ function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function sendDataTimerRush(words,precision){
+function sendDataTimerRush(words, precision) {
   const scoresListRef = fbref(db, "/" + props.game + "/" + props.level);
   const newScoreRef = push(scoresListRef);
   const date = new Date();
@@ -246,7 +245,7 @@ function sendDataTimerRush(words,precision){
   });
 }
 
-function sendData(wpm,precision,timer) {
+function sendData(wpm, precision, timer) {
   const scoresListRef = fbref(db, "/" + props.game + "/" + props.level);
   const newScoreRef = push(scoresListRef);
   const date = new Date();

@@ -1,10 +1,22 @@
 <template>
   <div
-    class="m-2 flex max-w-sm basis-full flex-col justify-between rounded-xl bg-white shadow-lg dark:bg-graphite-light xl:max-w-lg"
+    @mouseover="hover = true"
+    @mouseleave="hover = false"
+    class="group m-2 flex max-w-sm basis-full flex-col justify-between rounded-xl bg-white shadow-lg dark:bg-graphite-light xl:max-w-lg"
   >
-    <img class="w-fit self-center rounded-t-lg" :src="gif" alt="" />
+    <img
+      class="m-10 w-5/6 self-center overflow-clip rounded-lg shadow-xl transition-transform group-hover:scale-125"
+      :src="gif"
+      alt=""
+    />
+    <!-- <img
+      v-else
+      class="m-10 w-5/6 self-center rounded-lg"
+      src="/rect.png"
+      alt=""h-10 w-5/6
+    /> -->
     <div class="flex flex-col p-4">
-      <div class="text-xl text-green-500 dark:text-purple-500"> 
+      <div class="text-xl text-green-500 dark:text-purple-500">
         {{ titolo }}
       </div>
       <div class="text-sm dark:text-white">{{ descrizione }}</div>
@@ -73,7 +85,7 @@ const props = defineProps({
 });
 
 const level = ref(1);
-
+const hover = ref(false);
 const emits = defineEmits(["play-game"]);
 
 function clicked(num) {
