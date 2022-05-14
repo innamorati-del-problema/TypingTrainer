@@ -9,7 +9,9 @@ import { getDatabase, ref, onValue, set, push } from "firebase/database";
 import "../Keyboard/Keyboard.vue";
 import Keyboard from "../Keyboard/Keyboard.vue";
 import CompleteModal from "../CompleteModal.vue";
+import { useUserStore } from "../../stores/userStore";
 
+const userStore = useUserStore();
 const db = getDatabase();
 const router = useRouter();
 const auth = getAuth();
@@ -43,7 +45,7 @@ function sendData(wpm, precision, timer) {
   const wpm_raw = wpm;
   const wpm_good = Math.floor(wpm_raw * (precision / 100));
   set(newScoreRef, {
-    username: localStorage.username,
+    username: userStore.username,
     wpm_raw: wpm_raw,
     wpm: wpm_good,
     precision: precision,
@@ -80,7 +82,7 @@ function reRender(cRef) {
 
   <div class="mx-auto mt-20 mb-10 max-w-[900px] md:mb-20">
     <TextPracticeTest @practice-end="onPracticeEnd" :key="key" />
-    
+
     <!-- non funziona on hover nella dark mode-->
     <div
       class="flex justify-center text-graphite hover:cursor-pointer hover:text-green-500 dark:hover:text-purple-500"

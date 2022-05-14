@@ -82,10 +82,12 @@ import { ref, watch } from "vue";
 import { useRouter } from "vue-router";
 import { ref as fbref, set, push, getDatabase } from "firebase/database";
 import CompleteModal from "../CompleteModal.vue";
+import { useUserStore } from "../../stores/userStore";
 
 const router = useRouter();
 const db = getDatabase();
 const position = ref(0);
+const userStore = useUserStore();
 
 let specialCharacters = [
   "Tab",
@@ -236,12 +238,13 @@ function sendDataTimerRush(words, precision) {
   const newScoreRef = push(scoresListRef);
   const date = new Date();
   set(newScoreRef, {
-    username: localStorage.username,
-    words: words,
+    username: userStore.username,
+    words_raw: words,
     precision: precision,
+    words: Math.floor(words * (precision / 100)),
     day: date.getDate(),
     month: 1 + date.getMonth(),
-    year: 1 + date.getFullYear(),
+    year: date.getFullYear(),
   });
 }
 
@@ -252,14 +255,14 @@ function sendData(wpm, precision, timer) {
   const wpm_raw = wpm;
   const wpm_good = Math.floor(wpm_raw * (precision / 100));
   set(newScoreRef, {
-    username: localStorage.username,
+    username: userStore.username,
     wpm_raw: wpm_raw,
     wpm: wpm_good,
-    precision: precision,
+    precision: precision.value,
     timer: timer,
     day: date.getDate(),
     month: 1 + date.getMonth(),
-    year: 1 + date.getFullYear(),
+    year: date.getFullYear(),
   });
 }
 

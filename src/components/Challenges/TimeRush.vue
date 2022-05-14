@@ -7,7 +7,7 @@
         :level="level"
         :string="string"
         timerDirection="down"
-        :timerStartValue="60"
+        :timerStartValue="30"
       />
     </div>
     <div class="text-center">
@@ -35,7 +35,7 @@ function randomLevel(level) {
 let string = [];
 const props = defineProps(["level"]);
 let i = 0;
-for (i = 0; i < 50; i++) {
+for (i = 0; i < 51; i++) {
   let rLevel = randomLevel(Number.parseInt(props.level));
   string = string.concat(
     words[rLevel][getRndInteger(0, words[rLevel].length)].split("")
