@@ -77,7 +77,6 @@ let specialCharacters = [
 const props = defineProps(["key"]);
 
 var refs = [];
-console.log(refs);
 
 let started = ref(false);
 let precision = ref(100);

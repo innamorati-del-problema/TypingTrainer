@@ -1,9 +1,10 @@
 <script setup>
-import { ref, watch } from "vue";
+import { ref, useSlots, watch } from "vue";
 import { getAuth } from "firebase/auth";
+import { useUserStore } from "../stores/userStore";
 let light = ref(localStorage.theme === "light");
 const showExit = ref(false);
-
+const userStore = useUserStore();
 function change() {
   if (localStorage.theme === "light" || !("theme" in localStorage)) {
     document.documentElement.classList.add("dark");
@@ -21,8 +22,6 @@ let showResponsiveNavbar = ref(false);
 function toggleNavbar() {
   showResponsiveNavbar.value = !showResponsiveNavbar.value;
 }
-
-const avatar = localStorage.avatar;
 
 function logOut() {
   const auth = getAuth();
@@ -112,7 +111,11 @@ function logOut() {
       <div
         class="absolute top-4 right-24 mt-1 mr-2 h-8 w-8 basis-8 rounded-full border-[1px] border-[rgba(0,0,0,0)] ring-2 ring-graphite-light hover:cursor-pointer dark:ring-white md:static"
       >
-        <div @click="showExit = !showExit" v-html="avatar" class="avatar"></div>
+        <div
+          @click="showExit = !showExit"
+          v-html="userStore.avatar"
+          class="avatar"
+        ></div>
         <div
           v-show="showExit"
           @click="logOut"

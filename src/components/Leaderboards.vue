@@ -2,9 +2,9 @@
   <div class="m-0 flex h-screen w-[99%] flex-col justify-start p-0">
     <Navigation />
 
-    <div class="m-4 flex h-[calc(100vh-100px)] full flex-wrap gap-2">
+    <div class="full m-4 flex h-[calc(100vh-100px)] flex-wrap gap-2">
       <div
-        class="flex h-full hide-scroll overflow-scroll w-full grow basis-96 flex-col rounded-xl bg-white p-4 shadow-lg dark:bg-graphite-light"
+        class="hide-scroll flex h-full w-full grow basis-96 flex-col overflow-scroll rounded-xl bg-white p-4 shadow-lg dark:bg-graphite-light"
       >
         <h1 class="self-center dark:text-white">Classifica Prova a Tempo</h1>
         <div class="flex justify-between text-green-500 dark:text-purple-500">
@@ -25,12 +25,14 @@
         </div>
       </div>
       <div
-        class="flex h-full hide-scroll overflow-scroll w-full grow basis-96 flex-col rounded-xl bg-white p-4 shadow-lg dark:bg-graphite-light"
+        class="hide-scroll flex h-full w-full grow basis-96 flex-col overflow-scroll rounded-xl bg-white p-4 shadow-lg dark:bg-graphite-light"
       >
-        <h1 class="self-center dark:text-white">Classifica Parole in Libertà</h1>
+        <h1 class="self-center dark:text-white">
+          Classifica Parole in Libertà
+        </h1>
       </div>
       <div
-        class="flex h-full hide-scroll overflow-scroll w-full grow basis-96 flex-col rounded-xl bg-white p-4 shadow-lg dark:bg-graphite-light"
+        class="hide-scroll flex h-full w-full grow basis-96 flex-col overflow-scroll rounded-xl bg-white p-4 shadow-lg dark:bg-graphite-light"
       >
         <h1 class="self-center dark:text-white">Classifica Vicolo Cieco</h1>
       </div>
@@ -67,7 +69,6 @@ onValue(topTenWpm, (snapshot) => {
 </script>
 
 <style lang="scss" scoped>
-
 .hide-scroll {
   overflow-x: hidden; /* Hide horizontal scrollbar */
 }
