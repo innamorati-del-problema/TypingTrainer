@@ -126,6 +126,7 @@ import {
   limitToFirst,
   query,
   off,
+  get,
 } from "@firebase/database";
 import { ref } from "vue";
 
@@ -190,13 +191,12 @@ gamesInfo.forEach(function (game) {
 });
 
 function fetchData(query, level, game) {
-  const toRemove = onValue(query, (snapshot) => {
+  get(query).then((snapshot) => {
     snapshot.forEach(function (scoreSnapshot) {
       gamesScores.value[game.game][level].push(scoreSnapshot.val());
     });
     gamesScores.value[game.game][level].reverse();
   });
-  off(query, "value", toRemove);
 }
 </script>
 
