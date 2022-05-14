@@ -1,9 +1,13 @@
 <script setup>
+import { createAvatar } from "@dicebear/avatars";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, set, ref } from "firebase/database";
 import { useRouter } from "vue-router";
 import { spawnToast } from "../../errorHandler";
+import { useUserStore } from "../../stores/userStore";
+
 const router = useRouter();
+const userStore = useUserStore();
 
 let email;
 let password;
@@ -34,6 +38,16 @@ function register(email, password, checkPassword, username, paese) {
 
 function writeUserData(userId, name, email, seed, paese) {
   const db = getDatabase();
+
+  userStore.username = name;
+  userStore.country = paese;
+  userStore.uid = userId;
+  userStore.avatar = createAvatar(style, {
+    seed: seed,
+    radius: 50,
+    scale: 80,
+  });
+
   set(ref(db, "/users/" + userId), {
     username: name,
     email: email,
