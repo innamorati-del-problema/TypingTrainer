@@ -16,6 +16,8 @@
   <div
     class="text-md relative m-4 mx-auto w-[60%] rounded-xl bg-white p-3 text-black shadow-xl dark:bg-graphite-light dark:text-white"
     @click="start"
+    @keyup.space="start"
+    @keyup.enter="start"
   >
     <div
       v-if="!started"
@@ -102,6 +104,12 @@ let specialCharacters = [
 
 var refs = [];
 
+const startListener = window.addEventListener("keydown", keyStart);
+
+function keyStart(ev) {
+  if (ev.key == " " || ev.key == "Enter") start();
+}
+
 const props = defineProps({
   //nome del gioco, sono importanti solo deadend e timerrush per ora
   //perchè dettano alcune proprietà di visualizzazione
@@ -154,6 +162,7 @@ function start() {
   if (!started.value) {
     started.value = true;
     timerStart();
+    window.removeEventListener("keydown", startListener);
     window.addEventListener("keydown", keyHandler);
   }
 }
