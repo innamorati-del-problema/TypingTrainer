@@ -75,4 +75,8 @@ if (localStorage.dyslexic === "false" || !("dyslexic" in localStorage)) {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.Vue-Toastification__toast-body.toast {
+  font-family: "IBM Plex Mono";
+}
 </style>

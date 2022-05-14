@@ -164,12 +164,13 @@ import * as style from "@dicebear/adventurer-neutral";
 import Statistics from "./Statistics.vue";
 import { spawnToast } from "../errorHandler";
 import { useUserStore } from "../stores/userStore";
-import { pinia } from "../main";
+import { useToast } from "vue-toastification";
+
 const db = getDatabase();
 const router = useRouter();
 const auth = getAuth();
 const userStore = useUserStore();
-
+const toast = useToast();
 const username = vueref();
 const avatar = vueref();
 const changing = vueref(false);
@@ -219,6 +220,10 @@ function changeAvatar() {
       radius: 50,
       scale: 80,
     });
+    toast.success("Avatar cambiato con successo!", {
+      timeout: 2000,
+      bodyClassName: "toast",
+    });
     changing.value = false;
   });
 }
@@ -231,6 +236,10 @@ function changePassword() {
         .then(() => {
           oldPassword1.value = "";
           newPassword.value = "";
+          toast.success("Password cambiata con successo!", {
+            timeout: 2000,
+            bodyClassName: "toast",
+          });
         })
         .catch((error) => {
           spawnToast(error.code);
@@ -251,6 +260,10 @@ function changeUsername() {
       userStore.username = newUsername.value;
       oldPassword2.value = "";
       newUsername.value = "";
+      toast.success("Username cambiato con successo!", {
+        timeout: 2000,
+        bodyClassName: "toast",
+      });
     })
     .catch((error) => {
       spawnToast(error.code);
