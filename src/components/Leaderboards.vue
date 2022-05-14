@@ -186,7 +186,6 @@ gamesInfo.forEach(function (game) {
       limitToFirst(game.limit)
     );
     fetchData(dbQuery, level, game);
-    console.log(level);
   }
 });
 

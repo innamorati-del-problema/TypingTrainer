@@ -2,9 +2,13 @@
 import { ref, useSlots, watch } from "vue";
 import { getAuth } from "firebase/auth";
 import { useUserStore } from "../stores/userStore";
+import { useNavbarPosition } from "../stores/navbarPosition";
+
 let light = ref(localStorage.theme === "light");
 const showExit = ref(false);
 const userStore = useUserStore();
+const navbar = useNavbarPosition();
+
 function change() {
   if (localStorage.theme === "light" || !("theme" in localStorage)) {
     document.documentElement.classList.add("dark");
@@ -20,7 +24,7 @@ function change() {
 let showResponsiveNavbar = ref(false);
 
 function toggleNavbar() {
-  showResponsiveNavbar.value = !showResponsiveNavbar.value;
+  navbar.show = !navbar.show;
 }
 
 function logOut() {
@@ -41,11 +45,12 @@ function logOut() {
         TypingTrainer
       </div>
       <div
-        :class="{ hidden: showResponsiveNavbar }"
+        :class="{ hidden: navbar.show }"
         class="relative transition-all md:flex lg:ml-12"
       >
         <div
           class="text-shadow m-1 text-2xl transition-all sm:mx-3 sm:text-xl"
+          @click="toggleNavbar"
           v-bind:class="[
             $route.path == '/practice'
               ? 'text-green-500 text-shadow-primary dark:text-purple-500'
@@ -62,7 +67,9 @@ function logOut() {
               : 'text-graphite dark:text-white',
           ]"
         >
-          <router-link to="/profile"> Profilo </router-link>
+          <router-link @click="toggleNavbar" to="/profile">
+            Profilo
+          </router-link>
         </div>
         <div
           class="text-shadow m-1 text-2xl sm:mx-3 sm:text-xl"
@@ -72,7 +79,9 @@ function logOut() {
               : 'text-graphite dark:text-white',
           ]"
         >
-          <router-link to="/challenges"> Sfide </router-link>
+          <router-link @click="toggleNavbar" to="/challenges">
+            Sfide
+          </router-link>
         </div>
         <div
           class="text-shadow m-1 text-2xl sm:mx-3 sm:text-xl"
@@ -82,7 +91,9 @@ function logOut() {
               : 'text-graphite dark:text-white',
           ]"
         >
-          <router-link to="/leaderboards"> Leaderboards </router-link>
+          <router-link @click="toggleNavbar" to="/leaderboards">
+            Leaderboards
+          </router-link>
         </div>
       </div>
 
