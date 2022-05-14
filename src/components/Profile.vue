@@ -242,10 +242,14 @@ function changePassword() {
           });
         })
         .catch((error) => {
+          oldPassword1.value = "";
+          newPassword.value = "";
           spawnToast(error.code);
         });
     })
     .catch((error) => {
+      oldPassword1.value = "";
+      newPassword.value = "";
       spawnToast(error.code);
     });
 }
@@ -266,6 +270,8 @@ function changeUsername() {
       });
     })
     .catch((error) => {
+      oldPassword2.value = "";
+      newUsername.value = "";
       spawnToast(error.code);
     });
 }

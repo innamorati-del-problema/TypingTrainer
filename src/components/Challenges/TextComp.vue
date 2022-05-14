@@ -258,7 +258,7 @@ function sendData(wpm, precision, timer) {
     username: userStore.username,
     wpm_raw: wpm_raw,
     wpm: wpm_good,
-    precision: precision.value,
+    precision: precision,
     timer: timer,
     day: date.getDate(),
     month: 1 + date.getMonth(),

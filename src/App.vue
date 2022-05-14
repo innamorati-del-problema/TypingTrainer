@@ -62,18 +62,23 @@ if (localStorage.dyslexic === "false" || !("dyslexic" in localStorage)) {
 /* Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
-  border-radius: 0 10px 10px 0;
+  border-radius: 10px;
+
+  &:hover {
+    width: 15px;
+  }
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgb(168, 168, 169);
-  border-radius: 0 10px 10px 0;
+  border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+  width: 20px;
 }
 
 .Vue-Toastification__toast-body.toast {

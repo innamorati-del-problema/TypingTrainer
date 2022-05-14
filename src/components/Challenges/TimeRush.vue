@@ -1,7 +1,7 @@
 <template>
   <div class="flex h-screen flex-col">
     <Navigation />
-    <div class="my-20 mx-auto max-w-[1000px]">
+    <div class="mx-auto mt-10 max-w-[1000px]">
       <TextComp
         game="timerrush"
         :level="level"

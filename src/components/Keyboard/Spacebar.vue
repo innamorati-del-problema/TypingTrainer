@@ -7,7 +7,10 @@
       </linearGradient>
 
       <rect
-        :class="{ pressedRec: pressed }"
+        :class="{
+          'fill-green-500 dark:fill-purple-500': pressed,
+          'fill-white': !pressed,
+        }"
         class="rect"
         width="400"
         height="70"
@@ -59,7 +62,6 @@ svg {
   }
 }
 .rect {
-  fill: white;
   ry: 8px;
 }
 
@@ -73,7 +75,6 @@ svg {
 }
 
 .pressedTxt {
-  fill: white;
   animation: pressed 100ms ease forwards;
 }
 </style>

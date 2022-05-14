@@ -140,14 +140,4 @@ function logOut() {
   <router-view />
 </template>
 
-<style scoped lang="scss">
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.3s ease-out;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
-</style>
+<style scoped lang="scss"></style>
