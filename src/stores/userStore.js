@@ -6,7 +6,7 @@ export const useUserStore = defineStore("userStore", {
       uid: 0,
       username: "username",
       country: "italia",
-      avatar: "seed",
+      avatar: "",
     };
   },
   persist: true,

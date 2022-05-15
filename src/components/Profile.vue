@@ -66,9 +66,14 @@
                 type="password"
               />
             </label>
-            <button class="custom-button primary mb-3" type="submit">
-              Cambia
-            </button>
+            <Button
+              type="submit"
+              look="primary"
+              size="md"
+              text="Cambia"
+              :loading="loadingChangePassword"
+              class="mb-3 self-center"
+            />
           </form>
           <form
             class="m-2 flex h-full shrink grow basis-72 flex-col rounded-xl shadow shadow-gray dark:bg-graphite dark:shadow-none"
@@ -97,9 +102,14 @@
                 type="text"
               />
             </label>
-            <button class="custom-button primary mb-3" type="submit">
-              Cambia
-            </button>
+            <Button
+              type="submit"
+              look="primary"
+              size="md"
+              text="Cambia"
+              :loading="loadingChangeUsername"
+              class="mb-3 self-center"
+            />
           </form>
           <div
             class="m-2 flex h-full shrink grow basis-full flex-col rounded-xl p-4 shadow shadow-gray dark:bg-graphite dark:shadow-none"
@@ -165,6 +175,7 @@ import Statistics from "./Statistics.vue";
 import { spawnToast } from "../errorHandler";
 import { useUserStore } from "../stores/userStore";
 import { useToast } from "vue-toastification";
+import Button from "./Button.vue";
 
 const db = getDatabase();
 const router = useRouter();
@@ -177,6 +188,9 @@ const changing = vueref(false);
 
 var loaded = vueref(true);
 var currentUser;
+
+const loadingChangeUsername = vueref(false);
+const loadingChangePassword = vueref(false);
 
 var oldPassword1 = vueref("");
 var oldPassword2 = vueref("");
@@ -229,7 +243,8 @@ function changeAvatar() {
 }
 
 function changePassword() {
-  signInWithEmailAndPassword(auth, currentUser.email, oldPassword1.value)
+  loadingChangePassword.value = true;
+  signInWithEmailAndPassword(auth, auth.currentUser.email, oldPassword1.value)
     .then((userCredential) => {
       const user = auth.currentUser;
       updatePassword(user, newPassword.value)
@@ -240,21 +255,25 @@ function changePassword() {
             timeout: 2000,
             bodyClassName: "toast",
           });
+          loadingChangePassword.value = false;
         })
         .catch((error) => {
           oldPassword1.value = "";
           newPassword.value = "";
           spawnToast(error.code);
+          loadingChangePassword.value = false;
         });
     })
     .catch((error) => {
       oldPassword1.value = "";
       newPassword.value = "";
       spawnToast(error.code);
+      loadingChangePassword.value = false;
     });
 }
 
 function changeUsername() {
+  loadingChangeUsername.value = true;
   signInWithEmailAndPassword(auth, auth.currentUser.email, oldPassword2.value)
     .then((userCredential) => {
       const user = auth.currentUser;
@@ -268,11 +287,13 @@ function changeUsername() {
         timeout: 2000,
         bodyClassName: "toast",
       });
+      loadingChangeUsername.value = false;
     })
     .catch((error) => {
       oldPassword2.value = "";
       newUsername.value = "";
       spawnToast(error.code);
+      loadingChangeUsername.value = false;
     });
 }
 

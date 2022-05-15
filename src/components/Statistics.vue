@@ -69,6 +69,7 @@ import {
   equalTo,
   get,
   limitToFirst,
+  limitToLast,
 } from "firebase/database";
 import { ref as vueref, watch, watchEffect } from "vue";
 import { useUserStore } from "../stores/userStore";
@@ -101,7 +102,7 @@ watchEffect(async () => {
     ref(db, dbUrl),
     orderByChild("username"),
     equalTo(userStore.username),
-    limitToFirst(40)
+    limitToLast(30)
   );
 
   get(practiceDataQuery).then((snapshot) => {

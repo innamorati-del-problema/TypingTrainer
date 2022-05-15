@@ -5,9 +5,12 @@ import { getDatabase, set, ref } from "firebase/database";
 import { useRouter } from "vue-router";
 import { spawnToast } from "../../errorHandler";
 import { useUserStore } from "../../stores/userStore";
-
+import * as style from "@dicebear/adventurer-neutral";
+import { ref as vueref } from "vue";
+import Button from "../Button.vue";
 const router = useRouter();
 const userStore = useUserStore();
+const loading = vueref(false);
 
 let email;
 let password;
@@ -16,8 +19,10 @@ let paese;
 let checkPassword;
 
 function register(email, password, checkPassword, username, paese) {
+  loading.value = true;
   if (password !== checkPassword) {
     spawnToast("auth/passwords-dont-match");
+    loading.value = false;
     return;
   }
 
@@ -27,16 +32,17 @@ function register(email, password, checkPassword, username, paese) {
       // Signed in
       const user = userCredential.user;
       writeUserData(user.uid, username, email, user.uid, paese);
-      router.push("/practice");
+
       // ...
     })
     .catch((error) => {
       spawnToast(error.code);
+      loading.value = false;
       // ..
     });
 }
 
-function writeUserData(userId, name, email, seed, paese) {
+async function writeUserData(userId, name, email, seed, paese) {
   const db = getDatabase();
 
   userStore.username = name;
@@ -53,7 +59,15 @@ function writeUserData(userId, name, email, seed, paese) {
     email: email,
     seed: seed,
     country: paese,
-  });
+  })
+    .then(() => {
+      router.push("/practice");
+      loading.value = false;
+    })
+    .catch((error) => {
+      spawnToast(error.code);
+      loading.value = false;
+    });
 }
 </script>
 
@@ -127,9 +141,14 @@ function writeUserData(userId, name, email, seed, paese) {
           <option class="text-xs" value="other">Altro</option>
         </select>
       </label>
-      <button type="submit" class="custom-button primary mt-4">
-        Registrati
-      </button>
+      <Button
+        type="submit"
+        look="primary"
+        size="md"
+        text="Registrati"
+        :loading="loading"
+        class="mt-4 self-center"
+      />
     </form>
   </div>
 </template>

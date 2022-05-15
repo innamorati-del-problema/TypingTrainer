@@ -3,6 +3,7 @@ import { ref, useSlots, watch } from "vue";
 import { getAuth } from "firebase/auth";
 import { useUserStore } from "../stores/userStore";
 import { useNavbarPosition } from "../stores/navbarPosition";
+import router from "../router";
 
 let light = ref(localStorage.theme === "light");
 const showExit = ref(false);
@@ -30,6 +31,8 @@ function toggleNavbar() {
 function logOut() {
   const auth = getAuth();
   auth.signOut();
+  userStore.$reset();
+  router.push("/");
 }
 </script>
 <template>
@@ -126,6 +129,11 @@ function logOut() {
           @click="showExit = !showExit"
           v-html="userStore.avatar"
           class="avatar"
+        ></div>
+        <div
+          @click="showExit = !showExit"
+          v-show="showExit"
+          class="fixed inset-0 h-full w-full hover:cursor-default"
         ></div>
         <div
           v-show="showExit"

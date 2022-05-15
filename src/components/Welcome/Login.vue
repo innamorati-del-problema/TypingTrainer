@@ -73,14 +73,6 @@ function login(email, password) {
       const db = getDatabase();
       let userRef = ref(db, "/users/" + user.uid);
       onValue(userRef, (snapshot) => {
-        watch(
-          pinia.state,
-          (state) => {
-            // persist the whole state to the local storage whenever it changes
-            localStorage.setItem("state", JSON.stringify(state));
-          },
-          { deep: true }
-        );
         const currentUser = snapshot.val();
         userStore.username = currentUser.username;
         userStore.uid = user.uid;
