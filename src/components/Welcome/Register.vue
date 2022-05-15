@@ -88,7 +88,7 @@ function writeUserData(userId, name, email, seed, paese) {
         Username
         <input
           required
-          class="h-6 w-4/6 self-center rounded border-[1px] border-graphite p-2 text-xs"
+          class="h-6 w-4/6 self-center rounded border-[1px] border-graphite p-2 text-xs dark:text-black"
           type="text"
           placeholder="Username"
           v-model="username"
@@ -98,7 +98,7 @@ function writeUserData(userId, name, email, seed, paese) {
         Password
         <input
           required
-          class="h-6 w-4/6 self-center rounded border-[1px] border-graphite p-2 text-xs"
+          class="h-6 w-4/6 self-center rounded border-[1px] border-graphite p-2 text-xs dark:text-black"
           type="password"
           placeholder="Password"
           v-model="password"
@@ -108,7 +108,7 @@ function writeUserData(userId, name, email, seed, paese) {
         Conferma Password
         <input
           required
-          class="h-6 w-4/6 self-center rounded border-[1px] border-graphite p-2 text-xs"
+          class="h-6 w-4/6 self-center rounded border-[1px] border-graphite p-2 text-xs dark:text-black"
           type="password"
           placeholder="Conferma Password"
           v-model="checkPassword"
@@ -118,7 +118,7 @@ function writeUserData(userId, name, email, seed, paese) {
         Paese
         <select
           required
-          class="h-6 w-4/6 self-center rounded border-[1px] border-graphite bg-white text-xs"
+          class="h-6 w-4/6 self-center rounded border-[1px] border-graphite bg-white text-xs dark:text-black"
           placeholder="Paese"
           v-model="paese"
         >
