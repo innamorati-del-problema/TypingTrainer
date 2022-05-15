@@ -14,5 +14,6 @@ export function spawnToast(code) {
     msg = "La password deve essere lunga almeno 6 caratteri";
   else msg = "C'è stato un errore";
 
-  toast.error(msg, { timeout: 4000 });
+  toast.error(msg, { timeout: 4000, bodyClassName: "toast" });
+
 }

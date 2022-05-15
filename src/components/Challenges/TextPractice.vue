@@ -13,6 +13,8 @@
   <div
     class="text-md relative m-4 mx-auto w-5/6 rounded-xl bg-white p-3 text-black shadow-xl dark:bg-graphite-light dark:text-white"
     @click="start"
+    @keydown.space="start"
+    @keydown.Enter="start"
   >
     <div
       v-if="!started"
@@ -77,7 +79,6 @@ let specialCharacters = [
 const props = defineProps(["key"]);
 
 var refs = [];
-console.log(refs);
 
 let started = ref(false);
 let precision = ref(100);
@@ -97,10 +98,17 @@ for (i = 0; i < texts[n].text.length; i++) {
 }
 let letterValues = ref(new Array(string.length).fill(0));
 
+const startListener = window.addEventListener("keydown", keyStart);
+
+function keyStart(ev) {
+  if (ev.key == " " || ev.key == "Enter") start();
+}
+
 function start() {
   if (!started.value) {
     started.value = true;
     timerStart();
+    window.removeEventListener("keydown", startListener);
     window.addEventListener("keydown", keyHandler);
   }
 }

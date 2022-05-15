@@ -1,8 +1,13 @@
 <script setup>
-import { ref, watch } from "vue";
+import { ref, useSlots, watch } from "vue";
 import { getAuth } from "firebase/auth";
+import { useUserStore } from "../stores/userStore";
+import { useNavbarPosition } from "../stores/navbarPosition";
+
 let light = ref(localStorage.theme === "light");
 const showExit = ref(false);
+const userStore = useUserStore();
+const navbar = useNavbarPosition();
 
 function change() {
   if (localStorage.theme === "light" || !("theme" in localStorage)) {
@@ -19,10 +24,8 @@ function change() {
 let showResponsiveNavbar = ref(false);
 
 function toggleNavbar() {
-  showResponsiveNavbar.value = !showResponsiveNavbar.value;
+  navbar.show = !navbar.show;
 }
-
-const avatar = localStorage.avatar;
 
 function logOut() {
   const auth = getAuth();
@@ -42,11 +45,12 @@ function logOut() {
         TypingTrainer
       </div>
       <div
-        :class="{ hidden: showResponsiveNavbar }"
+        :class="{ hidden: navbar.show }"
         class="relative transition-all md:flex lg:ml-12"
       >
         <div
           class="text-shadow m-1 text-2xl transition-all sm:mx-3 sm:text-xl"
+          @click="toggleNavbar"
           v-bind:class="[
             $route.path == '/practice'
               ? 'text-green-500 text-shadow-primary dark:text-purple-500'
@@ -63,7 +67,9 @@ function logOut() {
               : 'text-graphite dark:text-white',
           ]"
         >
-          <router-link to="/profile"> Profilo </router-link>
+          <router-link @click="toggleNavbar" to="/profile">
+            Profilo
+          </router-link>
         </div>
         <div
           class="text-shadow m-1 text-2xl sm:mx-3 sm:text-xl"
@@ -73,7 +79,9 @@ function logOut() {
               : 'text-graphite dark:text-white',
           ]"
         >
-          <router-link to="/challenges"> Sfide </router-link>
+          <router-link @click="toggleNavbar" to="/challenges">
+            Sfide
+          </router-link>
         </div>
         <div
           class="text-shadow m-1 text-2xl sm:mx-3 sm:text-xl"
@@ -83,7 +91,9 @@ function logOut() {
               : 'text-graphite dark:text-white',
           ]"
         >
-          <router-link to="/leaderboards"> Leaderboards </router-link>
+          <router-link @click="toggleNavbar" to="/leaderboards">
+            Leaderboards
+          </router-link>
         </div>
       </div>
 
@@ -112,7 +122,11 @@ function logOut() {
       <div
         class="absolute top-4 right-24 mt-1 mr-2 h-8 w-8 basis-8 rounded-full border-[1px] border-[rgba(0,0,0,0)] ring-2 ring-graphite-light hover:cursor-pointer dark:ring-white md:static"
       >
-        <div @click="showExit = !showExit" v-html="avatar" class="avatar"></div>
+        <div
+          @click="showExit = !showExit"
+          v-html="userStore.avatar"
+          class="avatar"
+        ></div>
         <div
           v-show="showExit"
           @click="logOut"
@@ -126,14 +140,4 @@ function logOut() {
   <router-view />
 </template>
 
-<style scoped lang="scss">
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.3s ease-out;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
-</style>
+<style scoped lang="scss"></style>

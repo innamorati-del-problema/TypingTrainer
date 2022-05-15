@@ -29,7 +29,7 @@
           <h1
             class="m-2 flex text-5xl text-graphite dark:text-white xl:text-7xl"
           >
-            {{ username }}
+            {{ userStore.username }}
           </h1>
         </div>
         <div class="flex h-fit w-full flex-wrap">
@@ -161,19 +161,21 @@ import { onBeforeMount, ref as vueref } from "vue";
 import { useRouter } from "vue-router";
 import { createAvatar } from "@dicebear/avatars";
 import * as style from "@dicebear/adventurer-neutral";
-import LineChart from "./Charts/LineChart.vue";
 import Statistics from "./Statistics.vue";
 import { spawnToast } from "../errorHandler";
+import { useUserStore } from "../stores/userStore";
+import { useToast } from "vue-toastification";
 
 const db = getDatabase();
 const router = useRouter();
 const auth = getAuth();
-
+const userStore = useUserStore();
+const toast = useToast();
 const username = vueref();
 const avatar = vueref();
 const changing = vueref(false);
 
-var loaded = vueref(false);
+var loaded = vueref(true);
 var currentUser;
 
 var oldPassword1 = vueref("");
@@ -193,17 +195,10 @@ function authListener() {
       // not logged in
       router.push("/");
     } else {
-      let userRef = ref(db, "/users/" + user.uid);
-      onValue(userRef, (snapshot) => {
-        currentUser = snapshot.val();
-        username.value = currentUser.username;
-        avatar.value = createAvatar(style, {
-          seed: currentUser.seed,
-          radius: 50,
-          scale: 80,
-        });
-        loaded.value = true;
-      });
+      username.value = userStore.username;
+      avatar.value = userStore.avatar;
+
+      loaded.value = true;
     }
   });
 }
@@ -212,14 +207,23 @@ function changeAvatar() {
   changing.value = true;
   let random = Math.random().toString(36).substr(2, 10);
   const user = auth.currentUser;
-  set(ref(db, "users/" + user.uid), {
-    username: currentUser.username,
-    country: currentUser.country,
-    email: currentUser.email,
-    seed: random,
-  }).then(() => {
-    avatar.value = createAvatar(style, { seed: random, radius: 50, scale: 80 });
-    localStorage.avatar = avatar.value;
+  const updates = {};
+  updates["/users/" + user.uid + "/seed"] = random;
+  update(ref(db), updates).then(() => {
+    userStore.avatar = createAvatar(style, {
+      seed: random,
+      radius: 50,
+      scale: 80,
+    });
+    avatar.value = createAvatar(style, {
+      seed: random,
+      radius: 50,
+      scale: 80,
+    });
+    toast.success("Avatar cambiato con successo!", {
+      timeout: 2000,
+      bodyClassName: "toast",
+    });
     changing.value = false;
   });
 }
@@ -232,27 +236,42 @@ function changePassword() {
         .then(() => {
           oldPassword1.value = "";
           newPassword.value = "";
+          toast.success("Password cambiata con successo!", {
+            timeout: 2000,
+            bodyClassName: "toast",
+          });
         })
         .catch((error) => {
+          oldPassword1.value = "";
+          newPassword.value = "";
           spawnToast(error.code);
         });
     })
     .catch((error) => {
+      oldPassword1.value = "";
+      newPassword.value = "";
       spawnToast(error.code);
     });
 }
 
 function changeUsername() {
-  signInWithEmailAndPassword(auth, currentUser.email, oldPassword2.value)
+  signInWithEmailAndPassword(auth, auth.currentUser.email, oldPassword2.value)
     .then((userCredential) => {
       const user = auth.currentUser;
       const updates = {};
       updates["/users/" + user.uid + "/username"] = newUsername.value;
       update(ref(db), updates);
+      userStore.username = newUsername.value;
       oldPassword2.value = "";
       newUsername.value = "";
+      toast.success("Username cambiato con successo!", {
+        timeout: 2000,
+        bodyClassName: "toast",
+      });
     })
     .catch((error) => {
+      oldPassword2.value = "";
+      newUsername.value = "";
       spawnToast(error.code);
     });
 }

@@ -71,10 +71,10 @@ import {
   limitToFirst,
 } from "firebase/database";
 import { ref as vueref, watch, watchEffect } from "vue";
-
+import { useUserStore } from "../stores/userStore";
 const db = getDatabase();
 var chartData = vueref({});
-
+const userStore = useUserStore();
 const selected = vueref("practice");
 const level = vueref("1");
 const data = vueref(false);
@@ -100,7 +100,7 @@ watchEffect(async () => {
   let practiceDataQuery = query(
     ref(db, dbUrl),
     orderByChild("username"),
-    equalTo(localStorage.username),
+    equalTo(userStore.username),
     limitToFirst(40)
   );
 

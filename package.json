@@ -17,6 +17,8 @@
     "chart.js": "^3.7.1",
     "firebase": "^9.6.10",
     "open-dyslexic": "^1.0.3",
+    "pinia": "^2.0.14",
+    "pinia-plugin-persistedstate": "^1.5.1",
     "sass": "^1.50.0",
     "vue": "^3.2.25",
     "vue-chartjs": "^4.0.7",

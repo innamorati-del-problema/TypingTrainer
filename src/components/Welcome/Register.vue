@@ -1,9 +1,13 @@
 <script setup>
+import { createAvatar } from "@dicebear/avatars";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, set, ref } from "firebase/database";
 import { useRouter } from "vue-router";
 import { spawnToast } from "../../errorHandler";
+import { useUserStore } from "../../stores/userStore";
+
 const router = useRouter();
+const userStore = useUserStore();
 
 let email;
 let password;
@@ -34,6 +38,16 @@ function register(email, password, checkPassword, username, paese) {
 
 function writeUserData(userId, name, email, seed, paese) {
   const db = getDatabase();
+
+  userStore.username = name;
+  userStore.country = paese;
+  userStore.uid = userId;
+  userStore.avatar = createAvatar(style, {
+    seed: seed,
+    radius: 50,
+    scale: 80,
+  });
+
   set(ref(db, "/users/" + userId), {
     username: name,
     email: email,
@@ -74,7 +88,7 @@ function writeUserData(userId, name, email, seed, paese) {
         Username
         <input
           required
-          class="h-6 w-4/6 self-center rounded border-[1px] border-graphite p-2 text-xs"
+          class="h-6 w-4/6 self-center rounded border-[1px] border-graphite p-2 text-xs dark:text-black"
           type="text"
           placeholder="Username"
           v-model="username"
@@ -84,7 +98,7 @@ function writeUserData(userId, name, email, seed, paese) {
         Password
         <input
           required
-          class="h-6 w-4/6 self-center rounded border-[1px] border-graphite p-2 text-xs"
+          class="h-6 w-4/6 self-center rounded border-[1px] border-graphite p-2 text-xs dark:text-black"
           type="password"
           placeholder="Password"
           v-model="password"
@@ -94,7 +108,7 @@ function writeUserData(userId, name, email, seed, paese) {
         Conferma Password
         <input
           required
-          class="h-6 w-4/6 self-center rounded border-[1px] border-graphite p-2 text-xs"
+          class="h-6 w-4/6 self-center rounded border-[1px] border-graphite p-2 text-xs dark:text-black"
           type="password"
           placeholder="Conferma Password"
           v-model="checkPassword"
@@ -104,7 +118,7 @@ function writeUserData(userId, name, email, seed, paese) {
         Paese
         <select
           required
-          class="h-6 w-4/6 self-center rounded border-[1px] border-graphite bg-white text-xs"
+          class="h-6 w-4/6 self-center rounded border-[1px] border-graphite bg-white text-xs dark:text-black"
           placeholder="Paese"
           v-model="paese"
         >

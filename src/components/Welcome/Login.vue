@@ -52,12 +52,14 @@ import { useRouter } from "vue-router";
 import { getDatabase, ref, onValue } from "firebase/database";
 import { createAvatar } from "@dicebear/avatars";
 import * as style from "@dicebear/adventurer-neutral";
-import { ref as vueref } from "vue";
+import { ref as vueref, watch } from "vue";
 import Button from "../Button.vue";
 import { spawnToast } from "../../errorHandler";
-
+import { pinia } from "../../main";
+import { useUserStore } from "../../stores/userStore";
 const router = useRouter();
 const loading = vueref(false);
+const userStore = useUserStore();
 
 function login(email, password) {
   loading.value = true;
@@ -71,9 +73,19 @@ function login(email, password) {
       const db = getDatabase();
       let userRef = ref(db, "/users/" + user.uid);
       onValue(userRef, (snapshot) => {
+        watch(
+          pinia.state,
+          (state) => {
+            // persist the whole state to the local storage whenever it changes
+            localStorage.setItem("state", JSON.stringify(state));
+          },
+          { deep: true }
+        );
         const currentUser = snapshot.val();
-        localStorage.username = currentUser.username;
-        localStorage.avatar = createAvatar(style, {
+        userStore.username = currentUser.username;
+        userStore.uid = user.uid;
+        userStore.country = currentUser.country;
+        userStore.avatar = createAvatar(style, {
           seed: currentUser.seed,
           radius: 50,
           scale: 80,

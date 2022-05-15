@@ -1,4 +1,5 @@
-import { createApp } from "vue";
+import { createApp, watch } from "vue";
+import { createPinia } from "pinia";
 import App from "./App.vue";
 import { initializeApp } from "firebase/app";
 import router from "./router";
@@ -6,7 +7,7 @@ import { getDatabase } from "firebase/database";
 import "./index.css";
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
-
+import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 /* import the fontawesome core */
 import { library } from "@fortawesome/fontawesome-svg-core";
 
@@ -40,8 +41,12 @@ const firebaseConfig = {
 // Initialize Firebase
 const appfb = initializeApp(firebaseConfig);
 const database = getDatabase(appfb);
+
+export const pinia = createPinia();
+pinia.use(piniaPluginPersistedstate);
 const app = createApp(App);
 app.use(Toast);
 app.use(router);
+app.use(pinia);
 app.component("font-awesome-icon", FontAwesomeIcon);
 app.mount("#app");
