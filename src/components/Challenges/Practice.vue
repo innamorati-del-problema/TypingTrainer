@@ -78,6 +78,7 @@ function reRender(cRef) {
 </script>
 
 <template>
+
   <div>
     <Navigation />
     <div class="mx-auto mt-10 max-w-[900px]">
@@ -96,6 +97,7 @@ function reRender(cRef) {
     </div>
     <div class="-z-[100] text-center">
       <Keyboard lang="it" class="text-center" />
+
     </div>
   </div>
 

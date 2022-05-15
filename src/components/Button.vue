@@ -18,7 +18,7 @@
       }"
     >
       <span v-if="!loading">{{ text }}</span>
-      <span v-else>Eseguo</span>
+      <span v-else>Caricamento...</span>
     </button>
     <div
       v-show="loading"
