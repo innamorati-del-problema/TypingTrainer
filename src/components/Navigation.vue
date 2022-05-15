@@ -135,17 +135,31 @@ function logOut() {
           v-show="showExit"
           class="fixed inset-0 h-full w-full hover:cursor-default"
         ></div>
-        <div
-          v-show="showExit"
-          @click="logOut"
-          class="absolute -right-10 -bottom-14 flex h-12 w-28 items-center justify-center rounded-xl bg-white shadow dark:bg-graphite-light md:relative md:right-10 md:-bottom-2"
-        >
-          <h1 class="texthover:cursor-pointer text-red-500">Esci</h1>
-        </div>
+        <Transition name="modal">
+          <div
+            v-show="showExit"
+            @click="logOut"
+            class="absolute -right-10 -bottom-14 flex h-12 w-28 items-center justify-center rounded-xl bg-white shadow dark:bg-graphite-light md:relative md:right-10 md:-bottom-2"
+          >
+            <h1 class="texthover:cursor-pointer text-red-500">Esci</h1>
+          </div>
+        </Transition>
       </div>
     </div>
   </nav>
   <router-view />
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.modal-enter-active,
+.modal-leave-active {
+  transition: all 0.1s ease-out;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0%;
+  height: 90%;
+  bottom: 5px;
+}
+</style>
