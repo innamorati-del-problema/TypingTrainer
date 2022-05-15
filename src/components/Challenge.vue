@@ -2,10 +2,10 @@
   <div
     @mouseover="hover = true"
     @mouseleave="hover = false"
-    class="group m-2 flex max-w-sm basis-full flex-col justify-between rounded-xl bg-white shadow-lg dark:bg-graphite-light xl:max-w-lg"
+    class="group m-2 flex max-w-sm basis-full flex-col justify-between rounded-xl bg-white shadow-lg  dark:bg-graphite-light xl:max-w-lg"
   >
     <img
-      class="m-10 w-5/6 self-center overflow-clip rounded-lg shadow-xl transition-transform group-hover:scale-125"
+      class="m-10 w-5/6 self-center overflow-clip rounded-lg shadow-xl transition-transform group-hover:scale-110"
       :src="gif"
       alt=""
     />
@@ -15,7 +15,7 @@
       src="/rect.png"
       alt=""h-10 w-5/6
     /> -->
-    <div class="flex flex-col p-4">
+    <div class="flex flex-col p-4 ">
       <div class="text-xl text-green-500 dark:text-purple-500">
         {{ titolo }}
       </div>

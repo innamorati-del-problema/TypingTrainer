@@ -81,16 +81,15 @@ function reRender(cRef) {
   <div class="mx-auto mt-20 mb-10 max-w-[900px] md:mb-20">
     <TextPracticeTest @practice-end="onPracticeEnd" :key="key" />
     
-    <!-- non funziona on hover nella dark mode-->
     <div
-      class="flex justify-center text-graphite hover:cursor-pointer hover:text-green-500 dark:hover:text-purple-500"
+      class="flex justify-center text-slate-800 hover:cursor-pointer hover:text-green-600 dark:text-white dark:hover:text-purple-500"
       @click="reRender()"
     >
       <font-awesome-icon
         icon="arrow-rotate-left"
-        class="self-center dark:text-white"
+        class="self-center"
       ></font-awesome-icon>
-      <h3 class="m-2 dark:text-white">Genera un nuovo testo</h3>
+      <h3 class="m-2">Genera un nuovo testo</h3>
     </div>
   </div>
 

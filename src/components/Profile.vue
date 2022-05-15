@@ -17,7 +17,7 @@
           <div v-if="!changing" class="h-28 w-28" v-html="avatar"></div>
           <div v-else class="h-28 w-28 rounded-full bg-gray"></div>
           <div
-            class="flex justify-center text-gray hover:cursor-pointer hover:text-gray-dark dark:hover:text-white"
+            class="flex justify-center text-slate-800 hover:cursor-pointer hover:text-green-600 dark:text-white dark:hover:text-purple-500"
             @click="changeAvatar"
           >
             <h3 class="m-2">Cambia avatar</h3>

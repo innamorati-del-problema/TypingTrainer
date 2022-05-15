@@ -7,7 +7,7 @@
     </h2>
     <select
       v-model="selected"
-      class="bg-slate absolute top-2 right-2 rounded-lg text-right shadow dark:bg-graphite-light dark:text-white"
+      class="bg-slate absolute top-2 right-2 rounded-lg text-left shadow dark:bg-graphite-light dark:text-white"
       name="statistiche"
     >
       <option selected value="practice">Pratica</option>
