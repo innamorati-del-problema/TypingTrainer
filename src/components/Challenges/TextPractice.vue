@@ -92,7 +92,7 @@ var wrong = 0;
 
 const wpm = ref(0);
 let i = 0;
-let n = getRndInteger(0, 9);
+let n = getRndInteger(0, 8);
 for (i = 0; i < texts[n].text.length; i++) {
   string.push(texts[n].text[i]);
 }

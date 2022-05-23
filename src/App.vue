@@ -25,9 +25,10 @@ if (localStorage.dyslexic === "false" || !("dyslexic" in localStorage)) {
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600&display=swap"
     rel="stylesheet"
   />
+
   <link
     rel="stylesheet"
-    href="../node_modules/open-dyslexic/open-dyslexic-regular.css"
+    href="https://d1c0n.github.io/OpenDyslexic/opendyslexic.css"
   />
 
   <div
