@@ -202,6 +202,6 @@ function fetchData(query, level, game) {
 
 <style lang="scss" scoped>
 .hide-scroll {
-  overflow-x: hidden; /* Hide horizontal scrollbar */
+  overflow-x: hidden; 
 }
 </style>

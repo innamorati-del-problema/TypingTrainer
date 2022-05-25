@@ -50,7 +50,7 @@ if (localStorage.dyslexic === "false" || !("dyslexic" in localStorage)) {
   padding: 0;
 }
 
-/* width */
+
 ::-webkit-scrollbar {
   width: 5px;
   height: 95%;
@@ -60,7 +60,7 @@ if (localStorage.dyslexic === "false" || !("dyslexic" in localStorage)) {
   }
 }
 
-/* Track */
+
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
   border-radius: 10px;
@@ -70,13 +70,13 @@ if (localStorage.dyslexic === "false" || !("dyslexic" in localStorage)) {
   }
 }
 
-/* Handle */
+
 ::-webkit-scrollbar-thumb {
   background: rgb(168, 168, 169);
   border-radius: 10px;
 }
 
-/* Handle on hover */
+
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
   width: 20px;

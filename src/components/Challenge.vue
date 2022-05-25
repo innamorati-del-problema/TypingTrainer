@@ -9,12 +9,7 @@
       :src="gif"
       alt=""
     />
-    <!-- <img
-      v-else
-      class="m-10 w-5/6 self-center rounded-lg"
-      src="/rect.png"
-      alt=""h-10 w-5/6
-    /> -->
+    
     <div class="flex flex-col p-4 ">
       <div class="text-xl text-green-500 dark:text-purple-500">
         {{ titolo }}
@@ -79,7 +74,6 @@ const props = defineProps({
     type: String,
   },
   level: {
-    //required: true,
     type: Number,
   },
 });

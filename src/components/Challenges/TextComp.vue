@@ -212,7 +212,7 @@ watch(position, () => {
   timerStop.value = position.value >= props.string.length;
   if (timerStop.value) {
     window.removeEventListener("keydown", keyHandler);
-    //emits("game-end", wpm.value, precision.value, timer.value);
+    
     if (props.game === "timerrush")
       sendDataTimerRush(words.value, precision.value);
     else sendData(wpm.value, precision.value, timer.value);
@@ -230,7 +230,7 @@ function timerStart() {
       secs--;
       if (secs < 0) {
         window.removeEventListener("keydown", keyHandler);
-        //emits("game-end", wpm.value, precision.value, timer.value);
+        
         timerStop.value = true;
       }
     }

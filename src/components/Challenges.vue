@@ -8,7 +8,7 @@ import router from "../router";
   <Navigation />
 
   <div class="mt-2 flex flex-wrap justify-center gap-1 xl:flex-nowrap xl:p-24">
-    <!-- <Challenge titolo="Maiuscole e minuscole" descrizione="Metti alla prova la tua capacità di adattarti ai cambi improvvisi di testo" gif="/test22.gif" /> -->
+    
     <Challenge
       titolo="Prova a tempo"
       descrizione="Combatti contro il tempo per completare più parole possibili"

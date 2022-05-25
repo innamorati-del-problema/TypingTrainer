@@ -83,7 +83,7 @@ function reRender(cRef) {
     <Navigation />
     <div class="mx-auto mt-10 max-w-[900px]">
       <TextPracticeTest @practice-end="onPracticeEnd" :key="key" />
-      <!-- non funziona on hover nella dark mode-->
+      
       <div
         class="flex justify-center text-graphite hover:cursor-pointer hover:text-green-500 dark:hover:text-purple-500"
         @click="reRender()"

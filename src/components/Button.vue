@@ -39,10 +39,6 @@ const buttonRef = ref();
 const props = defineProps({
   look: {
     type: String,
-    // validator(value) {
-    //   // The value must match one of these strings
-    //   return ["primary", "secondary", "danger"].includes(value);
-    // },
   },
   loading: {
     type: Boolean,
@@ -55,10 +51,6 @@ const props = defineProps({
   size: {
     type: String,
     default: "md",
-    // validator(value) {
-    //   // The value must match one of these strings
-    //   return ["md", "big"].includes(value);
-    // },
   },
 });
 </script>

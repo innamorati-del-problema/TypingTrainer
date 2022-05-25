@@ -120,18 +120,12 @@
 
             <div class="flex justify-around">
               <div class="m-1 flex flex-col">
-                <h1 class="m-2 text-graphite dark:text-white">Lingua</h1>
                 <h1 class="m-2 text-graphite dark:text-white">
                   Font per utenti con dislessia
                 </h1>
               </div>
               <div class="m-1 flex w-full grow flex-col justify-start">
-                <select
-                  class="m-2 w-full rounded-lg border-[1px] border-gray bg-white p-1 text-sm"
-                >
-                  <option value="it">Italiano</option>
-                  <option value="en">English</option>
-                </select>
+                
                 <input
                   type="checkbox"
                   v-model="dyslexic"

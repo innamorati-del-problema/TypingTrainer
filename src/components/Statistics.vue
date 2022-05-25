@@ -14,7 +14,6 @@
       <option value="timerrush">Prova a Tempo</option>
       <option value="deadend">Dead End</option>
       <option value="freewords">Parole Libertà</option>
-      <option value="js">Codice</option>
     </select>
     <select
       v-model="level"
