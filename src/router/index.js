@@ -12,7 +12,7 @@ const router = createRouter({
       component: () => import("../components/Challenges/Practice.vue"),
     },
     { path: "/profile", component: () => import("../components/Profile.vue") },
-    { path: "/test", component: () => import("../components/Test.vue") },
+    
     {
       path: "/challenges",
       component: () => import("../components/Challenges.vue"),

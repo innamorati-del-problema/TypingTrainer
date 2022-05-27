@@ -111,20 +111,17 @@ function keyStart(ev) {
 }
 
 const props = defineProps({
-  //nome del gioco, sono importanti solo deadend e timerrush per ora
-  //perchè dettano alcune proprietà di visualizzazione
+  //nome del gioco
   game: {
     type: String,
     required: true,
   },
-  //il livello del gioco che si gioca, potrebbe non essere necessario
-  //perchè passato nell'url. Tocca vedere
+  //il livello del gioco che si gioca
   level: {
     type: String,
     required: false,
   },
-  //specificare la funzione era trobbi sbatti inutile, meglio passare
-  //l'array gia processato nei componenti DeadEnd, Practice, etc...
+  
   string: {
     type: Array,
     required: true,

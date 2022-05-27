@@ -197,12 +197,4 @@ const emits = defineEmits(["practice-end"]);
   }
 }
 
-.nextChar {
-  animation: nextChar 1200ms cubic-bezier(0, 1.03, 0, 0.99) infinite;
-  border-radius: 2px;
-}
-
-.blur {
-  filter: blur(3px);
-}
 </style>
